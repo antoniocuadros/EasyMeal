@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recetas_menu_item"
+        android:icon="@drawable/recetas"
+        android:title="Recetas"
+        android:color="@color/black" android:state_checked="true"
+        />
+
+    <item
+        android:id="@+id/categorias_menu_item"
+        android:icon="@drawable/categorias"
+        android:title="Categorías"/>
+
+    <item
+        android:id="@+id/ingrediente_menu_item"
+        android:icon="@drawable/ingredientes"
+        android:title="Ingrefientes"/>
+
+    <item
+        android:id="@+id/perfil_menu_item"
+        android:icon="@drawable/perfil"
+        android:title="Perfil"/>
+</menu>
