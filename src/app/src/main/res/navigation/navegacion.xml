@@ -9,7 +9,7 @@
         android:id="@+id/fragmentoperfil"
         android:name="com.acl.easymeal.fragmentos.Fragmentoperfil"
         android:label="fragmentoperfil"
-        tools:layout="@layout/fragmentoperfil" />
+        tools:layout="@layout/fragmento_perfil" />
     <fragment
         android:id="@+id/fragmentoListaRecetas"
         android:name="com.acl.easymeal.fragmentos.FragmentoListaRecetas"
