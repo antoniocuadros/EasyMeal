@@ -3,16 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/fragmentoListaRecetas">
+    app:startDestination="@id/recetas_menu_item">
 
     <fragment
-        android:id="@+id/fragmentoperfil"
+        android:id="@+id/perfil_menu_item"
         android:name="com.acl.easymeal.fragmentos.Fragmentoperfil"
         android:label="fragmentoperfil"
         tools:layout="@layout/fragmento_perfil" />
     <fragment
-        android:id="@+id/fragmentoListaRecetas"
+        android:id="@+id/recetas_menu_item"
         android:name="com.acl.easymeal.fragmentos.FragmentoListaRecetas"
         android:label="fragmento_lista_recetas"
         tools:layout="@layout/fragmento_lista_recetas" />
+    <fragment
+        android:id="@+id/categorias_menu_item"
+        android:name="com.acl.easymeal.fragmentos.FragmentoCategorias"
+        android:label="fragmento_categorias"
+        tools:layout="@layout/fragmento_categorias" />
+    <fragment
+        android:id="@+id/fragmentoDescripcionReceta"
+        android:name="com.acl.easymeal.fragmentos.FragmentoDescripcionReceta"
+        android:label="fragmento_descripcion_receta"
+        tools:layout="@layout/fragmento_descripcion_receta" />
+    <fragment
+        android:id="@+id/ingrediente_menu_item"
+        android:name="com.acl.easymeal.fragmentos.FragmentoIngredientes"
+        android:label="fragmento_ingredientes"
+        tools:layout="@layout/fragmento_ingredientes" />
+    <fragment
+        android:id="@+id/fragmentoLogin"
+        android:name="com.acl.easymeal.fragmentos.FragmentoLogin"
+        android:label="fragmento_login"
+        tools:layout="@layout/fragmento_login" />
 </navigation>
