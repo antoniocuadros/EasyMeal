@@ -1,6 +1,8 @@
 package com.acl.easymeal.modelo
 
+import androidx.room.PrimaryKey
+
 data class Categoria(
-            val nombreCategoria:String,
-            val imagen:String
+    @PrimaryKey val nombreCategoria:String,
+    val imagen:String
 )
