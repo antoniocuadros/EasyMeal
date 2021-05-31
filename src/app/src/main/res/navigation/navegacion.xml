@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/fragmentoperfil">
+    app:startDestination="@id/fragmentoListaRecetas">
 
     <fragment
         android:id="@+id/fragmentoperfil"
         android:name="com.acl.easymeal.fragmentos.Fragmentoperfil"
         android:label="fragmentoperfil"
         tools:layout="@layout/fragmentoperfil" />
+    <fragment
+        android:id="@+id/fragmentoListaRecetas"
+        android:name="com.acl.easymeal.fragmentos.FragmentoListaRecetas"
+        android:label="fragmento_lista_recetas"
+        tools:layout="@layout/fragmento_lista_recetas" />
 </navigation>
