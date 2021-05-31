@@ -21,5 +21,11 @@ data class Receta(
     val cantidad_ingrediente4:String,
     val cantidad_ingrediente5:String,
     val cantidad_ingrediente6:String,
-    val ingrediente_principal:String
+    val ingrediente_principal:String,
+    val paso1:String,
+    val paso2:String,
+    val paso3:String,
+    val paso4:String,
+    val paso5:String,
+    val idAutor:String
 )
