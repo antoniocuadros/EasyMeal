@@ -42,4 +42,28 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Menu inferior
+    implementation 'com.google.android.material:material:1.3.0'
+
+    //Navegacion entre fragmentos
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    //Base de datos con Room
+    implementation 'androidx.room:room-runtime:2.2.6'
+    kapt 'androidx.room:room-compiler:2.2.6'
+
+    //para leer json como objetos
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    //Imagenes circulares
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Slider de imágenes
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'me.relex:circleindicator:2.1.6'
 }
