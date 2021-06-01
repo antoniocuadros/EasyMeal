@@ -22,8 +22,8 @@ interface RecetaDao {
     @Query("SELECT * FROM Recetas WHERE categoria= :buscar")
     fun obtenerPorCategoría(buscar:String):MutableList<Receta>
 
-    @Query("SELECT * FROM Recetas WHERE ingrediente_principal= :buscar")
-    fun obtenerPorIngredientePrincipal(buscar:String):MutableList<Receta>
+    @Query("SELECT * FROM Recetas WHERE num_pasos= :buscar")
+    fun obtenerPorNumPasos(buscar:String):MutableList<Receta>
 
     @Query("SELECT * FROM Recetas WHERE idAutor= :buscar")
     fun obtenerPorAutor(buscar:String):MutableList<Receta>

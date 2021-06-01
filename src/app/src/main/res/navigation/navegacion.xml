@@ -27,9 +27,9 @@
         tools:layout="@layout/fragmento_descripcion_receta" />
     <fragment
         android:id="@+id/ingrediente_menu_item"
-        android:name="com.acl.easymeal.fragmentos.FragmentoIngredientes"
+        android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"
         android:label="fragmento_ingredientes"
-        tools:layout="@layout/fragmento_ingredientes" />
+        tools:layout="@layout/fragmento_duracion" />
     <fragment
         android:id="@+id/fragmentoLogin"
         android:name="com.acl.easymeal.fragmentos.FragmentoLogin"
