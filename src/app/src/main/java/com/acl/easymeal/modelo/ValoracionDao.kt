@@ -14,4 +14,5 @@ interface ValoracionDao {
 
     @Query("SELECT * FROM Valoraciones WHERE idReceta= :buscar")
     fun obtenerPorNombre(buscar:String):MutableList<Valoracion>
+    
 }
