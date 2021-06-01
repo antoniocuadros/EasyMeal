@@ -35,11 +35,12 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
         instancia_data_base = Room.databaseBuilder(context.applicationContext,
                 DataBaseRecetas::class.java, "database_recetas").allowMainThreadQueries().build()
 
-        instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin"))
-        //Toast.makeText(context, "AAAAAA", Toast.LENGTH_SHORT).show()
+        if(instancia_data_base.usuarioDao.obtenerNumUsuarios() == 0){
+            instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin"))
+            inicializaCategorias(context)
+            inicializaIngredientes(context)
+        }
 
-        inicializaCategorias(context)
-        inicializaIngredientes(context)
     }
 
     return instancia_data_base

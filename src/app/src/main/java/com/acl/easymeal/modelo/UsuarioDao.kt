@@ -19,4 +19,7 @@ interface UsuarioDao {
     @Query("SELECT * FROM Usuarios WHERE username= :buscar")
     fun obtenerPorNombre(buscar:String):MutableList<Usuario>
 
+    @Query("SELECT count(*) FROM Usuarios")
+    fun obtenerNumUsuarios():Int
+
 }
