@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Categorias")
 data class Categoria(
     @PrimaryKey val nombreCategoria:String,
-    val imagen: Bitmap,
+    var imagen: Bitmap,
     val nombreImagen:String
 )

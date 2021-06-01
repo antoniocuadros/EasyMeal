@@ -1,27 +1,27 @@
 [
   {
     "nombreCategoria": "Carnes",
-    "imagen": "",
-    "nombreImagen": "carnes"
+
+    "nombreImagen": "carnescat"
   },
   {
     "nombreCategoria": "Pescados",
-    "imagen": "",
-    "nombreImagen": "pescados"
+
+    "nombreImagen": "pescadoscat"
   },
   {
     "nombreCategoria": "Pasta/Pizzas",
-    "imagen": "",
-    "nombreImagen": "pizzas"
+
+    "nombreImagen": "pizzascat"
   },
   {
     "nombreCategoria": "Ensaladas/Verduras",
-    "imagen": "",
-    "nombreImagen": "verduras"
+
+    "nombreImagen": "verdurascat"
   },
   {
     "nombreCategoria": "Empanadas/Masas",
-    "imagen": "",
-    "nombreImagen": "empanadas"
+
+    "nombreImagen": "empanadascat"
   }
 ]
