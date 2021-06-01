@@ -39,6 +39,7 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
         //Toast.makeText(context, "AAAAAA", Toast.LENGTH_SHORT).show()
 
         inicializaCategorias(context)
+        inicializaIngredientes(context)
     }
 
     return instancia_data_base
@@ -65,4 +66,16 @@ private fun inicializaCategorias(context:Context){
     }
 
     instancia_data_base.categoriaDao.insertaLista(categorias)
+}
+
+private fun inicializaIngredientes(context:Context){
+    var ingredientes:MutableList<Ingrediente>
+    var inputStream: InputStream = context.assets!!.open("ingredientes.json")
+    val ingredientes_texto = inputStream.bufferedReader().use{it.readText()}
+    val gson = Gson()
+    val tipo_a_leer = object : TypeToken<MutableList<Ingrediente>>() {}.type
+    ingredientes = gson.fromJson<MutableList<Ingrediente>>(ingredientes_texto, tipo_a_leer)
+
+
+    instancia_data_base.ingredienteDao.insertaLista(ingredientes)
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "nombreIngrediente": "Pollo",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/Chicken.png"
+  },
+  {
+    "nombreIngrediente": "Azucar",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/Sugar.png"
+  },
+  {
+    "nombreIngrediente": "Agua",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/Water.png"
+  },
+  {
+    "nombreIngrediente": "Sal",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/Salt.png"
+  },
+  {
+    "nombreIngrediente": "Huevos",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/Egg.png"
+  },
+  {
+    "nombreIngrediente": "Harina",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/flour.png"
+  },
+  {
+    "nombreIngrediente": "Arroz",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/rice.png"
+  },
+  {
+    "nombreIngrediente": "Ajo",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/garlic.png"
+  },
+  {
+    "nombreIngrediente": "Patatas",
+    "urlImagen": "https://www.themealdb.com/images/ingredients/potato.png"
+  }
+]
