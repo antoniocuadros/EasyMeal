@@ -15,6 +15,20 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/navegacion" />
 
+    <ImageView
+        android:id="@+id/linea"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_alignBottom="@+id/fragment2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/blanco"
+        android:scaleType="centerCrop"
+        >
+
+    </ImageView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_inferior"
         android:layout_width="match_parent"

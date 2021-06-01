@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
-import com.acl.easymeal.CategoriaAdapter
+import com.acl.easymeal.adapters.CategoriaAdapter
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Categoria
 import com.acl.easymeal.modelo.DataBaseRecetas

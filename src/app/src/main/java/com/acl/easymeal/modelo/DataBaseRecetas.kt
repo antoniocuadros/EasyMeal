@@ -36,7 +36,8 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
                 DataBaseRecetas::class.java, "database_recetas").allowMainThreadQueries().build()
 
         if(instancia_data_base.usuarioDao.obtenerNumUsuarios() == 0){
-            instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin"))
+
+            inicializaAdmin(context)
             inicializaCategorias(context)
             inicializaIngredientes(context)
         }
@@ -44,6 +45,14 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
     }
 
     return instancia_data_base
+}
+
+private fun inicializaAdmin(context:Context){
+    val drawable: Drawable? = context.getDrawable(R.drawable.user)
+
+    val bitmap:Bitmap = (drawable as BitmapDrawable).bitmap
+
+    instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin", bitmap))
 }
 
 private fun inicializaCategorias(context:Context){
