@@ -26,7 +26,6 @@ class CategoriaAdapter(var listaCategorias:MutableList<Categoria>, context: Cont
         val texto_categoria_palabra = vista.findViewById<TextView>(R.id.texto_categoria)
 
         // Paso 4)
-        val conversor: ConversorImagen = ConversorImagen()
         imagen_categoria_palabra.setImageBitmap(categoria.imagen)
         texto_categoria_palabra.text = categoria.nombreCategoria
 

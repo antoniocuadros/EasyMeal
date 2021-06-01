@@ -18,7 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStream
 
-@Database(entities = [Categoria::class, Ingrediente::class, Receta::class, Usuario::class, Valoracion::class], version = 1)
+@Database(entities = [Categoria::class, Ingrediente::class, Receta::class, Usuario::class, Valoracion::class], version = 1, exportSchema = false)
 @TypeConverters(ConversorImagen::class)
 abstract class DataBaseRecetas: RoomDatabase() {
     abstract val categoriaDao:CategoriaDao
