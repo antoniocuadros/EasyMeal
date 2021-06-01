@@ -6,36 +6,45 @@
     app:cardCornerRadius="30dp"
     app:cardElevation="5dp"
     android:id="@+id/carta_nivel"
-    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:cardBackgroundColor="@color/white"
     >
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/black"
         >
-
-        <ImageView
-            android:layout_centerHorizontal="true"
-            android:id="@+id/imagen_nivel_palabra"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/carnescat"
-            android:layout_margin="10dp"
-            />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/texto_categoria"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="categoria"
-            android:layout_margin="10dp"
-            />
+            >
 
-    </LinearLayout>
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imagen_nivel_palabra"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/carnescat"
+                android:layout_margin="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/texto_categoria"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="categoria"
+                android:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.cardview.widget.CardView>
