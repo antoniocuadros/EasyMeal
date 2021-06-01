@@ -1,0 +1,27 @@
+[
+  {
+    "nombreCategoria": "Carnes",
+    "imagen": "",
+    "nombreImagen": "carnes"
+  },
+  {
+    "nombreCategoria": "Pescados",
+    "imagen": "",
+    "nombreImagen": "pescados"
+  },
+  {
+    "nombreCategoria": "Pasta/Pizzas",
+    "imagen": "",
+    "nombreImagen": "pizzas"
+  },
+  {
+    "nombreCategoria": "Ensaladas/Verduras",
+    "imagen": "",
+    "nombreImagen": "verduras"
+  },
+  {
+    "nombreCategoria": "Empanadas/Masas",
+    "imagen": "",
+    "nombreImagen": "empanadas"
+  }
+]

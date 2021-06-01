@@ -26,13 +26,13 @@
         android:label="fragmento_descripcion_receta"
         tools:layout="@layout/fragmento_descripcion_receta" />
     <fragment
-        android:id="@+id/ingrediente_menu_item"
-        android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"
-        android:label="fragmento_ingredientes"
-        tools:layout="@layout/fragmento_duracion" />
-    <fragment
         android:id="@+id/fragmentoLogin"
         android:name="com.acl.easymeal.fragmentos.FragmentoLogin"
         android:label="fragmento_login"
         tools:layout="@layout/fragmento_login" />
+    <fragment
+        android:id="@+id/duracion_menu_item"
+        android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"
+        android:label="fragmento_duracion"
+        tools:layout="@layout/fragmento_duracion" />
 </navigation>
