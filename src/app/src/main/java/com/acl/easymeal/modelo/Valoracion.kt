@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Valoracion(
     @PrimaryKey val idReceta:String,
     val valoracionMedia:String,
-    val totalValoraciones:ArrayList<Int>
+    val idusuario:String
 )
