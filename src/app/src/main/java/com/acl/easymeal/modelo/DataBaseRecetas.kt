@@ -36,7 +36,7 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
                 DataBaseRecetas::class.java, "database_recetas").allowMainThreadQueries().build()
 
         instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin"))
-        Toast.makeText(context, "AAAAAA", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "AAAAAA", Toast.LENGTH_SHORT).show()
 
         inicializaCategorias(context)
     }

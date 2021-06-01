@@ -23,5 +23,20 @@
     "nombreCategoria": "Empanadas/Masas",
 
     "nombreImagen": "empanadascat"
+  },
+  {
+    "nombreCategoria": "Salsas/Guarniciones",
+
+    "nombreImagen": "salsascat"
+  },
+  {
+    "nombreCategoria": "Sopas/Cremas",
+
+    "nombreImagen": "sopascat"
+  },
+  {
+    "nombreCategoria": "Postres/Dulces",
+
+    "nombreImagen": "postrescat"
   }
 ]
