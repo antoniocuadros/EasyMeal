@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.acl.easymeal.ConversorImagen
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Categoria
 

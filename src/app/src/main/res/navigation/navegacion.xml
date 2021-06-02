@@ -9,7 +9,11 @@
         android:id="@+id/perfil_menu_item"
         android:name="com.acl.easymeal.fragmentos.Fragmentoperfil"
         android:label="fragmentoperfil"
-        tools:layout="@layout/fragmento_perfil" />
+        tools:layout="@layout/fragmento_perfil" >
+        <action
+            android:id="@+id/action_perfil_menu_item_to_fragmentoRegister"
+            app:destination="@id/fragmentoRegister" />
+    </fragment>
     <fragment
         android:id="@+id/recetas_menu_item"
         android:name="com.acl.easymeal.fragmentos.FragmentoListaRecetas"
@@ -26,10 +30,14 @@
         android:label="fragmento_descripcion_receta"
         tools:layout="@layout/fragmento_descripcion_receta" />
     <fragment
-        android:id="@+id/fragmentoLogin"
-        android:name="com.acl.easymeal.fragmentos.FragmentoLogin"
-        android:label="fragmento_login"
-        tools:layout="@layout/fragmento_login" />
+        android:id="@+id/fragmentoRegister"
+        android:name="com.acl.easymeal.fragmentos.FragmentoRegister"
+        android:label="fragmento_register"
+        tools:layout="@layout/fragmento_register" >
+        <action
+            android:id="@+id/action_fragmentoRegister_to_perfil_menu_item"
+            app:destination="@id/perfil_menu_item" />
+    </fragment>
     <fragment
         android:id="@+id/duracion_menu_item"
         android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"

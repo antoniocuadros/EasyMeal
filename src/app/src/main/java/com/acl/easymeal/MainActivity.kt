@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.acl.easymeal.fragmentos.FragmentoRegisterDirections
+import com.acl.easymeal.fragmentos.Fragmentoperfil
+import com.acl.easymeal.fragmentos.FragmentoperfilDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -18,5 +21,13 @@ class MainActivity : AppCompatActivity() {
         val menu_inferior = findViewById<BottomNavigationView>(R.id.menu_inferior)
         val controlador_navegacion = findNavController(R.id.fragment2)
         menu_inferior.setupWithNavController(controlador_navegacion)
+    }
+
+    public fun onRegisterSelected(){
+        findNavController(R.id.fragment2).navigate(FragmentoperfilDirections.actionPerfilMenuItemToFragmentoRegister())
+    }
+
+    public fun fromRegisterToLogin(){
+        findNavController(R.id.fragment2).navigate(FragmentoRegisterDirections.actionFragmentoRegisterToPerfilMenuItem())
     }
 }

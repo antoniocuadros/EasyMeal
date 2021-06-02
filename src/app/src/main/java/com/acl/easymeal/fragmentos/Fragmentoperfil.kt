@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.viewpager2.widget.ViewPager2
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
@@ -96,6 +97,12 @@ class Fragmentoperfil : Fragment() {
         }
     }
 
+    private fun defineComportamientoRegister(){
+        boton_registrar.setOnClickListener {
+            (activity as MainActivity).onRegisterSelected()
+        }
+    }
+
     /*
         Este método define el comportamiento del botón de cerrar sesión. Elimina el contenido de
         sharedPreferences y muestra de nuevo el login.
@@ -115,6 +122,13 @@ class Fragmentoperfil : Fragment() {
         }
     }
 
+
+    private fun muestraContenidosUsuario(){
+        var usuario_logueado = obtenerUsuarioLogueado()
+        nombre_usuario.text = usuario_logueado[0].username
+        imagen_usuario.setImageBitmap(usuario_logueado[0].imagen)
+    }
+
     /*
         Este método se encarga de dejar de mostrar el login ya que cuando se llama a este método
         un usuario está ya logueado y muestra el perfil de un determinado usuario
@@ -126,10 +140,14 @@ class Fragmentoperfil : Fragment() {
             perfil.visibility = View.VISIBLE
             //Añade funcionamiento botón logout
             defineComportamientoCerrarSesión()
+
+            //Mostramos la pestaña del usuario
+            muestraContenidosUsuario()
         }
         else{
             login.visibility = View.VISIBLE
             perfil.visibility = View.GONE
+            defineComportamientoRegister()
         }
 
     }
