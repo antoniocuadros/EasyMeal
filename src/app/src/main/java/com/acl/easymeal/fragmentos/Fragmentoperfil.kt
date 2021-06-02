@@ -1,13 +1,37 @@
 package com.acl.easymeal.fragmentos
 
+import android.content.SharedPreferences
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.cardview.widget.CardView
+import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.R
+import com.acl.easymeal.modelo.Usuario
+import com.acl.easymeal.modelo.obtenerBaseDatos
+import com.google.android.material.button.MaterialButton
+import me.relex.circleindicator.CircleIndicator3
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Fragmentoperfil : Fragment() {
+    private lateinit var login: RelativeLayout
+    private lateinit var boton_registrar: MaterialButton
+    private lateinit var input_usuario:EditText
+    private lateinit var input_contraseña:EditText
+    private lateinit var error_login:TextView
+    private lateinit var boton_iniciar_sesion:MaterialButton
+    private lateinit var perfil:LinearLayout
+    private lateinit var imagen_usuario:ImageView
+    private lateinit var nombre_usuario:TextView
+    private lateinit var boton_anadir_receta: CardView
+    private lateinit var slider_mis_recetas: ViewPager2
+    private lateinit var indicador_slider_mis_recetas: CircleIndicator3
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +42,110 @@ class Fragmentoperfil : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragmento_perfil, container, false)
 
+        vinculaVistasVariables(view)
+
+        defineComportamientoLoginButton()
+
+        muestraPerfiloLogin()
+
         return view;
     }
 
+    /*
+        Este método definirá el comportamiento a realizar cuando se pulse el botón de iniciar sesión.
+        Para ello se comprobarán los datos y si son correctos se iniciará sesión y se mostrará el perfil
+        del usuario, en caso contrario se mostrará un error.
+     */
+    private fun defineComportamientoLoginButton(){
+        boton_iniciar_sesion.setOnClickListener {
+            var usuario_introducido = input_usuario.text.toString()
+            var contraseña_introducida = input_contraseña.text.toString()
 
+            if(usuario_introducido == "" || contraseña_introducida == ""){ //Si hay algún campo vacío
+                error_login.text = "Por favor rellene ambos campos"
+                error_login.visibility = View.VISIBLE
+            }
+            else{ //ambos campos rellenos
+                //buscamos el usuario en la base de datos a ver si existe
+                var db = obtenerBaseDatos(requireContext())
+                var user_db = db.usuarioDao.obtenerPorNombre(usuario_introducido)
+
+                if(!user_db.isEmpty()){  //El usuario existe en la base de datos
+                    if(contraseña_introducida == user_db[0].password){
+                        //Almacenamos persistentemente el usuario
+                        marcaLoginUsuario(usuario_introducido)
+
+                        //Mostramos la pestaña del usuario
+                        muestraPerfiloLogin()
+                    }
+                    else{ //las contraseñas no coinciden
+                        error_login.text = "Usuario o contraseña incorrectos"
+                        error_login.visibility = View.VISIBLE
+                    }
+                }
+                else{   //El usuario no existe en la base de datos
+                    error_login.text = "Usuario o contraseña incorrectos"
+                    error_login.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+    /*
+        Este método se encarga de dejar de mostrar el login ya que cuando se llama a este método
+        un usuario está ya logueado y muestra el perfil de un determinado usuario
+     */
+    private fun muestraPerfiloLogin(){
+        var usuario_logueado = obtenerUsuarioLogueado()
+        if(!usuario_logueado.isEmpty()){    //Si hay un usuario logueado
+            login.visibility = View.GONE
+            perfil.visibility = View.VISIBLE
+        }
+
+    }
+
+    /*
+        Este método se encarga de guardar en sharedPreferences el nombre del usuario que ha iniciado
+        sesión con el objetivo de mantener su sesión iniciada. Similar al uso de la variable Session
+        en programación web.
+     */
+    private fun marcaLoginUsuario( username:String){
+        var sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("ajustes", 0)
+        val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+        sharedPreferencesEditor.putString("usuario", username)
+        sharedPreferencesEditor.commit()
+    }
+
+    /*
+        Este método se encarga de comprobar si hay un usuario que haya iniciado sesión. En caso afirmativo
+        devuelve el usuario, en caso contrario devuelve null.
+     */
+    private fun obtenerUsuarioLogueado():MutableList<Usuario>{
+        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
+        var user = sharedPreferences.getString("usuario", String())
+
+        var db = obtenerBaseDatos(requireContext())
+        var user_db = db.usuarioDao.obtenerPorNombre(user.toString())
+
+        return user_db
+    }
+
+    /*
+        Este método se encarga de vincular cada atributo de la clase con su correspondiente
+        elemento del layout.
+     */
+    private fun vinculaVistasVariables(view:View){
+        login = view.findViewById(R.id.login)
+        boton_registrar = view.findViewById(R.id.boton_registrar)
+        input_usuario = view.findViewById(R.id.input_usuario)
+        input_contraseña = view.findViewById(R.id.input_contraseña)
+        error_login = view.findViewById(R.id.error_login)
+        boton_iniciar_sesion = view.findViewById(R.id.boton_iniciar_sesion)
+        perfil = view.findViewById(R.id.perfil)
+        imagen_usuario = view.findViewById(R.id.imagen_usuario)
+        nombre_usuario = view.findViewById(R.id.nombre_usuario)
+        boton_anadir_receta = view.findViewById(R.id.boton_anadir_receta)
+        slider_mis_recetas = view.findViewById(R.id.slider_mis_recetas)
+        indicador_slider_mis_recetas = view.findViewById(R.id.indicador_slider_mis_recetas)
+    }
 }
