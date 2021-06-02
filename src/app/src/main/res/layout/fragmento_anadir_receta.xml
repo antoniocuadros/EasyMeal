@@ -94,264 +94,317 @@
             android:textSize="20dp"
             android:textStyle="bold"
             />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Ingrediente 1"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente1"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            android:id="@+id/layout_ingrediente_1"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 1"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente1"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cantidad ingrediente 1"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente1"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 1"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente1"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Ingrediente 2"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente2"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            android:id="@+id/layout_ingrediente_2"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 2"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cantidad ingrediente 2"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente2"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ingrediente 3"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente3"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 2"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Cantidad ingrediente 3"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente3"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ingrediente 4"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente4"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cantidad ingrediente 4"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente4"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ingrediente 5"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente5"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            android:id="@+id/layout_ingrediente_3"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 3"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente3"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cantidad ingrediente 5"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente5"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ingrediente 6"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/ingrediente6"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 3"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente3"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Cantidad ingrediente 6"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/cantidad_ingrediente6"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
+            android:id="@+id/layout_ingrediente_4"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 4"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente4"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 4"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente4"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            android:id="@+id/layout_ingrediente_5"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 5"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente5"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 5"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente5"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/layout_ingrediente_6"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ingrediente 6"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/ingrediente6"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cantidad ingrediente 6"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/cantidad_ingrediente6"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputdecorado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/anadiringrediente"
@@ -377,216 +430,326 @@
             android:textSize="20dp"
             android:textStyle="bold"
             />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 1"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_1"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_1"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 1"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 2"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_2"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_2"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 2"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 3"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_3"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_3"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 3"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 4"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_4"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_4"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 4"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 5"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_5"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_5"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 5"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 6"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_6"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_6"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 6"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_6"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 7"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_7"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_7"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 7"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_7"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 8"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_8"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_8"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 8"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_8"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 9"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_9"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_paso_9"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 9"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_9"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Paso 10"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/paso_10"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/inputdecorado"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:inputType="text"
-            />
+            android:id="@+id/layout_paso_10"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Paso 10"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/paso_10"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/inputcuadrado"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/anadirpaso"
