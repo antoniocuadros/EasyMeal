@@ -13,10 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
@@ -36,6 +33,11 @@ class FragmentoRegister : Fragment() {
     private lateinit var boton_seleccion_imagen: CardView
     private var imagen_seleccionada: Uri? = null
     private lateinit var imagen_usuario_register:ImageView
+    private lateinit var imagen_registrado:ImageView
+    private lateinit var texto_bienvenida:TextView
+    private lateinit var layoutBienvenida:LinearLayout
+    private lateinit var layoutRegister:RelativeLayout
+    private lateinit var boton_redirect_login_bienvenida:MaterialButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,6 +123,9 @@ class FragmentoRegister : Fragment() {
                             imagen = (drawable as BitmapDrawable).bitmap
                         }
                         db.usuarioDao.insertaUna(Usuario(input_user, input_contraseña, imagen))
+
+                        muestraBienvenida(input_user, imagen)
+
                     }
 
                 }
@@ -128,6 +133,22 @@ class FragmentoRegister : Fragment() {
             }
         }
 
+    }
+
+    /*
+        Este método se encarga de una vez un usuario se registra, mostrar una pantalla de
+        bienvenida y un botón para ir al apartado login.
+     */
+    private fun muestraBienvenida(input_user:String, imagen:Bitmap){
+        layoutRegister.visibility = View.GONE
+        layoutBienvenida.visibility = View.VISIBLE
+
+        imagen_registrado.setImageBitmap(imagen)
+        texto_bienvenida.text = "¡Bienvenido " + input_user + "!"
+
+        boton_redirect_login_bienvenida.setOnClickListener {
+            (activity as MainActivity).fromRegisterToLogin()
+        }
     }
 
     /*
@@ -153,5 +174,10 @@ class FragmentoRegister : Fragment() {
         error_register = view.findViewById(R.id.error_register)
         boton_seleccion_imagen = view.findViewById(R.id.boton_seleccion_imagen)
         imagen_usuario_register = view.findViewById(R.id.imagen_usuario_register)
+        imagen_registrado = view.findViewById(R.id.imagen_registrado)
+        texto_bienvenida = view.findViewById(R.id.texto_bienvenida)
+        layoutBienvenida = view.findViewById(R.id.layoutBienvenida)
+        layoutRegister = view.findViewById(R.id.layoutRegister)
+        boton_redirect_login_bienvenida = view.findViewById(R.id.boton_redirect_login_bienvenida)
     }
 }

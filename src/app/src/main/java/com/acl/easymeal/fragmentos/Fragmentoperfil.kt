@@ -49,8 +49,11 @@ class Fragmentoperfil : Fragment() {
         vinculaVistasVariables(view)
 
         defineComportamientoLoginButton()
+        defineComportamientoCerrarSesión()
 
         muestraPerfiloLogin()
+
+
 
         return view;
     }
@@ -127,6 +130,7 @@ class Fragmentoperfil : Fragment() {
         var usuario_logueado = obtenerUsuarioLogueado()
         nombre_usuario.text = usuario_logueado[0].username
         imagen_usuario.setImageBitmap(usuario_logueado[0].imagen)
+
     }
 
     /*
@@ -139,7 +143,7 @@ class Fragmentoperfil : Fragment() {
             login.visibility = View.GONE
             perfil.visibility = View.VISIBLE
             //Añade funcionamiento botón logout
-            defineComportamientoCerrarSesión()
+
 
             //Mostramos la pestaña del usuario
             muestraContenidosUsuario()
