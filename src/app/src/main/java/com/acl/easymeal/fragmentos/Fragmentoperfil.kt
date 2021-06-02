@@ -3,6 +3,8 @@ package com.acl.easymeal.fragmentos
 import android.content.SharedPreferences
 import android.opengl.Visibility
 import android.os.Bundle
+import android.text.Editable
+import android.text.method.TextKeyListener.clear
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,12 +27,13 @@ class Fragmentoperfil : Fragment() {
     private lateinit var input_contraseña:EditText
     private lateinit var error_login:TextView
     private lateinit var boton_iniciar_sesion:MaterialButton
-    private lateinit var perfil:LinearLayout
+    private lateinit var perfil:RelativeLayout
     private lateinit var imagen_usuario:ImageView
     private lateinit var nombre_usuario:TextView
     private lateinit var boton_anadir_receta: CardView
     private lateinit var slider_mis_recetas: ViewPager2
     private lateinit var indicador_slider_mis_recetas: CircleIndicator3
+    private lateinit var boton_cerrar_sesion:MaterialButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,6 +80,8 @@ class Fragmentoperfil : Fragment() {
 
                         //Mostramos la pestaña del usuario
                         muestraPerfiloLogin()
+
+
                     }
                     else{ //las contraseñas no coinciden
                         error_login.text = "Usuario o contraseña incorrectos"
@@ -92,6 +97,25 @@ class Fragmentoperfil : Fragment() {
     }
 
     /*
+        Este método define el comportamiento del botón de cerrar sesión. Elimina el contenido de
+        sharedPreferences y muestra de nuevo el login.
+     */
+    private fun defineComportamientoCerrarSesión(){
+        boton_cerrar_sesion.setOnClickListener {
+            var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
+            val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+            sharedPreferencesEditor.clear()
+            sharedPreferencesEditor.commit()
+
+            login.visibility = View.VISIBLE
+            perfil.visibility = View.GONE
+            input_contraseña.text.clear()
+            input_usuario.text.clear()
+
+        }
+    }
+
+    /*
         Este método se encarga de dejar de mostrar el login ya que cuando se llama a este método
         un usuario está ya logueado y muestra el perfil de un determinado usuario
      */
@@ -100,6 +124,12 @@ class Fragmentoperfil : Fragment() {
         if(!usuario_logueado.isEmpty()){    //Si hay un usuario logueado
             login.visibility = View.GONE
             perfil.visibility = View.VISIBLE
+            //Añade funcionamiento botón logout
+            defineComportamientoCerrarSesión()
+        }
+        else{
+            login.visibility = View.VISIBLE
+            perfil.visibility = View.GONE
         }
 
     }
@@ -147,5 +177,6 @@ class Fragmentoperfil : Fragment() {
         boton_anadir_receta = view.findViewById(R.id.boton_anadir_receta)
         slider_mis_recetas = view.findViewById(R.id.slider_mis_recetas)
         indicador_slider_mis_recetas = view.findViewById(R.id.indicador_slider_mis_recetas)
+        boton_cerrar_sesion = view.findViewById(R.id.boton_cerrar_sesion)
     }
 }
