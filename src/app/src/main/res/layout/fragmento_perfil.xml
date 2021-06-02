@@ -119,7 +119,8 @@
             android:text="Iniciar Sesión"
             app:cornerRadius="30dp"
             app:strokeColor="@color/white"
-            app:strokeWidth="3dp" />
+            app:strokeWidth="3dp"
+            />
     </LinearLayout>
 
 
