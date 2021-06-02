@@ -30,4 +30,8 @@ class MainActivity : AppCompatActivity() {
     public fun fromRegisterToLogin(){
         findNavController(R.id.fragment2).navigate(FragmentoRegisterDirections.actionFragmentoRegisterToPerfilMenuItem())
     }
+
+    public fun fromPerfilToAnadirReceta(){
+        findNavController(R.id.fragment2).navigate(FragmentoperfilDirections.actionPerfilMenuItemToFragmentoAnadirReceta())
+    }
 }

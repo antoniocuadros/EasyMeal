@@ -100,6 +100,10 @@ class Fragmentoperfil : Fragment() {
         }
     }
 
+    /*
+        Este mñetodo se encarga de dotar de funcionalidad al botón de registrar. Nos redirige al
+        framento que nos permite registrar un nuevo usuario
+     */
     private fun defineComportamientoRegister(){
         boton_registrar.setOnClickListener {
             (activity as MainActivity).onRegisterSelected()
@@ -125,11 +129,21 @@ class Fragmentoperfil : Fragment() {
         }
     }
 
+    private fun definirComportamientoAnadirReceta(){
+        boton_anadir_receta.setOnClickListener {
+            (activity as MainActivity).fromPerfilToAnadirReceta()
+        }
+    }
 
+    /*
+        Este método se encarga de mostrar la pestaña de usuario de acuerdo a los datos del
+        usuario logueado.
+     */
     private fun muestraContenidosUsuario(){
         var usuario_logueado = obtenerUsuarioLogueado()
         nombre_usuario.text = usuario_logueado[0].username
         imagen_usuario.setImageBitmap(usuario_logueado[0].imagen)
+        definirComportamientoAnadirReceta()
 
     }
 

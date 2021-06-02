@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_perfil_menu_item_to_fragmentoRegister"
             app:destination="@id/fragmentoRegister" />
+        <action
+            android:id="@+id/action_perfil_menu_item_to_fragmentoAnadirReceta"
+            app:destination="@id/fragmentoAnadirReceta" />
     </fragment>
     <fragment
         android:id="@+id/recetas_menu_item"
@@ -43,4 +46,9 @@
         android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"
         android:label="fragmento_duracion"
         tools:layout="@layout/fragmento_duracion" />
+    <fragment
+        android:id="@+id/fragmentoAnadirReceta"
+        android:name="com.acl.easymeal.fragmentos.FragmentoAnadirReceta"
+        android:label="fragmento_anadir_receta"
+        tools:layout="@layout/fragmento_anadir_receta" />
 </navigation>
