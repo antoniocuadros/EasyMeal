@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.adapters.CategoriaAdapter
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Categoria
@@ -39,5 +40,11 @@ class FragmentoCategorias : Fragment() {
 
         adapter = CategoriaAdapter(categorias, requireContext())
         cuadricula_categorias.adapter = adapter
+
+        cuadricula_categorias.setOnItemClickListener{cuadricula_categorias, _, i,_ ->
+            var categoria = cuadricula_categorias.getItemAtPosition(i) as Categoria
+
+            (activity as MainActivity).fromCategoriasToRecetas(categoria.nombreCategoria)
+        }
     }
 }

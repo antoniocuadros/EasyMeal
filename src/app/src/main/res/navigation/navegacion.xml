@@ -21,12 +21,29 @@
         android:id="@+id/recetas_menu_item"
         android:name="com.acl.easymeal.fragmentos.FragmentoListaRecetas"
         android:label="fragmento_lista_recetas"
-        tools:layout="@layout/fragmento_lista_recetas" />
+        tools:layout="@layout/fragmento_lista_recetas" >
+        <argument
+            android:name="Categoria"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"
+            />
+        <argument
+            android:name="Tiempo"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"
+            />
+    </fragment>
     <fragment
         android:id="@+id/categorias_menu_item"
         android:name="com.acl.easymeal.fragmentos.FragmentoCategorias"
         android:label="fragmento_categorias"
-        tools:layout="@layout/fragmento_categorias" />
+        tools:layout="@layout/fragmento_categorias" >
+        <action
+            android:id="@+id/action_categorias_menu_item_to_recetas_menu_item"
+            app:destination="@id/recetas_menu_item" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentoDescripcionReceta"
         android:name="com.acl.easymeal.fragmentos.FragmentoDescripcionReceta"

@@ -7,46 +7,57 @@
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp"
     >
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:backgroundTint="@color/black"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="3dp"
         >
-
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:cardCornerRadius="10dp"
-            android:id="@+id/carta_imagen"
-            android:layout_margin="10dp"
-
+            android:layout_height="200dp"
             >
-            <ImageView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/imagen_receta_item"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:scaleType="centerCrop"
                 android:layout_height="120dp"
-                android:src="@drawable/recetaplaceholder"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/carta_imagen"
+                android:layout_margin="10dp"
+
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/imagen_receta_item"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="120dp"
+                    android:src="@drawable/recetaplaceholder"
+                    />
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/nombre_receta_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/carta_imagen"
+
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="Pollo con patatas"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
                 />
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
-        <TextView
-            android:id="@+id/nombre_receta_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/carta_imagen"
-
-            android:layout_marginTop="1dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Pollo con patatas"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-
-            />
-    </RelativeLayout>
 </androidx.cardview.widget.CardView>

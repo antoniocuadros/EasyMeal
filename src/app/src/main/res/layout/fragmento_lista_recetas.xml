@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragmentos.FragmentoListaRecetas"
-    android:background="@color/black"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".fragmentos.FragmentoListaRecetas"
+android:background="@color/black"
+    android:orientation="vertical"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Lista recetas" />
-
-</FrameLayout>
+<GridView
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cuadricula_recetas"
+    android:horizontalSpacing="10dp"
+    android:numColumns="auto_fit"
+    android:verticalSpacing="10dp"
+    >
+</GridView>
+</LinearLayout>
