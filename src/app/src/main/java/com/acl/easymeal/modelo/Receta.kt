@@ -1,13 +1,14 @@
 package com.acl.easymeal.modelo
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Recetas")
 data class Receta(
-    @PrimaryKey val id:String,
+    @PrimaryKey(autoGenerate = true) val id:Int,
     val nombreReceta:String,
-    val imagen:String,
+    val imagen:Bitmap,
     val categoria:String,
     val ingrediente1:String,
     val ingrediente2:String,

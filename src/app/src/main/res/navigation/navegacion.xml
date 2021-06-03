@@ -50,5 +50,9 @@
         android:id="@+id/fragmentoAnadirReceta"
         android:name="com.acl.easymeal.fragmentos.FragmentoAnadirReceta"
         android:label="fragmento_anadir_receta"
-        tools:layout="@layout/fragmento_anadir_receta" />
+        tools:layout="@layout/fragmento_anadir_receta" >
+        <action
+            android:id="@+id/action_fragmentoAnadirReceta_to_perfil_menu_item"
+            app:destination="@id/perfil_menu_item" />
+    </fragment>
 </navigation>

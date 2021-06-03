@@ -2,8 +2,10 @@ package com.acl.easymeal.fragmentos
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +13,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.cardview.widget.CardView
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
+import com.acl.easymeal.modelo.Receta
+import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
 
@@ -63,8 +68,11 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var duracion:EditText
     private lateinit var anadirpaso:CardView
     private lateinit var boton_anadir:MaterialButton
+    private lateinit var error_anadir_receta:TextView
 
     private var imagen_seleccionada: Uri? = null
+    private var num_ingredientes = 1
+    private var num_pasos = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,6 +96,8 @@ class FragmentoAnadirReceta : Fragment() {
 
         anadirImagenPrincipal()
 
+        procesaFormulario()
+
         return view
     }
 
@@ -105,6 +115,93 @@ class FragmentoAnadirReceta : Fragment() {
         }
     }
 
+    private fun procesaFormulario(){
+        boton_anadir.setOnClickListener {
+            var titulo = input_titulo_receta.text.toString()
+            var categoria = spiner_categoria.selectedItem.toString()
+            var duracion_aprox = duracion.text.toString()
+
+            var error_campo_vacio = false
+
+            //Comprobamos que el título esté relleno
+            if(titulo == "") error_campo_vacio = true
+
+            //Comprobamos que no se haya dejado ningún campo vacío de los ingredientes
+            if(num_ingredientes == 1 && (ingrediente1.text.toString() == "" || cantidad_ingrediente1.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 2 && (ingrediente2.text.toString() == "" || cantidad_ingrediente2.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 3 && (ingrediente3.text.toString() == "" || cantidad_ingrediente3.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 4 && (ingrediente4.text.toString() == "" || cantidad_ingrediente4.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 5 && (ingrediente5.text.toString() == "" || cantidad_ingrediente5.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 6 && (ingrediente6.text.toString() == "" || cantidad_ingrediente6.text.toString() == "")) error_campo_vacio = true
+
+
+            //Comprobamos que no se haya dejado ningún campo vacío de los pasos
+            if(num_pasos == 1 && paso_1.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 2 && paso_2.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 3 && paso_3.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 4 && paso_4.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 5 && paso_5.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 6 && paso_6.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 7 && paso_7.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 8 && paso_8.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 9 && paso_9.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 10 && paso_10.text.toString() == "") error_campo_vacio = true
+
+            //Comprobamos que el campo duración no sea vacío
+            if(duracion_aprox == "") error_campo_vacio = true
+
+            //Comprobamos la imagen principal
+            if(imagen_seleccionada == null) error_campo_vacio = true
+
+            if(error_campo_vacio){
+                error_anadir_receta.visibility = View.VISIBLE
+                error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
+            }
+            else{
+                var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
+
+                var db = obtenerBaseDatos(requireContext())
+
+                db.recetaDao.insertaUna(Receta(0, titulo, imagen, categoria,
+                        ingrediente1.text.toString(), ingrediente2.text.toString(),
+                        ingrediente3.text.toString(), ingrediente4.text.toString(),
+                        ingrediente5.text.toString(), ingrediente6.text.toString(),
+                        cantidad_ingrediente1.text.toString(),
+                        cantidad_ingrediente2.text.toString(),
+                        cantidad_ingrediente3.text.toString(),
+                        cantidad_ingrediente4.text.toString(),
+                        cantidad_ingrediente5.text.toString(),
+                        cantidad_ingrediente6.text.toString(),
+                        duracion_aprox,
+                        paso_1.text.toString(), paso_2.text.toString(),
+                        paso_3.text.toString(), paso_4.text.toString(),
+                        paso_5.text.toString(), paso_6.text.toString(),
+                        paso_7.text.toString(), paso_8.text.toString(),
+                        paso_9.text.toString(), paso_10.text.toString(),
+                        obtenerUsuarioLogueado()[0].username
+                        ))
+                (activity as MainActivity).fromAnadirRecetaToPerfil()
+            }
+        }
+    }
+
+    /*
+        Este método se encarga de comprobar si hay un usuario que haya iniciado sesión. En caso afirmativo
+        devuelve el usuario, en caso contrario devuelve null.
+     */
+    private fun obtenerUsuarioLogueado():MutableList<Usuario>{
+        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
+        var user = sharedPreferences.getString("usuario", String())
+
+        var db = obtenerBaseDatos(requireContext())
+        var user_db = db.usuarioDao.obtenerPorNombre(user.toString())
+
+        return user_db
+    }
+    /*
+        Este método se encarga de definir el intent que abrirá la galería así como el código utilizado
+        para capturar la respuesta.
+     */
     private fun anadirImagenPrincipal(){
         boton_seleccion_imagen.setOnClickListener {
             var lanzador_seleccion = Intent(Intent.ACTION_PICK)
@@ -124,30 +221,57 @@ class FragmentoAnadirReceta : Fragment() {
             if(paso != 0){
                 when(paso){
                     2->{
+                        if(layout_paso_2.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_2.visibility = View.VISIBLE
                     }
                     3->{
+                        if(layout_paso_3.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_3.visibility = View.VISIBLE
                     }
                     4->{
+                        if(layout_paso_4.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_4.visibility = View.VISIBLE
                     }
                     5->{
+                        if(layout_paso_5.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_5.visibility = View.VISIBLE
                     }
                     6->{
+                        if(layout_paso_6.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_6.visibility = View.VISIBLE
                     }
                     7->{
+                        if(layout_paso_7.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_7.visibility = View.VISIBLE
                     }
                     8->{
+                        if(layout_paso_8.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_8.visibility = View.VISIBLE
                     }
                     9->{
+                        if(layout_paso_9.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_9.visibility = View.VISIBLE
                     }
                     10->{
+                        if(layout_paso_10.visibility == View.GONE){
+                            num_pasos++
+                        }
                         layout_paso_10.visibility = View.VISIBLE
                     }
                 }
@@ -213,18 +337,33 @@ class FragmentoAnadirReceta : Fragment() {
             if(anadir != 0){
                 when(anadir){
                     2->{
+                        if(layout_ingrediente_2.visibility == View.GONE){
+                            num_ingredientes++
+                        }
                         layout_ingrediente_2.visibility = View.VISIBLE
                     }
                     3->{
+                        if(layout_ingrediente_3.visibility == View.GONE){
+                            num_ingredientes++
+                        }
                         layout_ingrediente_3.visibility = View.VISIBLE
                     }
                     4->{
+                        if(layout_ingrediente_4.visibility == View.GONE){
+                            num_ingredientes++
+                        }
                         layout_ingrediente_4.visibility = View.VISIBLE
                     }
                     5->{
+                        if(layout_ingrediente_5.visibility == View.GONE){
+                            num_ingredientes++
+                        }
                         layout_ingrediente_5.visibility = View.VISIBLE
                     }
                     6->{
+                        if(layout_ingrediente_6.visibility == View.GONE){
+                            num_ingredientes++
+                        }
                         layout_ingrediente_6.visibility = View.VISIBLE
                     }
                 }
@@ -322,6 +461,7 @@ class FragmentoAnadirReceta : Fragment() {
         layout_paso_8 = view.findViewById(R.id.layout_paso_8)
         layout_paso_9 = view.findViewById(R.id.layout_paso_9)
         layout_paso_10 = view.findViewById(R.id.layout_paso_10)
+        error_anadir_receta = view.findViewById(R.id.error_anadir_receta)
     }
 
 }

@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.acl.easymeal.fragmentos.FragmentoRegisterDirections
-import com.acl.easymeal.fragmentos.Fragmentoperfil
-import com.acl.easymeal.fragmentos.FragmentoperfilDirections
+import com.acl.easymeal.fragmentos.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -33,5 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     public fun fromPerfilToAnadirReceta(){
         findNavController(R.id.fragment2).navigate(FragmentoperfilDirections.actionPerfilMenuItemToFragmentoAnadirReceta())
+    }
+
+    public fun fromAnadirRecetaToPerfil(){
+        findNavController(R.id.fragment2).navigate(FragmentoAnadirRecetaDirections.actionFragmentoAnadirRecetaToPerfilMenuItem())
     }
 }
