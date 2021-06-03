@@ -35,6 +35,7 @@ class Fragmentoperfil : Fragment() {
     private lateinit var nombre_usuario:TextView
     private lateinit var boton_anadir_receta: CardView
     private lateinit var boton_cerrar_sesion:MaterialButton
+    private lateinit var mis_recetas_text:TextView
 
     private lateinit var slider_mis_recetas: ViewPager2
     private lateinit var indicador_slider_mis_recetas: CircleIndicator3
@@ -73,6 +74,7 @@ class Fragmentoperfil : Fragment() {
         if(mis_recetas.size == 0){
             slider_mis_recetas.visibility = View.GONE
             indicador_slider_mis_recetas.visibility = View.GONE
+            mis_recetas_text.visibility = View.GONE
         }
         Toast.makeText(requireContext(), mis_recetas.toString(), Toast.LENGTH_SHORT).show()
         slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext())
@@ -239,5 +241,6 @@ class Fragmentoperfil : Fragment() {
         slider_mis_recetas = view.findViewById(R.id.slider_mis_recetas)
         indicador_slider_mis_recetas = view.findViewById(R.id.indicador_slider_mis_recetas)
         boton_cerrar_sesion = view.findViewById(R.id.boton_cerrar_sesion)
+        mis_recetas_text = view.findViewById(R.id.mis_recetas_text)
     }
 }
