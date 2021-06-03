@@ -2,7 +2,7 @@
 <CheckedTextView
     android:layout_gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="295dp"
+    android:layout_width="275dp"
     android:layout_height="wrap_content"
     android:text="Carnes"
     android:textColor="@color/white"

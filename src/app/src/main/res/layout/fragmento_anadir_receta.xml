@@ -7,7 +7,7 @@
     tools:context=".fragmentos.FragmentoAnadirReceta"
     android:background="@color/black">
     <LinearLayout
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -76,7 +76,7 @@
         <Spinner
             android:layout_width="300dp"
             android:layout_height="45dp"
-            android:background="@drawable/inputcuadrado"
+            android:background="@drawable/inputdecorado"
             android:id="@+id/spiner_categoria"
             android:textColor="@color/white"
             android:textSize="20dp"

@@ -1,5 +1,8 @@
 package com.acl.easymeal.fragmentos
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +15,7 @@ import com.acl.easymeal.R
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
 
+@Suppress("DEPRECATION")
 class FragmentoAnadirReceta : Fragment() {
     private lateinit var boton_seleccion_imagen:CardView
     private lateinit var imagen_principal:ImageView
@@ -46,9 +50,21 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var paso_8:EditText
     private lateinit var paso_9:EditText
     private lateinit var paso_10:EditText
+    private lateinit var layout_paso_1:LinearLayout
+    private lateinit var layout_paso_2:LinearLayout
+    private lateinit var layout_paso_3:LinearLayout
+    private lateinit var layout_paso_4:LinearLayout
+    private lateinit var layout_paso_5:LinearLayout
+    private lateinit var layout_paso_6:LinearLayout
+    private lateinit var layout_paso_7:LinearLayout
+    private lateinit var layout_paso_8:LinearLayout
+    private lateinit var layout_paso_9:LinearLayout
+    private lateinit var layout_paso_10:LinearLayout
     private lateinit var duracion:EditText
     private lateinit var anadirpaso:CardView
     private lateinit var boton_anadir:MaterialButton
+
+    private var imagen_seleccionada: Uri? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,9 +83,112 @@ class FragmentoAnadirReceta : Fragment() {
 
         estableceComportamientoBotonAnadirIngrediente()
 
+
+        estableceComportamientoAnadirPaso()
+
+        anadirImagenPrincipal()
+
         return view
     }
 
+    /*
+        En este método obtenemos la imagen seleccionada por el usuario y la almacenamos en un atributo
+        de la clase.
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 100 && resultCode == Activity.RESULT_OK){
+            imagen_seleccionada = data!!.data!!
+            imagen_principal.setImageURI(imagen_seleccionada)
+
+        }
+    }
+
+    private fun anadirImagenPrincipal(){
+        boton_seleccion_imagen.setOnClickListener {
+            var lanzador_seleccion = Intent(Intent.ACTION_PICK)
+            lanzador_seleccion.type = "image/*"
+            startActivityForResult(lanzador_seleccion, 100)
+        }
+    }
+
+    /*
+        Este método se encarga de añadir al layout una nueva casilla para introducir un nuevo paso
+        cuando se pulsa al botón de añadir un nuevo paso.
+     */
+    public fun estableceComportamientoAnadirPaso(){
+        anadirpaso.setOnClickListener {
+            var paso = primerPasoVacio()
+
+            if(paso != 0){
+                when(paso){
+                    2->{
+                        layout_paso_2.visibility = View.VISIBLE
+                    }
+                    3->{
+                        layout_paso_3.visibility = View.VISIBLE
+                    }
+                    4->{
+                        layout_paso_4.visibility = View.VISIBLE
+                    }
+                    5->{
+                        layout_paso_5.visibility = View.VISIBLE
+                    }
+                    6->{
+                        layout_paso_6.visibility = View.VISIBLE
+                    }
+                    7->{
+                        layout_paso_7.visibility = View.VISIBLE
+                    }
+                    8->{
+                        layout_paso_8.visibility = View.VISIBLE
+                    }
+                    9->{
+                        layout_paso_9.visibility = View.VISIBLE
+                    }
+                    10->{
+                        layout_paso_10.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+        Este método se encarga de averiguar cual es el siguiente paso a habilitar para que un
+        usuario lo añada.
+     */
+    public fun primerPasoVacio():Int{
+        var vacios:ArrayList<Int> = arrayListOf()
+        if(paso_2.text.toString() == "") vacios.add(2)
+        if(paso_3.text.toString() == "") vacios.add(3)
+        if(paso_4.text.toString() == "") vacios.add(4)
+        if(paso_5.text.toString() == "") vacios.add(5)
+        if(paso_6.text.toString() == "") vacios.add(6)
+        if(paso_7.text.toString() == "") vacios.add(7)
+        if(paso_8.text.toString() == "") vacios.add(8)
+        if(paso_9.text.toString() == "") vacios.add(9)
+        if(paso_10.text.toString() == "") vacios.add(10)
+
+        if(vacios.size == 0 ||  vacios.size == 1){
+            anadirpaso.visibility = View.GONE
+        }
+        else{
+            anadirpaso.visibility = View.VISIBLE
+        }
+
+        if(vacios.size > 0){
+            return vacios[0]
+        }
+        else{
+            return 0
+        }
+    }
+
+    /*
+        Este método se encarga de inicializar el spinner de categorías.
+     */
     private fun inicializaCategorías(){
         var db = obtenerBaseDatos(requireContext())
         var categorias = db.categoriaDao.obtenerTodas()
@@ -135,6 +254,8 @@ class FragmentoAnadirReceta : Fragment() {
         if(ingrediente5.text.toString() == "") vacios.add(5)
         if(ingrediente6.text.toString() == "") vacios.add(6)
 
+
+
         if(vacios.size == 0 ||  vacios.size == 1){
             anadiringrediente.visibility = View.GONE
         }
@@ -191,6 +312,16 @@ class FragmentoAnadirReceta : Fragment() {
         duracion = view.findViewById(R.id.duracion)
         anadirpaso = view.findViewById(R.id.anadirpaso)
         boton_anadir = view.findViewById(R.id.boton_anadir)
+        layout_paso_1 = view.findViewById(R.id.layout_paso_1)
+        layout_paso_2 = view.findViewById(R.id.layout_paso_2)
+        layout_paso_3 = view.findViewById(R.id.layout_paso_3)
+        layout_paso_4 = view.findViewById(R.id.layout_paso_4)
+        layout_paso_5 = view.findViewById(R.id.layout_paso_5)
+        layout_paso_6 = view.findViewById(R.id.layout_paso_6)
+        layout_paso_7 = view.findViewById(R.id.layout_paso_7)
+        layout_paso_8 = view.findViewById(R.id.layout_paso_8)
+        layout_paso_9 = view.findViewById(R.id.layout_paso_9)
+        layout_paso_10 = view.findViewById(R.id.layout_paso_10)
     }
 
 }
