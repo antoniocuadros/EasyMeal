@@ -172,7 +172,7 @@ class FragmentoAnadirReceta : Fragment() {
                         cantidad_ingrediente4.text.toString(),
                         cantidad_ingrediente5.text.toString(),
                         cantidad_ingrediente6.text.toString(),
-                        duracion_aprox,
+                        duracion_aprox.toInt(),
                         paso_1.text.toString(), paso_2.text.toString(),
                         paso_3.text.toString(), paso_4.text.toString(),
                         paso_5.text.toString(), paso_6.text.toString(),

@@ -76,7 +76,6 @@ class Fragmentoperfil : Fragment() {
             indicador_slider_mis_recetas.visibility = View.GONE
             mis_recetas_text.visibility = View.GONE
         }
-        Toast.makeText(requireContext(), mis_recetas.toString(), Toast.LENGTH_SHORT).show()
         slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext())
         slider_mis_recetas.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 

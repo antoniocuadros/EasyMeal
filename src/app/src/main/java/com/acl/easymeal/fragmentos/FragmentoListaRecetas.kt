@@ -55,7 +55,22 @@ class FragmentoListaRecetas : Fragment() {
             recetas = db.recetaDao.obtenerPorCategoría(argumentos.Categoria.toString())
         }
         else{
-            recetas = db.recetaDao.obtenerTodas()
+            if(argumentos.Tiempo != null){
+                when(argumentos.Tiempo){
+                    "15"->{
+                        recetas = db.recetaDao.obtenerPorTiempo(0, 15)
+                    }
+                    "60"->{
+                        recetas = db.recetaDao.obtenerPorTiempo(16, 60)
+                    }
+                    "300"->{
+                        recetas = db.recetaDao.obtenerPorTiempo(61, 300)
+                    }
+                }
+            }
+            else{
+                recetas = db.recetaDao.obtenerTodas()
+            }
         }
 
 
