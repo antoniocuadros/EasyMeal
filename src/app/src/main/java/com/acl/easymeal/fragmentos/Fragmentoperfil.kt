@@ -14,6 +14,8 @@ import androidx.cardview.widget.CardView
 import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
+import com.acl.easymeal.adapters.SliderRecetasAdapter
+import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
@@ -32,9 +34,12 @@ class Fragmentoperfil : Fragment() {
     private lateinit var imagen_usuario:ImageView
     private lateinit var nombre_usuario:TextView
     private lateinit var boton_anadir_receta: CardView
+    private lateinit var boton_cerrar_sesion:MaterialButton
+
     private lateinit var slider_mis_recetas: ViewPager2
     private lateinit var indicador_slider_mis_recetas: CircleIndicator3
-    private lateinit var boton_cerrar_sesion:MaterialButton
+    private lateinit var mis_recetas:MutableList<Receta>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +61,24 @@ class Fragmentoperfil : Fragment() {
 
 
         return view;
+    }
+
+
+    private fun estableceSliderMisRecetas(){
+        //Slider de imágenes
+        var db = obtenerBaseDatos(requireContext())
+        mis_recetas = db.recetaDao.obtenerPorAutor(obtenerUsuarioLogueado()[0].username)
+
+        //Si no hay imágenes no dejamos el hueco vacío, lo eliminamos
+        if(mis_recetas.size == 0){
+            slider_mis_recetas.visibility = View.GONE
+            indicador_slider_mis_recetas.visibility = View.GONE
+        }
+        Toast.makeText(requireContext(), mis_recetas.toString(), Toast.LENGTH_SHORT).show()
+        slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext())
+        slider_mis_recetas.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        indicador_slider_mis_recetas.setViewPager(slider_mis_recetas)
     }
 
     /*
@@ -161,6 +184,8 @@ class Fragmentoperfil : Fragment() {
 
             //Mostramos la pestaña del usuario
             muestraContenidosUsuario()
+
+            estableceSliderMisRecetas()
         }
         else{
             login.visibility = View.VISIBLE
