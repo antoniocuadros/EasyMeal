@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".fragmentos.FragmentoListaRecetas"
-android:background="@color/black"
-    android:orientation="vertical"
-    >
-
-<GridView
-    android:layout_margin="10dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/cuadricula_recetas"
-    android:horizontalSpacing="10dp"
-    android:numColumns="auto_fit"
-    android:verticalSpacing="10dp"
-    >
-</GridView>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragmentos.FragmentoListaRecetas"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:background="@color/white"
+        android:id="@+id/barra_busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:queryHint="Búsqueda por ingrediente"
+        app:iconifiedByDefault="false"
+        android:inputType="text"
+        >
+
+    </androidx.appcompat.widget.SearchView>
+    <GridView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cuadricula_recetas"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        >
+    </GridView>
 </LinearLayout>

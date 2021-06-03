@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.acl.easymeal.R
 import com.acl.easymeal.adapters.listaRecetasAdapter
@@ -14,11 +16,12 @@ import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.obtenerBaseDatos
 
 
-class FragmentoListaRecetas : Fragment() {
+class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.OnQueryTextListener {
     lateinit var adapter:listaRecetasAdapter
     lateinit var recetas:MutableList<Receta>
     lateinit var cuadricula_recetas: GridView
     private val argumentos:FragmentoListaRecetasArgs by navArgs()
+    private lateinit var barra_busqueda:androidx.appcompat.widget.SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,8 @@ class FragmentoListaRecetas : Fragment() {
 
         inicializaListaRecetas()
 
+        barra_busqueda.setOnQueryTextListener(this)
+
         return view
     }
 
@@ -42,6 +47,7 @@ class FragmentoListaRecetas : Fragment() {
      */
     private fun vinculaVistasAtributos(view:View){
         cuadricula_recetas = view.findViewById(R.id.cuadricula_recetas)
+        barra_busqueda = view.findViewById(R.id.barra_busqueda)
     }
 
     /*
@@ -76,5 +82,19 @@ class FragmentoListaRecetas : Fragment() {
 
         adapter = listaRecetasAdapter(recetas, requireContext())
         cuadricula_recetas.adapter = adapter
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        var db = obtenerBaseDatos(requireContext())
+        var ingredientes = newText?.split(' ')
+        var recetas = db.recetaDao.obtenerPorIngrediente(ingredientes!!)
+        adapter = listaRecetasAdapter(recetas, requireContext())
+        cuadricula_recetas.adapter = adapter
+        return false
     }
 }
