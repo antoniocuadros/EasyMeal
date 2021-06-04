@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
 @Entity(tableName = "Recetas")
 data class Receta(
     @PrimaryKey(autoGenerate = true) val id:Int,

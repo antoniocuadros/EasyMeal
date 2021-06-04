@@ -53,7 +53,9 @@
         android:label="fragmento_descripcion_receta"
         tools:layout="@layout/fragmento_descripcion_receta" >
         <argument android:name="receta"
-            app:argType="com.acl.easymeal.modelo.Receta"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"
         />
     </fragment>
     <fragment

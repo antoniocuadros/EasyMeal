@@ -43,7 +43,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         cuadricula_recetas.setOnItemClickListener{cuadricula_recetas, _, i,_ ->
             var receta = cuadricula_recetas.getItemAtPosition(i) as Receta
 
-            (activity as MainActivity).fromRecetaToDetalles(receta)
+            (activity as MainActivity).fromRecetaToDetalles(receta.id.toString())
         }
 
         return view
