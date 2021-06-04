@@ -73,6 +73,16 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var paso_8:EditText
     private lateinit var paso_9:EditText
     private lateinit var paso_10:EditText
+    private lateinit var paso_11:EditText
+    private lateinit var paso_12:EditText
+    private lateinit var paso_13:EditText
+    private lateinit var paso_14:EditText
+    private lateinit var paso_15:EditText
+    private lateinit var paso_16:EditText
+    private lateinit var paso_17:EditText
+    private lateinit var paso_18:EditText
+    private lateinit var paso_19:EditText
+    private lateinit var paso_20:EditText
     private lateinit var layout_paso_1:LinearLayout
     private lateinit var layout_paso_2:LinearLayout
     private lateinit var layout_paso_3:LinearLayout
@@ -83,6 +93,16 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var layout_paso_8:LinearLayout
     private lateinit var layout_paso_9:LinearLayout
     private lateinit var layout_paso_10:LinearLayout
+    private lateinit var layout_paso_11:LinearLayout
+    private lateinit var layout_paso_12:LinearLayout
+    private lateinit var layout_paso_13:LinearLayout
+    private lateinit var layout_paso_14:LinearLayout
+    private lateinit var layout_paso_15:LinearLayout
+    private lateinit var layout_paso_16:LinearLayout
+    private lateinit var layout_paso_17:LinearLayout
+    private lateinit var layout_paso_18:LinearLayout
+    private lateinit var layout_paso_19:LinearLayout
+    private lateinit var layout_paso_20:LinearLayout
     private lateinit var duracion:EditText
     private lateinit var anadirpaso:CardView
     private lateinit var boton_anadir:MaterialButton
@@ -170,6 +190,16 @@ class FragmentoAnadirReceta : Fragment() {
             if(num_pasos == 8 && paso_8.text.toString() == "") error_campo_vacio = true
             if(num_pasos == 9 && paso_9.text.toString() == "") error_campo_vacio = true
             if(num_pasos == 10 && paso_10.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 11 && paso_11.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 12 && paso_12.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 13 && paso_13.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 14 && paso_14.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 15 && paso_15.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 16 && paso_16.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 17 && paso_17.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 18 && paso_18.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 19 && paso_19.text.toString() == "") error_campo_vacio = true
+            if(num_pasos == 20 && paso_20.text.toString() == "") error_campo_vacio = true
 
             //Comprobamos que el campo duración no sea vacío
             if(duracion_aprox == "") error_campo_vacio = true
@@ -211,16 +241,11 @@ class FragmentoAnadirReceta : Fragment() {
                         paso_5.text.toString(), paso_6.text.toString(),
                         paso_7.text.toString(), paso_8.text.toString(),
                         paso_9.text.toString(), paso_10.text.toString(),
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        paso_11.text.toString(), paso_12.text.toString(),
+                        paso_13.text.toString(), paso_14.text.toString(),
+                        paso_15.text.toString(), paso_16.text.toString(),
+                        paso_17.text.toString(), paso_18.text.toString(),
+                        paso_19.text.toString(), paso_20.text.toString(),
                         obtenerUsuarioLogueado()[0].username
                         ))
                 (activity as MainActivity).fromAnadirRecetaToPerfil()
@@ -317,6 +342,66 @@ class FragmentoAnadirReceta : Fragment() {
                         }
                         layout_paso_10.visibility = View.VISIBLE
                     }
+                    11->{
+                        if(layout_paso_11.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_11.visibility = View.VISIBLE
+                    }
+                    12->{
+                        if(layout_paso_12.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_12.visibility = View.VISIBLE
+                    }
+                    13->{
+                        if(layout_paso_13.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_13.visibility = View.VISIBLE
+                    }
+                    14->{
+                        if(layout_paso_14.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_14.visibility = View.VISIBLE
+                    }
+                    15->{
+                        if(layout_paso_15.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_15.visibility = View.VISIBLE
+                    }
+                    16->{
+                        if(layout_paso_16.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_16.visibility = View.VISIBLE
+                    }
+                    17->{
+                        if(layout_paso_17.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_17.visibility = View.VISIBLE
+                    }
+                    18->{
+                        if(layout_paso_18.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_18.visibility = View.VISIBLE
+                    }
+                    19->{
+                        if(layout_paso_19.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_19.visibility = View.VISIBLE
+                    }
+                    20->{
+                        if(layout_paso_20.visibility == View.GONE){
+                            num_pasos++
+                        }
+                        layout_paso_20.visibility = View.VISIBLE
+                    }
                 }
             }
         }
@@ -337,6 +422,17 @@ class FragmentoAnadirReceta : Fragment() {
         if(paso_8.text.toString() == "") vacios.add(8)
         if(paso_9.text.toString() == "") vacios.add(9)
         if(paso_10.text.toString() == "") vacios.add(10)
+        if(paso_11.text.toString() == "") vacios.add(11)
+        if(paso_12.text.toString() == "") vacios.add(12)
+        if(paso_13.text.toString() == "") vacios.add(13)
+        if(paso_14.text.toString() == "") vacios.add(14)
+        if(paso_15.text.toString() == "") vacios.add(15)
+        if(paso_16.text.toString() == "") vacios.add(16)
+        if(paso_17.text.toString() == "") vacios.add(17)
+        if(paso_18.text.toString() == "") vacios.add(18)
+        if(paso_19.text.toString() == "") vacios.add(19)
+        if(paso_20.text.toString() == "") vacios.add(20)
+
 
         if(vacios.size == 0 ||  vacios.size == 1){
             anadirpaso.visibility = View.GONE
@@ -551,6 +647,16 @@ class FragmentoAnadirReceta : Fragment() {
         paso_8 = view.findViewById(R.id.paso_8)
         paso_9 = view.findViewById(R.id.paso_9)
         paso_10 = view.findViewById(R.id.paso_10)
+        paso_11 = view.findViewById(R.id.paso_11)
+        paso_12 = view.findViewById(R.id.paso_12)
+        paso_13 = view.findViewById(R.id.paso_13)
+        paso_14 = view.findViewById(R.id.paso_14)
+        paso_15 = view.findViewById(R.id.paso_15)
+        paso_16 = view.findViewById(R.id.paso_16)
+        paso_17 = view.findViewById(R.id.paso_17)
+        paso_18 = view.findViewById(R.id.paso_18)
+        paso_19 = view.findViewById(R.id.paso_19)
+        paso_20 = view.findViewById(R.id.paso_20)
         duracion = view.findViewById(R.id.duracion)
         anadirpaso = view.findViewById(R.id.anadirpaso)
         boton_anadir = view.findViewById(R.id.boton_anadir)
@@ -564,6 +670,16 @@ class FragmentoAnadirReceta : Fragment() {
         layout_paso_8 = view.findViewById(R.id.layout_paso_8)
         layout_paso_9 = view.findViewById(R.id.layout_paso_9)
         layout_paso_10 = view.findViewById(R.id.layout_paso_10)
+        layout_paso_11 = view.findViewById(R.id.layout_paso_11)
+        layout_paso_12 = view.findViewById(R.id.layout_paso_12)
+        layout_paso_13 = view.findViewById(R.id.layout_paso_13)
+        layout_paso_14 = view.findViewById(R.id.layout_paso_14)
+        layout_paso_15 = view.findViewById(R.id.layout_paso_15)
+        layout_paso_16 = view.findViewById(R.id.layout_paso_16)
+        layout_paso_17 = view.findViewById(R.id.layout_paso_17)
+        layout_paso_18 = view.findViewById(R.id.layout_paso_18)
+        layout_paso_19 = view.findViewById(R.id.layout_paso_19)
+        layout_paso_20 = view.findViewById(R.id.layout_paso_20)
         error_anadir_receta = view.findViewById(R.id.error_anadir_receta)
     }
 
