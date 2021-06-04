@@ -57,6 +57,8 @@ class Fragmentoperfil : Fragment() {
         defineComportamientoLoginButton()
         defineComportamientoCerrarSesión()
 
+        defineComportamientoRegister()
+
         muestraPerfiloLogin()
 
 
@@ -191,7 +193,6 @@ class Fragmentoperfil : Fragment() {
         else{
             login.visibility = View.VISIBLE
             perfil.visibility = View.GONE
-            defineComportamientoRegister()
         }
 
     }
