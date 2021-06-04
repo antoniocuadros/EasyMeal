@@ -1,22 +1,22 @@
 package com.acl.easymeal.fragmentos
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.R
 import com.acl.easymeal.adapters.SliderIngredienteAdapter
 import com.acl.easymeal.adapters.SliderPasosAdapter
 import com.acl.easymeal.adapters.SliderRecetasAdapter
-import com.acl.easymeal.modelo.DataBaseRecetas
-import com.acl.easymeal.modelo.Ingrediente
-import com.acl.easymeal.modelo.Receta
-import com.acl.easymeal.modelo.obtenerBaseDatos
+import com.acl.easymeal.modelo.*
 import me.relex.circleindicator.CircleIndicator3
 
 class FragmentoDescripcionReceta : Fragment() {
@@ -29,6 +29,17 @@ class FragmentoDescripcionReceta : Fragment() {
     private lateinit var indicador_slider_pasos:CircleIndicator3
     private lateinit var nombre_autor:TextView
     private val argumentos: FragmentoDescripcionRecetaArgs by navArgs()
+    private lateinit var estrella1:ImageView
+    private lateinit var estrella2:ImageView
+    private lateinit var estrella3:ImageView
+    private lateinit var estrella4:ImageView
+    private lateinit var estrella5:ImageView
+    private lateinit var estrellas_1:LinearLayout
+    private lateinit var estrellas_2:LinearLayout
+    private lateinit var estrellas_3:LinearLayout
+    private lateinit var estrellas_4:LinearLayout
+    private lateinit var estrellas_5:LinearLayout
+    private lateinit var estrellas_vacias:LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +58,132 @@ class FragmentoDescripcionReceta : Fragment() {
     }
 
     /*
+        Este método devolverá el usuario logueado almacenado en SharedPreferences en caso de que exista,
+        en caso contrario devolverá un usuario vacío.
+     */
+    private fun obtenerUsuarioLogueado():MutableList<Usuario>{
+        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
+        var user = sharedPreferences.getString("usuario", String())
+
+        var db = obtenerBaseDatos(requireContext())
+        var user_db = db.usuarioDao.obtenerPorNombre(user.toString())
+
+        return user_db
+    }
+
+    /*
+        Este método define los listeners para puntuar las recetas
+     */
+    private fun defineComportamientoBotonesPuntuacion(){
+        var user:Usuario
+        var db = obtenerBaseDatos(requireContext())
+
+
+            if(!obtenerUsuarioLogueado().isEmpty()){ //Hay un usuario logueado
+                user = obtenerUsuarioLogueado()[0]
+
+                if(db.valoracionDao.obtenerPorNombreUsuario(user.username, argumentos.receta.toString()).isEmpty()){ //No hay valoraciones previas
+                    estrella1.setOnClickListener {
+                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 1, user.username))
+                        muestraValoracion()
+                    }
+                    estrella2.setOnClickListener {
+                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 2, user.username))
+                        muestraValoracion()
+                    }
+                    estrella3.setOnClickListener {
+                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 3, user.username))
+                        muestraValoracion()
+                    }
+                    estrella4.setOnClickListener {
+                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 4, user.username))
+                        muestraValoracion()
+                    }
+                    estrella5.setOnClickListener {
+                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 5, user.username))
+                        muestraValoracion()
+                    }
+                }
+                else{ //El usuario ya había valorado
+                    muestraValoracion()
+                }
+
+
+            }
+            else{ //No hay usuarios logueados
+                muestraValoracion()
+            }
+
+
+    }
+
+    private fun muestraValoracion(){
+        var db = obtenerBaseDatos(requireContext())
+        var valoraciones = db.valoracionDao.obtenerPorNombreReceta(argumentos.receta.toString())
+        var suma = 0
+        var media:Int
+
+        for(valoracion in valoraciones){
+            suma += valoracion.valoracion
+        }
+
+        var media_double = (suma*1.0) / valoraciones.size
+
+        media = Math.floor(media_double).toInt()
+
+        when(media){
+            1->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.VISIBLE
+                estrellas_2.visibility = View.GONE
+                estrellas_3.visibility = View.GONE
+                estrellas_4.visibility = View.GONE
+                estrellas_5.visibility = View.GONE
+            }
+            2->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.GONE
+                estrellas_2.visibility = View.VISIBLE
+                estrellas_3.visibility = View.GONE
+                estrellas_4.visibility = View.GONE
+                estrellas_5.visibility = View.GONE
+            }
+            3->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.GONE
+                estrellas_2.visibility = View.GONE
+                estrellas_3.visibility = View.VISIBLE
+                estrellas_4.visibility = View.GONE
+                estrellas_5.visibility = View.GONE
+            }
+            4->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.GONE
+                estrellas_2.visibility = View.GONE
+                estrellas_3.visibility = View.GONE
+                estrellas_4.visibility = View.VISIBLE
+                estrellas_5.visibility = View.GONE
+            }
+            5->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.GONE
+                estrellas_2.visibility = View.GONE
+                estrellas_3.visibility = View.GONE
+                estrellas_4.visibility = View.GONE
+                estrellas_5.visibility = View.VISIBLE
+            }
+            else->{
+                estrellas_vacias.visibility = View.GONE
+                estrellas_1.visibility = View.GONE
+                estrellas_2.visibility = View.GONE
+                estrellas_3.visibility = View.GONE
+                estrellas_4.visibility = View.GONE
+                estrellas_5.visibility = View.GONE
+            }
+        }
+    }
+
+    /*
         Este método se encargará de rellenar de contenido la vista dada una determinada receta.
      */
     private fun inicializaContenidoReceta(){
@@ -62,6 +199,8 @@ class FragmentoDescripcionReceta : Fragment() {
         estableceIngredientes(receta, db)
 
         establecePasos(receta)
+
+        defineComportamientoBotonesPuntuacion()
 
 
     }
@@ -259,6 +398,17 @@ class FragmentoDescripcionReceta : Fragment() {
         slider_pasos_desc = view.findViewById(R.id.slider_pasos_desc)
         indicador_slider_pasos = view.findViewById(R.id.indicador_slider_pasos)
         nombre_autor = view.findViewById(R.id.nombre_autor)
-    }
+        estrella1 = view.findViewById(R.id.estrella1)
+        estrella2 = view.findViewById(R.id.estrella2)
+        estrella3 = view.findViewById(R.id.estrella3)
+        estrella4 = view.findViewById(R.id.estrella4)
+        estrella5 = view.findViewById(R.id.estrella5)
 
+        estrellas_vacias = view.findViewById(R.id.estrellas_vacias)
+        estrellas_1 = view.findViewById(R.id.estrellas_1)
+        estrellas_2 = view.findViewById(R.id.estrellas_2)
+        estrellas_3 = view.findViewById(R.id.estrellas_3)
+        estrellas_4 = view.findViewById(R.id.estrellas_4)
+        estrellas_5 = view.findViewById(R.id.estrellas_5)
+    }
 }
