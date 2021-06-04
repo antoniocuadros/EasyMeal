@@ -25,6 +25,7 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var boton_seleccion_imagen:CardView
     private lateinit var imagen_principal:ImageView
     private lateinit var input_titulo_receta:EditText
+    private lateinit var input_descripcion:EditText
     private lateinit var spiner_categoria: Spinner
     private lateinit var ingrediente1:EditText
     private lateinit var cantidad_ingrediente1:EditText
@@ -207,6 +208,11 @@ class FragmentoAnadirReceta : Fragment() {
             //Comprobamos la imagen principal
             if(imagen_seleccionada == null) error_campo_vacio = true
 
+            //Comprobamos descripción
+            if(input_descripcion.text.toString() == "") error_campo_vacio = true
+
+            if(duracion_aprox.all { Character.isDigit(it) } == false) error_campo_vacio = true
+
             if(error_campo_vacio){
                 error_anadir_receta.visibility = View.VISIBLE
                 error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
@@ -216,7 +222,7 @@ class FragmentoAnadirReceta : Fragment() {
 
                 var db = obtenerBaseDatos(requireContext())
 
-                db.recetaDao.insertaUna(Receta(0, titulo, "", "",imagen, categoria,
+                db.recetaDao.insertaUna(Receta(0, titulo, input_descripcion.text.toString(), "",imagen, categoria,
                         ingrediente1.text.toString(), ingrediente2.text.toString(),
                         ingrediente3.text.toString(), ingrediente4.text.toString(),
                         ingrediente5.text.toString(), ingrediente6.text.toString(),
@@ -681,6 +687,7 @@ class FragmentoAnadirReceta : Fragment() {
         layout_paso_19 = view.findViewById(R.id.layout_paso_19)
         layout_paso_20 = view.findViewById(R.id.layout_paso_20)
         error_anadir_receta = view.findViewById(R.id.error_anadir_receta)
+        input_descripcion = view.findViewById(R.id.input_descripcion)
     }
 
 }

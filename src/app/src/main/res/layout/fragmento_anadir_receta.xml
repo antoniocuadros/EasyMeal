@@ -60,6 +60,28 @@
             />
 
 
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Descripción"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/input_descripcion"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputcuadrado"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:minHeight="40dp"
+            />
 
         <TextView
             android:layout_marginTop="15dp"
