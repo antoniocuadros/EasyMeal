@@ -10,6 +10,11 @@ import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.R
+import com.acl.easymeal.adapters.SliderIngredienteAdapter
+import com.acl.easymeal.adapters.SliderRecetasAdapter
+import com.acl.easymeal.modelo.DataBaseRecetas
+import com.acl.easymeal.modelo.Ingrediente
+import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import me.relex.circleindicator.CircleIndicator3
 
@@ -52,6 +57,74 @@ class FragmentoDescripcionReceta : Fragment() {
         imagen_receta_desc.setImageBitmap(receta.imagen)
         descripcionReceta.text = receta.descripcion
         nombre_autor.text = receta.idAutor
+
+        estableceIngredientes(receta, db)
+
+
+    }
+
+
+    /*
+    Este método se encarga de inicializar el slider de ingredientes dada una determinada receta.
+     */
+    private fun estableceIngredientes(receta: Receta, db:DataBaseRecetas){
+        //Slider Ingredientes
+        var ingredientes = mutableListOf<Ingrediente>()
+        var cantidades = mutableListOf<String>()
+
+        if(receta.ingrediente1 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente1)[0])
+            cantidades.add(receta.cantidad_ingrediente1)
+        }
+        if(receta.ingrediente2 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente2)[0])
+            cantidades.add(receta.cantidad_ingrediente2)
+        }
+        if(receta.ingrediente3 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente3)[0])
+            cantidades.add(receta.cantidad_ingrediente3)
+        }
+        if(receta.ingrediente4 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente4)[0])
+            cantidades.add(receta.cantidad_ingrediente4)
+        }
+        if(receta.ingrediente5 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente5)[0])
+            cantidades.add(receta.cantidad_ingrediente5)
+        }
+        if(receta.ingrediente6 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente6)[0])
+            cantidades.add(receta.cantidad_ingrediente6)
+        }
+        if(receta.ingrediente7 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente7)[0])
+            cantidades.add(receta.cantidad_ingrediente7)
+        }
+        if(receta.ingrediente8 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente8)[0])
+            cantidades.add(receta.cantidad_ingrediente8)
+        }
+        if(receta.ingrediente9 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente9)[0])
+            cantidades.add(receta.cantidad_ingrediente9)
+        }
+        if(receta.ingrediente10 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente10)[0])
+            cantidades.add(receta.cantidad_ingrediente10)
+        }
+        if(receta.ingrediente11 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente11)[0])
+            cantidades.add(receta.cantidad_ingrediente11)
+        }
+        if(receta.ingrediente12 != ""){
+            ingredientes.add(db.ingredienteDao.obtenerPorNombre(receta.ingrediente12)[0])
+            cantidades.add(receta.cantidad_ingrediente12)
+        }
+
+        slider_ingredientes_desc.adapter = SliderIngredienteAdapter(ingredientes, cantidades, requireContext())
+        slider_ingredientes_desc.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        indicador_slider_ingredientes.setViewPager(slider_ingredientes_desc)
     }
 
     /*
