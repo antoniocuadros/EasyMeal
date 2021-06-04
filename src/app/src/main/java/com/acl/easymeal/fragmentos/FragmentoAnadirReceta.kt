@@ -44,6 +44,24 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var ingrediente6:EditText
     private lateinit var cantidad_ingrediente6:EditText
     private lateinit var layout_ingrediente_6:LinearLayout
+    private lateinit var ingrediente7:EditText
+    private lateinit var cantidad_ingrediente7:EditText
+    private lateinit var layout_ingrediente_7:LinearLayout
+    private lateinit var ingrediente8:EditText
+    private lateinit var cantidad_ingrediente8:EditText
+    private lateinit var layout_ingrediente_8:LinearLayout
+    private lateinit var ingrediente9:EditText
+    private lateinit var cantidad_ingrediente9:EditText
+    private lateinit var layout_ingrediente_9:LinearLayout
+    private lateinit var ingrediente10:EditText
+    private lateinit var cantidad_ingrediente10:EditText
+    private lateinit var layout_ingrediente_10:LinearLayout
+    private lateinit var ingrediente11:EditText
+    private lateinit var cantidad_ingrediente11:EditText
+    private lateinit var layout_ingrediente_11:LinearLayout
+    private lateinit var ingrediente12:EditText
+    private lateinit var cantidad_ingrediente12:EditText
+    private lateinit var layout_ingrediente_12:LinearLayout
     private lateinit var anadiringrediente:CardView
     private lateinit var paso_1:EditText
     private lateinit var paso_2:EditText
@@ -133,6 +151,12 @@ class FragmentoAnadirReceta : Fragment() {
             if(num_ingredientes == 4 && (ingrediente4.text.toString() == "" || cantidad_ingrediente4.text.toString() == "")) error_campo_vacio = true
             if(num_ingredientes == 5 && (ingrediente5.text.toString() == "" || cantidad_ingrediente5.text.toString() == "")) error_campo_vacio = true
             if(num_ingredientes == 6 && (ingrediente6.text.toString() == "" || cantidad_ingrediente6.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 7 && (ingrediente7.text.toString() == "" || cantidad_ingrediente7.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 8 && (ingrediente8.text.toString() == "" || cantidad_ingrediente8.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 9 && (ingrediente9.text.toString() == "" || cantidad_ingrediente9.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 10 && (ingrediente10.text.toString() == "" || cantidad_ingrediente10.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 11 && (ingrediente11.text.toString() == "" || cantidad_ingrediente11.text.toString() == "")) error_campo_vacio = true
+            if(num_ingredientes == 12 && (ingrediente12.text.toString() == "" || cantidad_ingrediente12.text.toString() == "")) error_campo_vacio = true
 
 
             //Comprobamos que no se haya dejado ningún campo vacío de los pasos
@@ -166,24 +190,21 @@ class FragmentoAnadirReceta : Fragment() {
                         ingrediente1.text.toString(), ingrediente2.text.toString(),
                         ingrediente3.text.toString(), ingrediente4.text.toString(),
                         ingrediente5.text.toString(), ingrediente6.text.toString(),
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        ingrediente7.text.toString(), ingrediente8.text.toString(),
+                        ingrediente9.text.toString(), ingrediente10.text.toString(),
+                        ingrediente11.text.toString(), ingrediente12.text.toString(),
                         cantidad_ingrediente1.text.toString(),
                         cantidad_ingrediente2.text.toString(),
                         cantidad_ingrediente3.text.toString(),
                         cantidad_ingrediente4.text.toString(),
                         cantidad_ingrediente5.text.toString(),
                         cantidad_ingrediente6.text.toString(),
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        cantidad_ingrediente7.text.toString(),
+                        cantidad_ingrediente8.text.toString(),
+                        cantidad_ingrediente9.text.toString(),
+                        cantidad_ingrediente10.text.toString(),
+                        cantidad_ingrediente11.text.toString(),
+                        cantidad_ingrediente12.text.toString(),
                         duracion_aprox.toInt(),
                         paso_1.text.toString(), paso_2.text.toString(),
                         paso_3.text.toString(), paso_4.text.toString(),
@@ -388,6 +409,42 @@ class FragmentoAnadirReceta : Fragment() {
                         }
                         layout_ingrediente_6.visibility = View.VISIBLE
                     }
+                    7->{
+                        if(layout_ingrediente_7.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_7.visibility = View.VISIBLE
+                    }
+                    8->{
+                        if(layout_ingrediente_8.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_8.visibility = View.VISIBLE
+                    }
+                    9->{
+                        if(layout_ingrediente_9.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_9.visibility = View.VISIBLE
+                    }
+                    10->{
+                        if(layout_ingrediente_10.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_10.visibility = View.VISIBLE
+                    }
+                    11->{
+                        if(layout_ingrediente_11.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_11.visibility = View.VISIBLE
+                    }
+                    12->{
+                        if(layout_ingrediente_12.visibility == View.GONE){
+                            num_ingredientes++
+                        }
+                        layout_ingrediente_12.visibility = View.VISIBLE
+                    }
                 }
             }
             else{
@@ -414,7 +471,12 @@ class FragmentoAnadirReceta : Fragment() {
         if(ingrediente4.text.toString() == "") vacios.add(4)
         if(ingrediente5.text.toString() == "") vacios.add(5)
         if(ingrediente6.text.toString() == "") vacios.add(6)
-
+        if(ingrediente7.text.toString() == "") vacios.add(7)
+        if(ingrediente8.text.toString() == "") vacios.add(8)
+        if(ingrediente9.text.toString() == "") vacios.add(9)
+        if(ingrediente10.text.toString() == "") vacios.add(10)
+        if(ingrediente11.text.toString() == "") vacios.add(11)
+        if(ingrediente12.text.toString() == "") vacios.add(12)
 
 
         if(vacios.size == 0 ||  vacios.size == 1){
@@ -459,6 +521,25 @@ class FragmentoAnadirReceta : Fragment() {
         ingrediente6 = view.findViewById(R.id.ingrediente6)
         cantidad_ingrediente6 = view.findViewById(R.id.cantidad_ingrediente6)
         layout_ingrediente_6 = view.findViewById(R.id.layout_ingrediente_6)
+        ingrediente7 = view.findViewById(R.id.ingrediente7)
+        cantidad_ingrediente7 = view.findViewById(R.id.cantidad_ingrediente7)
+        layout_ingrediente_7 = view.findViewById(R.id.layout_ingrediente_7)
+        ingrediente8 = view.findViewById(R.id.ingrediente8)
+        cantidad_ingrediente8 = view.findViewById(R.id.cantidad_ingrediente8)
+        layout_ingrediente_8 = view.findViewById(R.id.layout_ingrediente_8)
+        ingrediente9 = view.findViewById(R.id.ingrediente9)
+        cantidad_ingrediente9 = view.findViewById(R.id.cantidad_ingrediente9)
+        layout_ingrediente_9 = view.findViewById(R.id.layout_ingrediente_9)
+        ingrediente10 = view.findViewById(R.id.ingrediente10)
+        cantidad_ingrediente10 = view.findViewById(R.id.cantidad_ingrediente10)
+        layout_ingrediente_10 = view.findViewById(R.id.layout_ingrediente_10)
+        ingrediente11 = view.findViewById(R.id.ingrediente11)
+        cantidad_ingrediente11 = view.findViewById(R.id.cantidad_ingrediente11)
+        layout_ingrediente_11 = view.findViewById(R.id.layout_ingrediente_11)
+        ingrediente12 = view.findViewById(R.id.ingrediente12)
+        cantidad_ingrediente12 = view.findViewById(R.id.cantidad_ingrediente12)
+        layout_ingrediente_12 = view.findViewById(R.id.layout_ingrediente_12)
+
         anadiringrediente = view.findViewById(R.id.anadiringrediente)
         paso_1 = view.findViewById(R.id.paso_1)
         paso_2 = view.findViewById(R.id.paso_2)
