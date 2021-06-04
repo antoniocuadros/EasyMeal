@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
 
@@ -28,6 +29,9 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
         // Paso 4)
         imagen_receta_item.setImageBitmap(receta.imagen)
         nombre_receta_item.text = receta.nombreReceta
+
+        var icono_borrar = vista.findViewById<CardView>(R.id.icono_borrar)
+        icono_borrar.visibility = View.GONE
 
         //Paso 5)
         return vista

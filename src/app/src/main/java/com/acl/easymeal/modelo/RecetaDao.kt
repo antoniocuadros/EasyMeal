@@ -1,9 +1,6 @@
 package com.acl.easymeal.modelo
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface RecetaDao {
@@ -33,4 +30,7 @@ interface RecetaDao {
 
     @Query("SELECT * FROM Recetas WHERE ingrediente1 IN(:buscar) or ingrediente2 IN(:buscar) or ingrediente3 IN(:buscar) or ingrediente4 IN(:buscar) or ingrediente5 IN(:buscar) or ingrediente6 IN(:buscar)")
     fun obtenerPorIngrediente(buscar:List<String>):MutableList<Receta>
+
+    @Delete
+    fun elimina(receta:Receta)
 }

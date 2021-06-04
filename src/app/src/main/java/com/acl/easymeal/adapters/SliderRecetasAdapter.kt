@@ -6,17 +6,43 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
+import com.acl.easymeal.modelo.obtenerBaseDatos
+import me.relex.circleindicator.CircleIndicator3
 
-class SliderRecetasAdapter(var recetas:MutableList<Receta>,context: Context): RecyclerView.Adapter<SliderRecetasAdapter.Pager2ViewHolder>() {
+class SliderRecetasAdapter(var recetas:MutableList<Receta>,context: Context, activity: MainActivity, modo:Int): RecyclerView.Adapter<SliderRecetasAdapter.Pager2ViewHolder>() {
     var context = context
+    var activity = activity
+    var modo = modo
 
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagen_receta_item = itemView.findViewById<ImageView>(R.id.imagen_receta_item)
         val nombre_receta_item =  itemView.findViewById<TextView>(R.id.nombre_receta_item)
+        val icono_borrar = itemView.findViewById<CardView>(R.id.icono_borrar)
+
+        init {
+            icono_borrar.setOnClickListener {
+                var db = obtenerBaseDatos(context)
+                db.recetaDao.elimina(recetas[adapterPosition])
+
+                recetas.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                notifyItemRangeChanged(adapterPosition, recetas.size)
+                notifyDataSetChanged()
+                var indicador_num = it.rootView.findViewById<CircleIndicator3>(R.id.indicador_slider_mis_recetas)
+                indicador_num.createIndicators(recetas.size, adapterPosition+1)
+            }
+
+            itemView.setOnClickListener {
+                activity.fromPerfilToMostrarReceta(recetas[adapterPosition].id.toString())
+            }
+        }
     }
 
 
@@ -33,5 +59,11 @@ class SliderRecetasAdapter(var recetas:MutableList<Receta>,context: Context): Re
     override fun onBindViewHolder(holder: SliderRecetasAdapter.Pager2ViewHolder, position: Int) {
         holder.imagen_receta_item.setImageBitmap(recetas[position].imagen)
         holder.nombre_receta_item.text = recetas[position].nombreReceta
+        if(modo == 0){
+            holder.icono_borrar.visibility = View.GONE
+        }
+        else{
+            holder.icono_borrar.visibility = View.VISIBLE
+        }
     }
 }

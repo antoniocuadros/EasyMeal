@@ -179,7 +179,7 @@
                 app:strokeColor="@color/white"
                 app:strokeWidth="3dp" />
             <LinearLayout
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/black"
@@ -215,8 +215,8 @@
                         <androidx.cardview.widget.CardView
                             android:layout_marginTop="10dp"
                             android:id="@+id/carta_imagen"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:backgroundTint="@color/cardview_dark_background"
                             android:foregroundGravity="center"
                             app:cardCornerRadius="600dp"
@@ -224,8 +224,8 @@
 
                             <ImageView
                                 android:id="@+id/imagen_usuario"
-                                android:layout_width="130dp"
-                                android:layout_height="130dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
@@ -251,8 +251,8 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/boton_anadir_receta"
                             android:layout_gravity="center"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:backgroundTint="@color/black"
                             android:foregroundGravity="center"
                             app:cardCornerRadius="600dp"
@@ -260,8 +260,8 @@
                             >
 
                             <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
@@ -283,8 +283,8 @@
                         </TextView>
                         <androidx.viewpager2.widget.ViewPager2
                             android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="250dp"
+                            android:layout_width="280dp"
+                            android:layout_height="240dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:id="@+id/slider_mis_recetas"

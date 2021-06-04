@@ -78,7 +78,7 @@ class Fragmentoperfil : Fragment() {
             indicador_slider_mis_recetas.visibility = View.GONE
             mis_recetas_text.visibility = View.GONE
         }
-        slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext())
+        slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext(), requireActivity() as MainActivity, 1)
         slider_mis_recetas.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider_mis_recetas.setViewPager(slider_mis_recetas)
