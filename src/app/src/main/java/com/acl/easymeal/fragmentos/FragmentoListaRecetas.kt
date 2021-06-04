@@ -91,8 +91,15 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
     override fun onQueryTextChange(newText: String?): Boolean {
         var db = obtenerBaseDatos(requireContext())
-        var ingredientes = newText?.split(' ')
-        var recetas = db.recetaDao.obtenerPorIngrediente(ingredientes!!)
+        var recetas:MutableList<Receta>
+        if(newText == ""){
+            recetas = db.recetaDao.obtenerTodas()
+        }
+        else{
+            var ingredientes = newText?.split(' ')
+            recetas = db.recetaDao.obtenerPorIngrediente(ingredientes!!)
+        }
+
         adapter = listaRecetasAdapter(recetas, requireContext())
         cuadricula_recetas.adapter = adapter
         return false
