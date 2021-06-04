@@ -1,38 +1,102 @@
 [
   {
     "nombreIngrediente": "Pollo",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/Chicken.png"
+    "urlImagen": "pollo"
   },
   {
     "nombreIngrediente": "Azucar",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/Sugar.png"
+    "urlImagen": "azucar"
   },
   {
     "nombreIngrediente": "Agua",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/Water.png"
+    "urlImagen": "agua"
   },
   {
     "nombreIngrediente": "Sal",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/Salt.png"
+    "urlImagen": "sal"
   },
   {
     "nombreIngrediente": "Huevos",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/Egg.png"
+    "urlImagen": "huevos"
   },
   {
     "nombreIngrediente": "Harina",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/flour.png"
+    "urlImagen": "harina"
   },
   {
     "nombreIngrediente": "Arroz",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/rice.png"
+    "urlImagen": "arroz"
   },
   {
-    "nombreIngrediente": "Ajo",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/garlic.png"
+    "nombreIngrediente": "Ajos",
+    "urlImagen": "ajo"
   },
   {
     "nombreIngrediente": "Patatas",
-    "urlImagen": "https://www.themealdb.com/images/ingredients/potato.png"
+    "urlImagen": "patatas"
+  },
+  {
+    "nombreIngrediente": "Cebollas",
+    "urlImagen": "cebollas"
+  },
+  {
+    "nombreIngrediente": "Zanahorias",
+    "urlImagen": "zanahorias"
+  },
+  {
+    "nombreIngrediente": "Vino blanco",
+    "urlImagen": "vinoblanco"
+  },
+  {
+    "nombreIngrediente": "Solomillo",
+    "urlImagen": "solomillo"
+  },  {
+  "nombreIngrediente": "Puerro",
+  "urlImagen": "puerro"
+},  {
+  "nombreIngrediente": "Naranjas",
+  "urlImagen": "naranjas"
+},  {
+  "nombreIngrediente": "Brandy",
+  "urlImagen": "brandy"
+},  {
+  "nombreIngrediente": "Salmon",
+  "urlImagen": "salmon"
+},
+  {
+    "nombreIngrediente": "Limon",
+    "urlImagen": "limon"
+  },
+  {
+    "nombreIngrediente": "Perejil",
+    "urlImagen": "perejil"
+  },
+  {
+    "nombreIngrediente": "Pimienta Negra",
+    "urlImagen": "pimientanegra"
+  },
+  {
+    "nombreIngrediente": "Aceite",
+    "urlImagen": "aceite"
+  },
+  {
+    "nombreIngrediente": "Calamar",
+    "urlImagen": "calamar"
+  },
+  {
+    "nombreIngrediente": "Tomates",
+    "urlImagen": "tomates"
+  },{
+  "nombreIngrediente": "",
+  "urlImagen": ""
+},
+  {
+    "nombreIngrediente": "",
+    "urlImagen": ""
   }
+
+
+
+
+
 ]

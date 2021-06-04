@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey
 data class Receta(
     @PrimaryKey(autoGenerate = true) val id:Int,
     val nombreReceta:String,
-    val imagen:Bitmap,
+    val descripcion:String,
+    val imagen_text:String,
+    var imagen:Bitmap,
     val categoria:String,
     val ingrediente1:String,
     val ingrediente2:String,

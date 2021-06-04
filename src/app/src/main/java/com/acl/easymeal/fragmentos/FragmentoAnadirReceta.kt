@@ -162,7 +162,7 @@ class FragmentoAnadirReceta : Fragment() {
 
                 var db = obtenerBaseDatos(requireContext())
 
-                db.recetaDao.insertaUna(Receta(0, titulo, imagen, categoria,
+                db.recetaDao.insertaUna(Receta(0, titulo, "", "",imagen, categoria,
                         ingrediente1.text.toString(), ingrediente2.text.toString(),
                         ingrediente3.text.toString(), ingrediente4.text.toString(),
                         ingrediente5.text.toString(), ingrediente6.text.toString(),

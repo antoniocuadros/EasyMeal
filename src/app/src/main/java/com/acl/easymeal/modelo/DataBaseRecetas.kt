@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.widget.Toast
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -36,6 +37,7 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
             inicializaAdmin(context)
             inicializaCategorias(context)
             inicializaIngredientes(context)
+            inicializaRecetas(context)
         }
 
     }
@@ -49,6 +51,29 @@ private fun inicializaAdmin(context:Context){
     val bitmap:Bitmap = (drawable as BitmapDrawable).bitmap
 
     instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin", bitmap))
+}
+
+private fun inicializaRecetas(context:Context){
+    var recetas:MutableList<Receta>
+    var inputStream: InputStream = context.assets!!.open("recetas.json")
+    val recetas_texto = inputStream.bufferedReader().use{it.readText()}
+    val gson = Gson()
+    val tipo_a_leer = object : TypeToken<MutableList<Receta>>() {}.type
+    recetas = gson.fromJson<MutableList<Receta>>(recetas_texto, tipo_a_leer)
+
+    //Añadimos las imágenes de String a bitArray
+    val conversor:ConversorImagen = ConversorImagen()
+
+    for(receta in recetas){
+        val idImagen = conversor.stringToID(receta.imagen_text, context)
+        val drawable: Drawable? = context.getDrawable(idImagen)
+
+        val bitmap:Bitmap = (drawable as BitmapDrawable).bitmap
+
+        receta.imagen = bitmap
+    }
+
+    instancia_data_base.recetaDao.insertaLista(recetas)
 }
 
 private fun inicializaCategorias(context:Context){
