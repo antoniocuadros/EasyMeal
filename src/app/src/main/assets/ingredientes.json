@@ -86,15 +86,63 @@
   {
     "nombreIngrediente": "Tomates",
     "urlImagen": "tomates"
-  },{
-  "nombreIngrediente": "",
-  "urlImagen": ""
+  },
+  {
+  "nombreIngrediente": "Higos",
+  "urlImagen": "higos"
 },
+  {
+    "nombreIngrediente": "Tomate Triturado",
+    "urlImagen": "tomatetriturado"
+  },
+  {
+    "nombreIngrediente": "Mozzarella",
+    "urlImagen": "mozzarella"
+  },
+  {
+    "nombreIngrediente": "Queso Azul",
+    "urlImagen": "quesoazul"
+  },
+  {
+    "nombreIngrediente": "Queso Emmental",
+    "urlImagen": "emmental"
+  },
+  {
+    "nombreIngrediente": "Maíz",
+    "urlImagen": "maiz"
+  },
+  {
+    "nombreIngrediente": "Bacon",
+    "urlImagen": "bacon"
+  },
+  {
+    "nombreIngrediente": "Salsa Barbacoa",
+    "urlImagen": "salsabarbacoa"
+  },
+  {
+    "nombreIngrediente": "Boniatos",
+    "urlImagen": "boniato"
+  },
+  {
+    "nombreIngrediente": "Pimentón Dulce",
+    "urlImagen": "pimentondulce"
+  },
+  {
+    "nombreIngrediente": "Romero",
+    "urlImagen": "romero"
+  },
+  {
+    "nombreIngrediente": "Coliflor",
+    "urlImagen": "coliflor"
+  },
+  {
+    "nombreIngrediente": "Pan Rallado",
+    "urlImagen": "panrallado"
+  },
   {
     "nombreIngrediente": "",
     "urlImagen": ""
   }
-
 
 
 

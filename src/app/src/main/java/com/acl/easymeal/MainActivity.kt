@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.acl.easymeal.fragmentos.*
+import com.acl.easymeal.modelo.Receta
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -43,5 +44,9 @@ class MainActivity : AppCompatActivity() {
 
     public fun fromDuracionToRecetas(duracion:String){
         findNavController(R.id.fragment2).navigate(FragmentoDuracionDirections.actionDuracionMenuItemToRecetasMenuItem(null, duracion))
+    }
+
+    public fun fromRecetaToDetalles(receta: Receta){
+        findNavController(R.id.fragment2).navigate(FragmentoListaRecetasDirections.actionRecetasMenuItemToFragmentoDescripcionReceta(receta))
     }
 }

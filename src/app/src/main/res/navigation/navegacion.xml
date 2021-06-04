@@ -34,6 +34,9 @@
             app:argType="string"
             android:defaultValue="@null"
             />
+        <action
+            android:id="@+id/action_recetas_menu_item_to_fragmentoDescripcionReceta"
+            app:destination="@id/fragmentoDescripcionReceta" />
     </fragment>
     <fragment
         android:id="@+id/categorias_menu_item"
@@ -48,7 +51,11 @@
         android:id="@+id/fragmentoDescripcionReceta"
         android:name="com.acl.easymeal.fragmentos.FragmentoDescripcionReceta"
         android:label="fragmento_descripcion_receta"
-        tools:layout="@layout/fragmento_descripcion_receta" />
+        tools:layout="@layout/fragmento_descripcion_receta" >
+        <argument android:name="receta"
+            app:argType="com.acl.easymeal.modelo.Receta"
+        />
+    </fragment>
     <fragment
         android:id="@+id/fragmentoRegister"
         android:name="com.acl.easymeal.fragmentos.FragmentoRegister"

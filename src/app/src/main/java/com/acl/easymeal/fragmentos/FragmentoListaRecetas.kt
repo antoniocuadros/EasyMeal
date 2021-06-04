@@ -10,8 +10,10 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.adapters.listaRecetasAdapter
+import com.acl.easymeal.modelo.Categoria
 import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.obtenerBaseDatos
 
@@ -37,6 +39,12 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         inicializaListaRecetas()
 
         barra_busqueda.setOnQueryTextListener(this)
+
+        cuadricula_recetas.setOnItemClickListener{cuadricula_recetas, _, i,_ ->
+            var receta = cuadricula_recetas.getItemAtPosition(i) as Receta
+
+            (activity as MainActivity).fromRecetaToDetalles(receta)
+        }
 
         return view
     }
