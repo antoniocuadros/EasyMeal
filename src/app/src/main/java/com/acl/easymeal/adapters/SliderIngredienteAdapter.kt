@@ -34,11 +34,17 @@ class SliderIngredienteAdapter(var ingredientes:MutableList<Ingrediente>, var ca
 
 
     override fun onBindViewHolder(holder: SliderIngredienteAdapter.Pager2ViewHolder, position: Int) {
-        var id_imagen = context.resources.getIdentifier(ingredientes[position].urlImagen, "drawable", "com.acl.easymeal")
+        if(ingredientes[position].urlImagen != "none"){
 
-        holder.imagen_ingrediente.setImageResource(id_imagen)
+            var id_imagen = context.resources.getIdentifier(ingredientes[position].urlImagen, "drawable", "com.acl.easymeal")
+            holder.imagen_ingrediente.setImageResource(id_imagen)
+        }
+        else{
+            holder.imagen_ingrediente.visibility = View.GONE
+        }
 
         var texto_ingrediente:String
+
         if(cantidades[position] != ""){
             texto_ingrediente = cantidades[position] + " de " + ingredientes[position].nombreIngrediente
         }
