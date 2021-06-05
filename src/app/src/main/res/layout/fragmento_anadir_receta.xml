@@ -1520,7 +1520,20 @@
                             app:strokeWidth="3dp"
                             android:layout_marginBottom="120dp"
                             />
-
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/boton_editar"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="Editar receta"
+                            app:cornerRadius="30dp"
+                            app:strokeColor="@color/white"
+                            app:strokeWidth="3dp"
+                            android:layout_marginBottom="120dp"
+                            />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

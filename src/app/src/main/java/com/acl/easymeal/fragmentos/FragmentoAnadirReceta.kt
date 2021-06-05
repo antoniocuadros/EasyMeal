@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.navArgs
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
@@ -108,6 +109,8 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var anadirpaso:CardView
     private lateinit var boton_anadir:MaterialButton
     private lateinit var error_anadir_receta:TextView
+    private lateinit var boton_editar:MaterialButton
+    private val argumentos: FragmentoAnadirRecetaArgs by navArgs()
 
     private var imagen_seleccionada: Uri? = null
     private var num_ingredientes = 1
@@ -154,109 +157,133 @@ class FragmentoAnadirReceta : Fragment() {
         }
     }
 
+    /*
+        Este método se encarga de comprobar que todos los campos sean correctos y devolverá un Boolean
+        que indicará si hay o no errores en el formulario.
+     */
+    private fun compruebaCampos():Boolean{
+        var titulo = input_titulo_receta.text.toString()
+        var duracion_aprox = duracion.text.toString()
+
+        var error_campo_vacio = false
+
+        //Comprobamos que el título esté relleno
+        if(titulo == "") error_campo_vacio = true
+
+        //Comprobamos que no se haya dejado ningún campo vacío de los ingredientes
+        if(num_ingredientes == 1 && (ingrediente1.text.toString() == "" || cantidad_ingrediente1.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 2 && (ingrediente2.text.toString() == "" || cantidad_ingrediente2.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 3 && (ingrediente3.text.toString() == "" || cantidad_ingrediente3.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 4 && (ingrediente4.text.toString() == "" || cantidad_ingrediente4.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 5 && (ingrediente5.text.toString() == "" || cantidad_ingrediente5.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 6 && (ingrediente6.text.toString() == "" || cantidad_ingrediente6.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 7 && (ingrediente7.text.toString() == "" || cantidad_ingrediente7.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 8 && (ingrediente8.text.toString() == "" || cantidad_ingrediente8.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 9 && (ingrediente9.text.toString() == "" || cantidad_ingrediente9.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 10 && (ingrediente10.text.toString() == "" || cantidad_ingrediente10.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 11 && (ingrediente11.text.toString() == "" || cantidad_ingrediente11.text.toString() == "")) error_campo_vacio = true
+        if(num_ingredientes == 12 && (ingrediente12.text.toString() == "" || cantidad_ingrediente12.text.toString() == "")) error_campo_vacio = true
+
+
+        //Comprobamos que no se haya dejado ningún campo vacío de los pasos
+        if(num_pasos == 1 && paso_1.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 2 && paso_2.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 3 && paso_3.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 4 && paso_4.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 5 && paso_5.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 6 && paso_6.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 7 && paso_7.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 8 && paso_8.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 9 && paso_9.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 10 && paso_10.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 11 && paso_11.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 12 && paso_12.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 13 && paso_13.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 14 && paso_14.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 15 && paso_15.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 16 && paso_16.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 17 && paso_17.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 18 && paso_18.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 19 && paso_19.text.toString() == "") error_campo_vacio = true
+        if(num_pasos == 20 && paso_20.text.toString() == "") error_campo_vacio = true
+
+        //Comprobamos que el campo duración no sea vacío
+        if(duracion_aprox == "") error_campo_vacio = true
+
+        //Comprobamos la imagen principal
+        if(imagen_seleccionada == null) error_campo_vacio = true
+
+        //Comprobamos descripción
+        if(input_descripcion.text.toString() == "") error_campo_vacio = true
+
+        if(duracion_aprox.all { Character.isDigit(it) } == false) error_campo_vacio = true
+
+        return error_campo_vacio
+    }
+
+    /*
+        Este método se encarga de procesar el formulario comprobando que no hay errores y en caso
+        de que no haya erres añadirá la receta a la base de datos. En caso contrario mostrará
+        un error para que el usuario corrija la situación.
+     */
     private fun procesaFormulario(){
-        boton_anadir.setOnClickListener {
-            var titulo = input_titulo_receta.text.toString()
-            var categoria = spiner_categoria.selectedItem.toString()
-            var duracion_aprox = duracion.text.toString()
+        if(argumentos.modo != null){ //Vamos a editar
+            boton_anadir.visibility = View.GONE
+            boton_editar.visibility = View.VISIBLE
 
-            var error_campo_vacio = false
+        }
+        else{ //vamos a añadir
+            boton_anadir.setOnClickListener {
+                var error_campo_vacio = compruebaCampos()
 
-            //Comprobamos que el título esté relleno
-            if(titulo == "") error_campo_vacio = true
+                if(error_campo_vacio){
+                    error_anadir_receta.visibility = View.VISIBLE
+                    error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
+                }
+                else{
+                    var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
 
-            //Comprobamos que no se haya dejado ningún campo vacío de los ingredientes
-            if(num_ingredientes == 1 && (ingrediente1.text.toString() == "" || cantidad_ingrediente1.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 2 && (ingrediente2.text.toString() == "" || cantidad_ingrediente2.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 3 && (ingrediente3.text.toString() == "" || cantidad_ingrediente3.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 4 && (ingrediente4.text.toString() == "" || cantidad_ingrediente4.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 5 && (ingrediente5.text.toString() == "" || cantidad_ingrediente5.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 6 && (ingrediente6.text.toString() == "" || cantidad_ingrediente6.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 7 && (ingrediente7.text.toString() == "" || cantidad_ingrediente7.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 8 && (ingrediente8.text.toString() == "" || cantidad_ingrediente8.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 9 && (ingrediente9.text.toString() == "" || cantidad_ingrediente9.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 10 && (ingrediente10.text.toString() == "" || cantidad_ingrediente10.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 11 && (ingrediente11.text.toString() == "" || cantidad_ingrediente11.text.toString() == "")) error_campo_vacio = true
-            if(num_ingredientes == 12 && (ingrediente12.text.toString() == "" || cantidad_ingrediente12.text.toString() == "")) error_campo_vacio = true
+                    var db = obtenerBaseDatos(requireContext())
 
-
-            //Comprobamos que no se haya dejado ningún campo vacío de los pasos
-            if(num_pasos == 1 && paso_1.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 2 && paso_2.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 3 && paso_3.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 4 && paso_4.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 5 && paso_5.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 6 && paso_6.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 7 && paso_7.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 8 && paso_8.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 9 && paso_9.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 10 && paso_10.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 11 && paso_11.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 12 && paso_12.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 13 && paso_13.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 14 && paso_14.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 15 && paso_15.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 16 && paso_16.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 17 && paso_17.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 18 && paso_18.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 19 && paso_19.text.toString() == "") error_campo_vacio = true
-            if(num_pasos == 20 && paso_20.text.toString() == "") error_campo_vacio = true
-
-            //Comprobamos que el campo duración no sea vacío
-            if(duracion_aprox == "") error_campo_vacio = true
-
-            //Comprobamos la imagen principal
-            if(imagen_seleccionada == null) error_campo_vacio = true
-
-            //Comprobamos descripción
-            if(input_descripcion.text.toString() == "") error_campo_vacio = true
-
-            if(duracion_aprox.all { Character.isDigit(it) } == false) error_campo_vacio = true
-
-            if(error_campo_vacio){
-                error_anadir_receta.visibility = View.VISIBLE
-                error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
-            }
-            else{
-                var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
-
-                var db = obtenerBaseDatos(requireContext())
-
-                db.recetaDao.insertaUna(Receta(0, titulo, input_descripcion.text.toString(), "",imagen, categoria,
-                        ingrediente1.text.toString(), ingrediente2.text.toString(),
-                        ingrediente3.text.toString(), ingrediente4.text.toString(),
-                        ingrediente5.text.toString(), ingrediente6.text.toString(),
-                        ingrediente7.text.toString(), ingrediente8.text.toString(),
-                        ingrediente9.text.toString(), ingrediente10.text.toString(),
-                        ingrediente11.text.toString(), ingrediente12.text.toString(),
-                        cantidad_ingrediente1.text.toString(),
-                        cantidad_ingrediente2.text.toString(),
-                        cantidad_ingrediente3.text.toString(),
-                        cantidad_ingrediente4.text.toString(),
-                        cantidad_ingrediente5.text.toString(),
-                        cantidad_ingrediente6.text.toString(),
-                        cantidad_ingrediente7.text.toString(),
-                        cantidad_ingrediente8.text.toString(),
-                        cantidad_ingrediente9.text.toString(),
-                        cantidad_ingrediente10.text.toString(),
-                        cantidad_ingrediente11.text.toString(),
-                        cantidad_ingrediente12.text.toString(),
-                        duracion_aprox.toInt(),
-                        paso_1.text.toString(), paso_2.text.toString(),
-                        paso_3.text.toString(), paso_4.text.toString(),
-                        paso_5.text.toString(), paso_6.text.toString(),
-                        paso_7.text.toString(), paso_8.text.toString(),
-                        paso_9.text.toString(), paso_10.text.toString(),
-                        paso_11.text.toString(), paso_12.text.toString(),
-                        paso_13.text.toString(), paso_14.text.toString(),
-                        paso_15.text.toString(), paso_16.text.toString(),
-                        paso_17.text.toString(), paso_18.text.toString(),
-                        paso_19.text.toString(), paso_20.text.toString(),
-                        obtenerUsuarioLogueado()[0].username
-                        ))
-                (activity as MainActivity).fromAnadirRecetaToPerfil()
+                    db.recetaDao.insertaUna(Receta(0, input_titulo_receta.text.toString(), input_descripcion.text.toString(), "",imagen, spiner_categoria.selectedItem.toString(),
+                            ingrediente1.text.toString(), ingrediente2.text.toString(),
+                            ingrediente3.text.toString(), ingrediente4.text.toString(),
+                            ingrediente5.text.toString(), ingrediente6.text.toString(),
+                            ingrediente7.text.toString(), ingrediente8.text.toString(),
+                            ingrediente9.text.toString(), ingrediente10.text.toString(),
+                            ingrediente11.text.toString(), ingrediente12.text.toString(),
+                            cantidad_ingrediente1.text.toString(),
+                            cantidad_ingrediente2.text.toString(),
+                            cantidad_ingrediente3.text.toString(),
+                            cantidad_ingrediente4.text.toString(),
+                            cantidad_ingrediente5.text.toString(),
+                            cantidad_ingrediente6.text.toString(),
+                            cantidad_ingrediente7.text.toString(),
+                            cantidad_ingrediente8.text.toString(),
+                            cantidad_ingrediente9.text.toString(),
+                            cantidad_ingrediente10.text.toString(),
+                            cantidad_ingrediente11.text.toString(),
+                            cantidad_ingrediente12.text.toString(),
+                            duracion.text.toString().toInt(),
+                            paso_1.text.toString(), paso_2.text.toString(),
+                            paso_3.text.toString(), paso_4.text.toString(),
+                            paso_5.text.toString(), paso_6.text.toString(),
+                            paso_7.text.toString(), paso_8.text.toString(),
+                            paso_9.text.toString(), paso_10.text.toString(),
+                            paso_11.text.toString(), paso_12.text.toString(),
+                            paso_13.text.toString(), paso_14.text.toString(),
+                            paso_15.text.toString(), paso_16.text.toString(),
+                            paso_17.text.toString(), paso_18.text.toString(),
+                            paso_19.text.toString(), paso_20.text.toString(),
+                            obtenerUsuarioLogueado()[0].username,
+                            num_ingredientes,
+                            num_pasos
+                    ))
+                    (activity as MainActivity).fromAnadirRecetaToPerfil()
+                }
             }
         }
+
     }
 
     /*
@@ -688,6 +715,7 @@ class FragmentoAnadirReceta : Fragment() {
         layout_paso_20 = view.findViewById(R.id.layout_paso_20)
         error_anadir_receta = view.findViewById(R.id.error_anadir_receta)
         input_descripcion = view.findViewById(R.id.input_descripcion)
+        boton_editar = view.findViewById(R.id.boton_editar)
     }
 
 }
