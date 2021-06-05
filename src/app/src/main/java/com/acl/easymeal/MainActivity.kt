@@ -53,4 +53,8 @@ class MainActivity : AppCompatActivity() {
     public fun fromPerfilToMostrarReceta(idreceta: String){
         findNavController(R.id.fragment2).navigate(FragmentoperfilDirections.actionPerfilMenuItemToFragmentoDescripcionReceta(idreceta))
     }
+
+    public fun fromPerfilToEditar(idreceta: String){
+        findNavController(R.id.fragment2).navigate(FragmentoperfilDirections.actionPerfilMenuItemToFragmentoAnadirReceta("editar", idreceta))
+    }
 }

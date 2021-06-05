@@ -87,5 +87,15 @@
         <action
             android:id="@+id/action_fragmentoAnadirReceta_to_perfil_menu_item"
             app:destination="@id/perfil_menu_item" />
+        <argument android:name="modo"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"
+            />
+        <argument android:name="idreceta"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"
+            />
     </fragment>
 </navigation>

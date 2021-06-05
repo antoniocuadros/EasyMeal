@@ -32,6 +32,8 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
 
         var icono_borrar = vista.findViewById<CardView>(R.id.icono_borrar)
         icono_borrar.visibility = View.GONE
+        var icono_editar = vista.findViewById<CardView>(R.id.icono_editar)
+        icono_editar.visibility = View.GONE
 
         //Paso 5)
         return vista

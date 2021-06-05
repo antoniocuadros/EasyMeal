@@ -25,6 +25,7 @@ class SliderRecetasAdapter(var recetas:MutableList<Receta>,context: Context, act
         val imagen_receta_item = itemView.findViewById<ImageView>(R.id.imagen_receta_item)
         val nombre_receta_item =  itemView.findViewById<TextView>(R.id.nombre_receta_item)
         val icono_borrar = itemView.findViewById<CardView>(R.id.icono_borrar)
+        val icono_editar = itemView.findViewById<CardView>(R.id.icono_editar)
 
         init {
             icono_borrar.setOnClickListener {
@@ -37,6 +38,10 @@ class SliderRecetasAdapter(var recetas:MutableList<Receta>,context: Context, act
                 notifyDataSetChanged()
                 var indicador_num = it.rootView.findViewById<CircleIndicator3>(R.id.indicador_slider_mis_recetas)
                 indicador_num.createIndicators(recetas.size, adapterPosition+1)
+            }
+
+            icono_editar.setOnClickListener {
+                activity.fromPerfilToEditar(recetas[adapterPosition].id.toString())
             }
 
             itemView.setOnClickListener {
