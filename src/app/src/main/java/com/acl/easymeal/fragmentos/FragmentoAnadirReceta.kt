@@ -3,6 +3,7 @@ package com.acl.easymeal.fragmentos
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -20,6 +21,8 @@ import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
+import java.io.ByteArrayOutputStream
+import java.net.URI
 
 @Suppress("DEPRECATION")
 class FragmentoAnadirReceta : Fragment() {
@@ -223,14 +226,233 @@ class FragmentoAnadirReceta : Fragment() {
 
     /*
         Este método se encarga de procesar el formulario comprobando que no hay errores y en caso
-        de que no haya erres añadirá la receta a la base de datos. En caso contrario mostrará
+        de que no haya erres añadirá o editará la receta a la base de datos. En caso contrario mostrará
         un error para que el usuario corrija la situación.
      */
     private fun procesaFormulario(){
         if(argumentos.modo != null){ //Vamos a editar
             boton_anadir.visibility = View.GONE
             boton_editar.visibility = View.VISIBLE
+            var id = argumentos.idreceta
+            var db = obtenerBaseDatos(requireContext())
+            var receta = db.recetaDao.obtenerPorID(id.toString())
 
+            imagen_principal.setImageBitmap(receta.imagen)
+            input_titulo_receta.setText(receta.nombreReceta.toString())
+            input_descripcion.setText(receta.descripcion.toString())
+
+
+            //Introducimos los ingredientes
+            if(receta.num_ingredientes >= 1){
+                    layout_ingrediente_1.visibility = View.VISIBLE
+                    ingrediente1.setText(receta.ingrediente1.toString())
+                    cantidad_ingrediente1.setText(receta.cantidad_ingrediente1.toString())
+            }
+            if(receta.num_ingredientes >= 2){
+                    layout_ingrediente_2.visibility = View.VISIBLE
+                    ingrediente2.setText(receta.ingrediente2.toString())
+                    cantidad_ingrediente2.setText(receta.cantidad_ingrediente2.toString())
+            }
+            if(receta.num_ingredientes >=3){
+                    layout_ingrediente_3.visibility = View.VISIBLE
+                    ingrediente3.setText(receta.ingrediente3.toString())
+                    cantidad_ingrediente3.setText(receta.cantidad_ingrediente3.toString())
+            }
+            if(receta.num_ingredientes >= 4){
+                    layout_ingrediente_4.visibility = View.VISIBLE
+                    ingrediente4.setText(receta.ingrediente4.toString())
+                    cantidad_ingrediente4.setText(receta.cantidad_ingrediente4.toString())
+            }
+            if(receta.num_ingredientes >= 5){
+                    layout_ingrediente_5.visibility = View.VISIBLE
+                    ingrediente5.setText(receta.ingrediente5.toString())
+                    cantidad_ingrediente5.setText(receta.cantidad_ingrediente5.toString())
+            }
+            if(receta.num_ingredientes >= 6){
+                    layout_ingrediente_6.visibility = View.VISIBLE
+                    ingrediente6.setText(receta.ingrediente6.toString())
+                    cantidad_ingrediente6.setText(receta.cantidad_ingrediente6.toString())
+            }
+            if(receta.num_ingredientes >= 7){
+                    layout_ingrediente_7.visibility = View.VISIBLE
+                    ingrediente7.setText(receta.ingrediente7.toString())
+                    cantidad_ingrediente7.setText(receta.cantidad_ingrediente7.toString())
+            }
+            if(receta.num_ingredientes >= 8){
+                    layout_ingrediente_8.visibility = View.VISIBLE
+                    ingrediente8.setText(receta.ingrediente8.toString())
+                    cantidad_ingrediente8.setText(receta.cantidad_ingrediente8.toString())
+            }
+            if(receta.num_ingredientes >= 9){
+                    layout_ingrediente_9.visibility = View.VISIBLE
+                    ingrediente9.setText(receta.ingrediente9.toString())
+                    cantidad_ingrediente9.setText(receta.cantidad_ingrediente9.toString())
+            }
+            if(receta.num_ingredientes >= 10){
+                    layout_ingrediente_10.visibility = View.VISIBLE
+                    ingrediente10.setText(receta.ingrediente10.toString())
+                    cantidad_ingrediente10.setText(receta.cantidad_ingrediente10.toString())
+            }
+            if(receta.num_ingredientes >= 11){
+                    layout_ingrediente_11.visibility = View.VISIBLE
+                    ingrediente11.setText(receta.ingrediente11.toString())
+                    cantidad_ingrediente11.setText(receta.cantidad_ingrediente11.toString())
+            }
+            if(receta.num_ingredientes >= 12){
+                    layout_ingrediente_12.visibility = View.VISIBLE
+                    ingrediente12.setText(receta.ingrediente12.toString())
+                    cantidad_ingrediente12.setText(receta.cantidad_ingrediente12.toString())
+            }
+
+            //Introducimos los pasos
+            if(receta.num_pasos >= 1){
+                layout_paso_1.visibility = View.VISIBLE
+                paso_1.setText(receta.paso1.toString())
+            }
+            if(receta.num_pasos >= 2){
+                layout_paso_2.visibility = View.VISIBLE
+                paso_2.setText(receta.paso2.toString())
+            }
+            if(receta.num_pasos >= 3){
+                layout_paso_3.visibility = View.VISIBLE
+                paso_3.setText(receta.paso3.toString())
+            }
+            if(receta.num_pasos >= 4){
+                layout_paso_4.visibility = View.VISIBLE
+                paso_4.setText(receta.paso4.toString())
+            }
+            if(receta.num_pasos >= 5){
+                layout_paso_5.visibility = View.VISIBLE
+                paso_5.setText(receta.paso5.toString())
+            }
+            if(receta.num_pasos >= 6){
+                layout_paso_6.visibility = View.VISIBLE
+                paso_6.setText(receta.paso6.toString())
+            }
+            if(receta.num_pasos >= 7){
+                layout_paso_7.visibility = View.VISIBLE
+                paso_7.setText(receta.paso7.toString())
+            }
+            if(receta.num_pasos >= 8){
+                layout_paso_8.visibility = View.VISIBLE
+                paso_8.setText(receta.paso8.toString())
+            }
+            if(receta.num_pasos >= 9){
+                layout_paso_9.visibility = View.VISIBLE
+                paso_9.setText(receta.paso9.toString())
+            }
+            if(receta.num_pasos >= 10){
+                layout_paso_10.visibility = View.VISIBLE
+                paso_10.setText(receta.paso10.toString())
+            }
+            if(receta.num_pasos >= 11){
+                layout_paso_11.visibility = View.VISIBLE
+                paso_11.setText(receta.paso11.toString())
+            }
+            if(receta.num_pasos >= 12){
+                layout_paso_12.visibility = View.VISIBLE
+                paso_12.setText(receta.paso12.toString())
+            }
+            if(receta.num_pasos >= 13){
+                layout_paso_13.visibility = View.VISIBLE
+                paso_13.setText(receta.paso13.toString())
+            }
+            if(receta.num_pasos >= 14){
+                layout_paso_14.visibility = View.VISIBLE
+                paso_14.setText(receta.paso14.toString())
+            }
+            if(receta.num_pasos >= 15){
+                layout_paso_15.visibility = View.VISIBLE
+                paso_15.setText(receta.paso15.toString())
+            }
+            if(receta.num_pasos >= 16){
+                layout_paso_16.visibility = View.VISIBLE
+                paso_16.setText(receta.paso16.toString())
+            }
+            if(receta.num_pasos >= 17){
+                layout_paso_17.visibility = View.VISIBLE
+                paso_17.setText(receta.paso17.toString())
+            }
+            if(receta.num_pasos >= 18){
+                layout_paso_18.visibility = View.VISIBLE
+                paso_18.setText(receta.paso18.toString())
+            }
+            if(receta.num_pasos >= 19){
+                layout_paso_19.visibility = View.VISIBLE
+                paso_19.setText(receta.paso19.toString())
+            }
+            if(receta.num_pasos >= 20){
+                layout_paso_20.visibility = View.VISIBLE
+                paso_20.setText(receta.paso20.toString())
+            }
+
+            //Duracion
+            duracion.setText(receta.duracion.toString())
+
+            //Categoria
+            for(i in 0..(spiner_categoria.getAdapter().getCount()-1)){
+                if(spiner_categoria.getAdapter().getItem(i).toString().contains(receta.categoria.toString())){
+                    spiner_categoria.setSelection(i);
+                }
+            }
+
+            //Imagen
+            val stream = ByteArrayOutputStream()
+            receta.imagen.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            val archivo = MediaStore.Images.Media.insertImage(requireContext().contentResolver, receta.imagen, "", null)
+
+            imagen_seleccionada = Uri.parse(archivo.toString())
+
+            num_ingredientes = receta.num_ingredientes
+            num_pasos = receta.num_pasos
+
+
+
+            boton_editar.setOnClickListener {
+                var error_campo_vacio = compruebaCampos()
+                if(error_campo_vacio){
+                    error_anadir_receta.visibility = View.VISIBLE
+                    error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
+                }
+                else{ //la editamos
+                    var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
+                    db.recetaDao.actualiza(Receta(receta.id, input_titulo_receta.text.toString(), input_descripcion.text.toString(), "",imagen, spiner_categoria.selectedItem.toString(),
+                            ingrediente1.text.toString(), ingrediente2.text.toString(),
+                            ingrediente3.text.toString(), ingrediente4.text.toString(),
+                            ingrediente5.text.toString(), ingrediente6.text.toString(),
+                            ingrediente7.text.toString(), ingrediente8.text.toString(),
+                            ingrediente9.text.toString(), ingrediente10.text.toString(),
+                            ingrediente11.text.toString(), ingrediente12.text.toString(),
+                            cantidad_ingrediente1.text.toString(),
+                            cantidad_ingrediente2.text.toString(),
+                            cantidad_ingrediente3.text.toString(),
+                            cantidad_ingrediente4.text.toString(),
+                            cantidad_ingrediente5.text.toString(),
+                            cantidad_ingrediente6.text.toString(),
+                            cantidad_ingrediente7.text.toString(),
+                            cantidad_ingrediente8.text.toString(),
+                            cantidad_ingrediente9.text.toString(),
+                            cantidad_ingrediente10.text.toString(),
+                            cantidad_ingrediente11.text.toString(),
+                            cantidad_ingrediente12.text.toString(),
+                            duracion.text.toString().toInt(),
+                            paso_1.text.toString(), paso_2.text.toString(),
+                            paso_3.text.toString(), paso_4.text.toString(),
+                            paso_5.text.toString(), paso_6.text.toString(),
+                            paso_7.text.toString(), paso_8.text.toString(),
+                            paso_9.text.toString(), paso_10.text.toString(),
+                            paso_11.text.toString(), paso_12.text.toString(),
+                            paso_13.text.toString(), paso_14.text.toString(),
+                            paso_15.text.toString(), paso_16.text.toString(),
+                            paso_17.text.toString(), paso_18.text.toString(),
+                            paso_19.text.toString(), paso_20.text.toString(),
+                            obtenerUsuarioLogueado()[0].username,
+                            num_ingredientes,
+                            num_pasos
+                    ))
+                    (activity as MainActivity).fromAnadirRecetaToPerfil()
+                }
+            }
         }
         else{ //vamos a añadir
             boton_anadir.setOnClickListener {

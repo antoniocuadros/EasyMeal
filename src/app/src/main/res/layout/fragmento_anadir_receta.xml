@@ -76,15 +76,17 @@
                             />
 
                         <EditText
+                            android:includeFontPadding="true"
+                            android:padding="5dp"
                             android:id="@+id/input_titulo_receta"
                             android:layout_width="300dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="40dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/inputdecorado"
+                            android:background="@drawable/inputcuadrado"
                             android:gravity="center"
                             android:textColor="@color/white"
-                            android:inputType="text"
                             />
 
 
@@ -100,6 +102,8 @@
                             />
 
                         <EditText
+                            android:includeFontPadding="true"
+                            android:padding="5dp"
                             android:id="@+id/input_descripcion"
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
@@ -164,12 +168,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente1"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -186,12 +192,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente1"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -217,12 +225,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente2"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -239,12 +249,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente2"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -270,12 +282,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente3"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -292,12 +306,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente3"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -323,12 +339,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente4"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -344,12 +362,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente4"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -375,12 +395,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente5"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -397,12 +419,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente5"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -428,12 +452,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente6"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -450,12 +476,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente6"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -481,12 +509,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente7"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -503,12 +533,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente7"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -534,12 +566,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente8"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -556,12 +590,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente8"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -587,12 +623,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente9"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -609,12 +647,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente9"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -640,12 +680,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente10"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -662,12 +704,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente10"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -693,12 +737,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente11"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -715,12 +761,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente11"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -746,12 +794,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/ingrediente12"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -768,12 +818,14 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
+                                android:padding="5dp"
                                 android:id="@+id/cantidad_ingrediente12"
                                 android:layout_width="300dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/inputdecorado"
+                                android:background="@drawable/inputcuadrado"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:inputType="text"
@@ -822,6 +874,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_1"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -855,6 +908,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_2"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -888,6 +942,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_3"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -921,6 +976,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_4"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -954,6 +1010,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_5"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -987,6 +1044,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_6"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1020,6 +1078,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_7"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1053,6 +1112,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_8"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1086,6 +1146,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_9"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1119,6 +1180,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_10"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1152,6 +1214,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_11"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1185,6 +1248,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_12"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1218,6 +1282,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_13"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1250,6 +1315,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_14"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1282,6 +1348,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_15"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1314,6 +1381,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_16"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1346,6 +1414,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_17"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1378,6 +1447,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_18"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1410,6 +1480,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_19"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1442,6 +1513,7 @@
                                 android:textStyle="bold"
                                 />
                             <EditText
+                                android:includeFontPadding="true"
                                 android:id="@+id/paso_20"
                                 android:layout_width="300dp"
                                 android:layout_height="wrap_content"
@@ -1481,15 +1553,17 @@
                             />
 
                         <EditText
+                            android:includeFontPadding="true"
+                            android:padding="5dp"
                             android:id="@+id/duracion"
                             android:layout_width="300dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/inputdecorado"
+                            android:background="@drawable/inputcuadrado"
                             android:gravity="center"
                             android:textColor="@color/white"
-                            android:inputType="text"
+                            android:inputType="number"
 
                             />
                         <TextView

@@ -33,4 +33,7 @@ interface RecetaDao {
 
     @Delete
     fun elimina(receta:Receta)
+
+    @Update
+    fun actualiza(receta:Receta)
 }
