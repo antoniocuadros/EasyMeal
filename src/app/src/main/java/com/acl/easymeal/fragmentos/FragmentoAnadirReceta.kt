@@ -164,7 +164,7 @@ class FragmentoAnadirReceta : Fragment() {
         Este método se encarga de comprobar que todos los campos sean correctos y devolverá un Boolean
         que indicará si hay o no errores en el formulario.
      */
-    private fun compruebaCampos():Boolean{
+    private fun compruebaCampos(modo:String):Boolean{
         var titulo = input_titulo_receta.text.toString()
         var duracion_aprox = duracion.text.toString()
 
@@ -214,7 +214,7 @@ class FragmentoAnadirReceta : Fragment() {
         if(duracion_aprox == "") error_campo_vacio = true
 
         //Comprobamos la imagen principal
-        if(imagen_seleccionada == null) error_campo_vacio = true
+        if(imagen_seleccionada == null && modo != "editar") error_campo_vacio = true
 
         //Comprobamos descripción
         if(input_descripcion.text.toString() == "") error_campo_vacio = true
@@ -396,12 +396,7 @@ class FragmentoAnadirReceta : Fragment() {
                 }
             }
 
-            //Imagen
-            val stream = ByteArrayOutputStream()
-            receta.imagen.compress(Bitmap.CompressFormat.PNG, 100, stream)
-            val archivo = MediaStore.Images.Media.insertImage(requireContext().contentResolver, receta.imagen, "", null)
 
-            imagen_seleccionada = Uri.parse(archivo.toString())
 
             num_ingredientes = receta.num_ingredientes
             num_pasos = receta.num_pasos
@@ -409,13 +404,21 @@ class FragmentoAnadirReceta : Fragment() {
 
 
             boton_editar.setOnClickListener {
-                var error_campo_vacio = compruebaCampos()
+                //Imagen
+                var imagen:Bitmap
+                if(imagen_seleccionada != null){
+                    imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
+                }
+                else{
+                    imagen = receta.imagen
+                }
+
+                var error_campo_vacio = compruebaCampos("editar")
                 if(error_campo_vacio){
                     error_anadir_receta.visibility = View.VISIBLE
                     error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
                 }
                 else{ //la editamos
-                    var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
                     db.recetaDao.actualiza(Receta(receta.id, input_titulo_receta.text.toString(), input_descripcion.text.toString(), "",imagen, spiner_categoria.selectedItem.toString(),
                             ingrediente1.text.toString(), ingrediente2.text.toString(),
                             ingrediente3.text.toString(), ingrediente4.text.toString(),
@@ -456,7 +459,7 @@ class FragmentoAnadirReceta : Fragment() {
         }
         else{ //vamos a añadir
             boton_anadir.setOnClickListener {
-                var error_campo_vacio = compruebaCampos()
+                var error_campo_vacio = compruebaCampos("")
 
                 if(error_campo_vacio){
                     error_anadir_receta.visibility = View.VISIBLE
