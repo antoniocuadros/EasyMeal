@@ -2,24 +2,24 @@ package com.acl.easymeal.fragmentos
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.R
 import com.acl.easymeal.adapters.SliderIngredienteAdapter
 import com.acl.easymeal.adapters.SliderPasosAdapter
-import com.acl.easymeal.adapters.SliderRecetasAdapter
 import com.acl.easymeal.modelo.*
 import me.relex.circleindicator.CircleIndicator3
+import java.util.*
 
-class FragmentoDescripcionReceta : Fragment() {
+class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var imagen_receta_desc:ImageView
     private lateinit var titulo_receta_desc:TextView
     private lateinit var descripcionReceta:TextView
@@ -41,12 +41,15 @@ class FragmentoDescripcionReceta : Fragment() {
     private lateinit var estrellas_5:LinearLayout
     private lateinit var estrellas_vacias:LinearLayout
 
+    private lateinit var reproductor:TextToSpeech
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        reproductor = TextToSpeech(requireContext(), this)
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragmento_descripcion_receta, container, false)
 
@@ -62,7 +65,7 @@ class FragmentoDescripcionReceta : Fragment() {
         en caso contrario devolverá un usuario vacío.
      */
     private fun obtenerUsuarioLogueado():MutableList<Usuario>{
-        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
+        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes", 0)
         var user = sharedPreferences.getString("usuario", String())
 
         var db = obtenerBaseDatos(requireContext())
@@ -84,23 +87,23 @@ class FragmentoDescripcionReceta : Fragment() {
 
                 if(db.valoracionDao.obtenerPorNombreUsuario(user.username, argumentos.receta.toString()).isEmpty()){ //No hay valoraciones previas
                     estrella1.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 1, user.username))
+                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 1, user.username))
                         muestraValoracion()
                     }
                     estrella2.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 2, user.username))
+                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 2, user.username))
                         muestraValoracion()
                     }
                     estrella3.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 3, user.username))
+                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 3, user.username))
                         muestraValoracion()
                     }
                     estrella4.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 4, user.username))
+                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 4, user.username))
                         muestraValoracion()
                     }
                     estrella5.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0,argumentos.receta.toString(), 5, user.username))
+                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 5, user.username))
                         muestraValoracion()
                     }
                 }
@@ -132,7 +135,7 @@ class FragmentoDescripcionReceta : Fragment() {
         media = Math.floor(media_double).toInt()
 
         when(media){
-            1->{
+            1 -> {
                 estrellas_vacias.visibility = View.GONE
                 estrellas_1.visibility = View.VISIBLE
                 estrellas_2.visibility = View.GONE
@@ -140,7 +143,7 @@ class FragmentoDescripcionReceta : Fragment() {
                 estrellas_4.visibility = View.GONE
                 estrellas_5.visibility = View.GONE
             }
-            2->{
+            2 -> {
                 estrellas_vacias.visibility = View.GONE
                 estrellas_1.visibility = View.GONE
                 estrellas_2.visibility = View.VISIBLE
@@ -148,7 +151,7 @@ class FragmentoDescripcionReceta : Fragment() {
                 estrellas_4.visibility = View.GONE
                 estrellas_5.visibility = View.GONE
             }
-            3->{
+            3 -> {
                 estrellas_vacias.visibility = View.GONE
                 estrellas_1.visibility = View.GONE
                 estrellas_2.visibility = View.GONE
@@ -156,7 +159,7 @@ class FragmentoDescripcionReceta : Fragment() {
                 estrellas_4.visibility = View.GONE
                 estrellas_5.visibility = View.GONE
             }
-            4->{
+            4 -> {
                 estrellas_vacias.visibility = View.GONE
                 estrellas_1.visibility = View.GONE
                 estrellas_2.visibility = View.GONE
@@ -164,7 +167,7 @@ class FragmentoDescripcionReceta : Fragment() {
                 estrellas_4.visibility = View.VISIBLE
                 estrellas_5.visibility = View.GONE
             }
-            5->{
+            5 -> {
                 estrellas_vacias.visibility = View.GONE
                 estrellas_1.visibility = View.GONE
                 estrellas_2.visibility = View.GONE
@@ -208,7 +211,7 @@ class FragmentoDescripcionReceta : Fragment() {
     /*
      Este método se encarga de inicializar el slider de pasos dada una determinada receta.
      */
-    private fun establecePasos(receta:Receta){
+    private fun establecePasos(receta: Receta){
         var pasos = mutableListOf<String>()
 
         if(receta.paso1 != "") pasos.add(receta.paso1)
@@ -232,7 +235,7 @@ class FragmentoDescripcionReceta : Fragment() {
         if(receta.paso19 != "") pasos.add(receta.paso19)
         if(receta.paso20 != "") pasos.add(receta.paso20)
 
-        slider_pasos_desc.adapter = SliderPasosAdapter(pasos, requireContext())
+        slider_pasos_desc.adapter = SliderPasosAdapter(pasos, requireContext(), reproductor)
         slider_pasos_desc.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider_pasos.setViewPager(slider_pasos_desc)
@@ -241,7 +244,7 @@ class FragmentoDescripcionReceta : Fragment() {
     /*
     Este método se encarga de inicializar el slider de ingredientes dada una determinada receta.
      */
-    private fun estableceIngredientes(receta: Receta, db:DataBaseRecetas){
+    private fun estableceIngredientes(receta: Receta, db: DataBaseRecetas){
         //Slider Ingredientes
         var ingredientes = mutableListOf<Ingrediente>()
         var cantidades = mutableListOf<String>()
@@ -389,7 +392,7 @@ class FragmentoDescripcionReceta : Fragment() {
         Este método se encarga de vincular cada atributo de la clase de tipo vista con su correspondiente
         elemento del layout.
      */
-    private fun vinculaVistas(view:View){
+    private fun vinculaVistas(view: View){
         imagen_receta_desc = view.findViewById(R.id.imagen_receta_desc)
         titulo_receta_desc = view.findViewById(R.id.titulo_receta_desc)
         descripcionReceta = view.findViewById(R.id.descripcionReceta)
@@ -410,5 +413,17 @@ class FragmentoDescripcionReceta : Fragment() {
         estrellas_3 = view.findViewById(R.id.estrellas_3)
         estrellas_4 = view.findViewById(R.id.estrellas_4)
         estrellas_5 = view.findViewById(R.id.estrellas_5)
+    }
+
+    override fun onInit(status: Int) {
+        if(status == TextToSpeech.SUCCESS){
+            val spanish = Locale("es", "ES")
+            reproductor.setLanguage(spanish)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        reproductor.shutdown()
     }
 }
