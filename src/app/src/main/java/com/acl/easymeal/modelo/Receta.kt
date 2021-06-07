@@ -61,5 +61,6 @@ data class Receta(
     val idAutor:String,
     var num_ingredientes:Int,
     var num_pasos:Int,
-    var dificultad:String
+    var dificultad:String,
+    var thermomix:Boolean
 )

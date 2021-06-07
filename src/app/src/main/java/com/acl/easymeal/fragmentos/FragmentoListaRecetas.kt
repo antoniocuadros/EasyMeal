@@ -62,7 +62,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         tiempo = spiner_tiempo.selectedItem.toString()
         var db = obtenerBaseDatos(requireContext())
         var ingredientes_array = ingredientes.split(' ')
-        var recetas_devolver = mutableListOf<Receta>()
+        var recetas_devolver:MutableList<Receta>
 
         when(tiempo){
             "5-15 minutos"-> {
@@ -109,7 +109,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         dificultad = spiner_dificultad.selectedItem.toString()
         var db = obtenerBaseDatos(requireContext())
         var ingredientes_array = ingredientes.split(' ')
-        var recetas_devolver = mutableListOf<Receta>()
+        var recetas_devolver:MutableList<Receta>
 
         when(dificultad){
             "Fácil"-> {
@@ -161,9 +161,9 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
 
         if(tiempo != "Todas" && dificultad != "Todas" && categoria != "Todas") { //búsqueda por tiempo, dificultad, categoría
-            var recetas1:MutableList<Receta> = mutableListOf()
+            var recetas1:MutableList<Receta>
             var recetas2 = mutableListOf<Receta>()
-            var recetas4 = mutableListOf<Receta>()
+            var recetas4:MutableList<Receta>
 
             if(ingredientes == ""){
                 recetas1 = db.recetaDao.obtenerPorDificultad(dificultad)
@@ -434,7 +434,6 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         para mostrar la lista de recetas.
      */
     private fun inicializaListaRecetas(){
-        var db = obtenerBaseDatos(requireContext())
 
         if(argumentos.Categoria != null) {
             categoria = argumentos.Categoria.toString()
@@ -459,7 +458,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        var recetas:MutableList<Receta> = mutableListOf()
+        var recetas:MutableList<Receta>
 
         ingredientes = newText.toString()
 

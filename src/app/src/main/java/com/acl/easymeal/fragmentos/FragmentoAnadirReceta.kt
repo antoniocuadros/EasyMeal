@@ -114,6 +114,8 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var error_anadir_receta:TextView
     private lateinit var boton_editar:MaterialButton
     private val argumentos: FragmentoAnadirRecetaArgs by navArgs()
+    private lateinit var check_thermomix:CheckBox
+    private lateinit var spiner_dificultad:Spinner
 
     private var imagen_seleccionada: Uri? = null
     private var num_ingredientes = 1
@@ -396,6 +398,16 @@ class FragmentoAnadirReceta : Fragment() {
                 }
             }
 
+            //Dificultad
+            for(i in 0..(spiner_dificultad.getAdapter().getCount()-1)){
+                if(spiner_dificultad.getAdapter().getItem(i).toString().contains(receta.dificultad.toString())){
+                    spiner_dificultad.setSelection(i);
+                }
+            }
+
+            //Thermomix
+            check_thermomix.isChecked = receta.thermomix
+
 
 
             num_ingredientes = receta.num_ingredientes
@@ -452,7 +464,8 @@ class FragmentoAnadirReceta : Fragment() {
                             obtenerUsuarioLogueado()[0].username,
                             num_ingredientes,
                             num_pasos,
-                            "Fácil"
+                            spiner_dificultad.selectedItem.toString(),
+                            check_thermomix.isChecked
                     ))
                     (activity as MainActivity).fromAnadirRecetaToPerfil()
                 }
@@ -504,7 +517,8 @@ class FragmentoAnadirReceta : Fragment() {
                             obtenerUsuarioLogueado()[0].username,
                             num_ingredientes,
                             num_pasos,
-                            "Fácil"
+                            spiner_dificultad.selectedItem.toString(),
+                            check_thermomix.isChecked
                     ))
                     (activity as MainActivity).fromAnadirRecetaToPerfil()
                 }
@@ -723,6 +737,9 @@ class FragmentoAnadirReceta : Fragment() {
 
         val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, categorias_texto)
         spiner_categoria.setAdapter(adapter)
+
+        val adapter2 = ArrayAdapter(requireContext(), R.layout.spinner_item, arrayListOf ("Fácil", "Media","Difícil"))
+        spiner_dificultad.setAdapter(adapter2)
     }
 
     /*
@@ -943,6 +960,8 @@ class FragmentoAnadirReceta : Fragment() {
         error_anadir_receta = view.findViewById(R.id.error_anadir_receta)
         input_descripcion = view.findViewById(R.id.input_descripcion)
         boton_editar = view.findViewById(R.id.boton_editar)
+        check_thermomix = view.findViewById(R.id.check_thermomix)
+        spiner_dificultad = view.findViewById(R.id.spiner_dificultad)
     }
 
 }

@@ -6,7 +6,10 @@ tools:context=".fragmentos.FragmentoCategorias"
 android:background="@color/black"
     >
 <GridView
-    android:layout_margin="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/cuadricula_categorias"

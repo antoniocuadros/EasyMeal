@@ -140,6 +140,30 @@
 
                             >
                         </Spinner>
+                        <TextView
+                            android:layout_marginTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Dificultad"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="7dp"
+                            />
+
+                        <Spinner
+                            android:padding="3dp"
+                            android:layout_width="300dp"
+                            android:layout_height="45dp"
+                            android:background="@drawable/inputcuadrado"
+                            android:id="@+id/spiner_dificultad"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:gravity="center"
+
+                            >
+                        </Spinner>
 
                         <TextView
                             android:layout_marginTop="10dp"
@@ -1567,6 +1591,36 @@
                             android:inputType="number"
 
                             />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+                            >
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:text="Thermomix"
+                                android:gravity="center"
+                                >
+                            </TextView>
+
+                            <CheckBox
+                                android:id="@+id/check_thermomix"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                >
+
+                            </CheckBox>
+                        </LinearLayout>
+
+
+
                         <TextView
                             android:visibility="gone"
                             android:id="@+id/error_anadir_receta"

@@ -19,17 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center"
+            android:layout_marginTop="5dp"
             >
 
             <ImageView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imagen_nivel_palabra"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/carnescat"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 />
 
             <TextView
@@ -41,7 +42,8 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:text="categoria"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 />
 
         </LinearLayout>

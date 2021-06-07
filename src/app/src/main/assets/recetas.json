@@ -52,7 +52,8 @@
     "idAutor": "admin",
     "num_ingredientes": "6",
     "num_pasos": "8",
-    "dificultad": "Media"
+    "dificultad": "Media",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Solomillo de cerdo con salsa de naranja",
@@ -107,7 +108,8 @@
     "idAutor": "admin",
     "num_ingredientes": "6",
     "num_pasos":"8",
-    "dificultad": "Difícil"
+    "dificultad": "Difícil",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Salmón a la plancha con limón y patatas alioli",
@@ -162,7 +164,8 @@
     "idAutor": "admin",
     "num_ingredientes": "6",
     "num_pasos":"6",
-    "dificultad": "Fácil"
+    "dificultad": "Fácil",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Calamares rellenos de cebolla caramelizada",
@@ -217,7 +220,8 @@
     "idAutor": "admin",
     "num_ingredientes": "5",
     "num_pasos":"10",
-    "dificultad": "Media"
+    "dificultad": "Media",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Pizza de higos y queso azul",
@@ -272,7 +276,8 @@
     "idAutor": "admin",
     "num_ingredientes": "11",
     "num_pasos":"12",
-    "dificultad": "Fácil"
+    "dificultad": "Fácil",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Pizza barbacoa",
@@ -327,7 +332,8 @@
     "idAutor": "admin",
     "num_ingredientes": "8",
     "num_pasos":"10",
-    "dificultad": "Fácil"
+    "dificultad": "Fácil",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Snacks de boniato",
@@ -382,7 +388,8 @@
     "idAutor": "admin",
     "num_ingredientes": "6",
     "num_pasos":"7",
-    "dificultad": "Fácil"
+    "dificultad": "Fácil",
+    "thermomix": "false"
   },
   {
     "nombreReceta": "Croquetas de coliflor",
@@ -437,6 +444,7 @@
     "idAutor": "admin",
     "num_ingredientes": "7",
     "num_pasos":"6",
-    "dificultad": "Fácil"
+    "dificultad": "Fácil",
+    "thermomix": "false"
   }
 ]
