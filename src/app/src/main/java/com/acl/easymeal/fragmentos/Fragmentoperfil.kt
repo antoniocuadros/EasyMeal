@@ -19,6 +19,7 @@ import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,7 +34,7 @@ class Fragmentoperfil : Fragment() {
     private lateinit var perfil:RelativeLayout
     private lateinit var imagen_usuario:ImageView
     private lateinit var nombre_usuario:TextView
-    private lateinit var boton_anadir_receta: CardView
+    private lateinit var boton_anadir_receta: FloatingActionButton
     private lateinit var boton_cerrar_sesion:MaterialButton
     private lateinit var mis_recetas_text:TextView
 
