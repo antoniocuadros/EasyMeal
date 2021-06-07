@@ -1,30 +1,23 @@
 package com.acl.easymeal.fragmentos
 
 import android.content.SharedPreferences
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.Editable
-import android.text.method.TextKeyListener.clear
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.cardview.widget.CardView
-import androidx.viewpager2.widget.ViewPager2
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
-import com.acl.easymeal.adapters.SliderRecetasAdapter
+import com.acl.easymeal.adapters.listaRecetasAdapter
 import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import me.relex.circleindicator.CircleIndicator3
-import java.util.*
-import kotlin.collections.ArrayList
 
 class Fragmentoperfil : Fragment() {
+    lateinit var adapter:listaRecetasAdapter
     private lateinit var login: RelativeLayout
     private lateinit var boton_registrar: MaterialButton
     private lateinit var input_usuario:EditText
@@ -38,8 +31,8 @@ class Fragmentoperfil : Fragment() {
     private lateinit var boton_cerrar_sesion:MaterialButton
     private lateinit var mis_recetas_text:TextView
 
-    private lateinit var slider_mis_recetas: ViewPager2
-    private lateinit var indicador_slider_mis_recetas: CircleIndicator3
+    private lateinit var cuadricula_recetas_perfil:GridView
+
     private lateinit var mis_recetas:MutableList<Receta>
 
 
@@ -75,14 +68,20 @@ class Fragmentoperfil : Fragment() {
 
         //Si no hay imágenes no dejamos el hueco vacío, lo eliminamos
         if(mis_recetas.size == 0){
-            slider_mis_recetas.visibility = View.GONE
-            indicador_slider_mis_recetas.visibility = View.GONE
+            cuadricula_recetas_perfil.visibility = View.GONE
             mis_recetas_text.visibility = View.GONE
         }
-        slider_mis_recetas.adapter = SliderRecetasAdapter(mis_recetas, requireContext(), requireActivity() as MainActivity, 1)
-        slider_mis_recetas.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        indicador_slider_mis_recetas.setViewPager(slider_mis_recetas)
+        cuadricula_recetas_perfil
+        adapter = listaRecetasAdapter(mis_recetas, requireContext())
+        cuadricula_recetas_perfil.adapter = adapter
+
+
+        cuadricula_recetas_perfil.setOnItemClickListener{cuadricula_recetas, _, i,_ ->
+            var receta = cuadricula_recetas.getItemAtPosition(i) as Receta
+            (activity as MainActivity).fromPerfilToMostrarReceta(receta.id.toString())
+        }
+
     }
 
     /*
@@ -239,8 +238,7 @@ class Fragmentoperfil : Fragment() {
         imagen_usuario = view.findViewById(R.id.imagen_usuario)
         nombre_usuario = view.findViewById(R.id.nombre_usuario)
         boton_anadir_receta = view.findViewById(R.id.boton_anadir_receta)
-        slider_mis_recetas = view.findViewById(R.id.slider_mis_recetas)
-        indicador_slider_mis_recetas = view.findViewById(R.id.indicador_slider_mis_recetas)
+        cuadricula_recetas_perfil = view.findViewById(R.id.cuadricula_recetas_perfil)
         boton_cerrar_sesion = view.findViewById(R.id.boton_cerrar_sesion)
         mis_recetas_text = view.findViewById(R.id.mis_recetas_text)
     }

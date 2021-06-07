@@ -261,25 +261,21 @@
                             >
 
                         </TextView>
-                        <androidx.viewpager2.widget.ViewPager2
-                            android:layout_marginTop="10dp"
-                            android:layout_width="280dp"
-                            android:layout_height="240dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:id="@+id/slider_mis_recetas"
-                            android:layout_gravity="center"
-                            />
 
-                        <me.relex.circleindicator.CircleIndicator3
+                        <GridView
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"
                             android:layout_width="match_parent"
-                            android:gravity="center"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_gravity="center_vertical|center_horizontal"
-                            android:id="@+id/indicador_slider_mis_recetas"
-                            />
+                            android:layout_height="match_parent"
+                            android:id="@+id/cuadricula_recetas_perfil"
+                            android:horizontalSpacing="10dp"
+                            android:numColumns="auto_fit"
+                            android:verticalSpacing="10dp"
+                            >
+                        </GridView>
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
