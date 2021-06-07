@@ -42,10 +42,6 @@ class MainActivity : AppCompatActivity() {
         findNavController(R.id.fragment2).navigate(FragmentoCategoriasDirections.actionCategoriasMenuItemToRecetasMenuItem(categoria))
     }
 
-    public fun fromDuracionToRecetas(duracion:String){
-        findNavController(R.id.fragment2).navigate(FragmentoDuracionDirections.actionDuracionMenuItemToRecetasMenuItem(null, duracion))
-    }
-
     public fun fromRecetaToDetalles(idreceta: String){
         findNavController(R.id.fragment2).navigate(FragmentoListaRecetasDirections.actionRecetasMenuItemToFragmentoDescripcionReceta(idreceta))
     }

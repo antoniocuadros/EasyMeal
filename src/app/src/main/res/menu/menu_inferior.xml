@@ -13,11 +13,6 @@
         android:title="Categorías"/>
 
     <item
-        android:id="@+id/duracion_menu_item"
-        android:icon="@drawable/duracion"
-        android:title="Duración"/>
-
-    <item
         android:id="@+id/perfil_menu_item"
         android:icon="@drawable/perfil"
         android:title="Perfil"/>

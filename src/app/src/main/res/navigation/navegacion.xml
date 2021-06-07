@@ -71,15 +71,6 @@
             app:destination="@id/perfil_menu_item" />
     </fragment>
     <fragment
-        android:id="@+id/duracion_menu_item"
-        android:name="com.acl.easymeal.fragmentos.FragmentoDuracion"
-        android:label="fragmento_duracion"
-        tools:layout="@layout/fragmento_duracion" >
-        <action
-            android:id="@+id/action_duracion_menu_item_to_recetas_menu_item"
-            app:destination="@id/recetas_menu_item" />
-    </fragment>
-    <fragment
         android:id="@+id/fragmentoAnadirReceta"
         android:name="com.acl.easymeal.fragmentos.FragmentoAnadirReceta"
         android:label="fragmento_anadir_receta"
