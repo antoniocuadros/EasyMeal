@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
+import com.acl.easymeal.modelo.obtenerBaseDatos
 
 class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Context, modo:String, activity: MainActivity): BaseAdapter(){
     private var modo = modo
@@ -42,6 +43,11 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
         }
         else{
             icono_borrar.setOnClickListener {
+                var db = obtenerBaseDatos(context)
+                db.recetaDao.elimina(this.listaRecetas[position])
+
+                this.listaRecetas.removeAt(position)
+                notifyDataSetChanged()
             }
 
             icono_editar.setOnClickListener {

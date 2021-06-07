@@ -24,7 +24,7 @@ import com.google.android.material.button.MaterialButton
 
 @Suppress("DEPRECATION")
 class FragmentoRegister : Fragment() {
-    private lateinit var boton_redirect_login:MaterialButton
+    private lateinit var boton_redirect_login:ImageButton
     private lateinit var input_usuario_register:EditText
     private lateinit var input_contraseña_register:EditText
     private lateinit var input_contraseña_register_repeat:EditText

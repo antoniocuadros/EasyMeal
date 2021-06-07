@@ -1,12 +1,14 @@
 package com.acl.easymeal.fragmentos
 
 import android.content.SharedPreferences
+import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.cardview.widget.CardView
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.adapters.listaRecetasAdapter
@@ -19,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class Fragmentoperfil : Fragment() {
     lateinit var adapter:listaRecetasAdapter
     private lateinit var login: RelativeLayout
-    private lateinit var boton_registrar: MaterialButton
+    private lateinit var boton_registrar: ImageButton
     private lateinit var input_usuario:EditText
     private lateinit var input_contraseña:EditText
     private lateinit var error_login:TextView
@@ -28,7 +30,7 @@ class Fragmentoperfil : Fragment() {
     private lateinit var imagen_usuario:ImageView
     private lateinit var nombre_usuario:TextView
     private lateinit var boton_anadir_receta: FloatingActionButton
-    private lateinit var boton_cerrar_sesion:MaterialButton
+    private lateinit var boton_cerrar_sesion:ImageButton
     private lateinit var mis_recetas_text:TextView
 
     private lateinit var cuadricula_recetas_perfil:GridView
@@ -142,6 +144,7 @@ class Fragmentoperfil : Fragment() {
      */
     private fun defineComportamientoCerrarSesión(){
         boton_cerrar_sesion.setOnClickListener {
+            Toast.makeText(requireContext(), "asdasdsa", Toast.LENGTH_SHORT).show()
             var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
             val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
             sharedPreferencesEditor.clear()
