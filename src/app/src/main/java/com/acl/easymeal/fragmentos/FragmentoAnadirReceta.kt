@@ -451,7 +451,8 @@ class FragmentoAnadirReceta : Fragment() {
                             paso_19.text.toString(), paso_20.text.toString(),
                             obtenerUsuarioLogueado()[0].username,
                             num_ingredientes,
-                            num_pasos
+                            num_pasos,
+                            "Fácil"
                     ))
                     (activity as MainActivity).fromAnadirRecetaToPerfil()
                 }
@@ -502,7 +503,8 @@ class FragmentoAnadirReceta : Fragment() {
                             paso_19.text.toString(), paso_20.text.toString(),
                             obtenerUsuarioLogueado()[0].username,
                             num_ingredientes,
-                            num_pasos
+                            num_pasos,
+                            "Fácil"
                     ))
                     (activity as MainActivity).fromAnadirRecetaToPerfil()
                 }

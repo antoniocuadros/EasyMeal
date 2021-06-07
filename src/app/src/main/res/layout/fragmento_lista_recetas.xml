@@ -13,15 +13,91 @@
         android:id="@+id/barra_busqueda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         app:queryHint="Búsqueda por ingrediente"
         app:iconifiedByDefault="false"
         android:inputType="text"
         >
-
     </androidx.appcompat.widget.SearchView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Tiempo"
+                android:gravity="center"
+                >
+            </TextView>
+
+            <Spinner
+                android:layout_margin="5dp"
+                android:padding="3dp"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:background="@drawable/inputcuadrado"
+                android:id="@+id/spiner_tiempo"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Carnes"
+                android:gravity="center"
+                >
+            </Spinner>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Dificultad"
+                android:gravity="center"
+                >
+            </TextView>
+
+            <Spinner
+                android:padding="3dp"
+                android:layout_margin="5dp"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:background="@drawable/inputcuadrado"
+                android:id="@+id/spiner_dificultad"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Carnes"
+                android:gravity="center"
+                >
+            </Spinner>
+        </LinearLayout>
+    </LinearLayout>
+
+
     <GridView
-        android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/cuadricula_recetas"

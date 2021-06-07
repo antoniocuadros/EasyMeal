@@ -60,5 +60,6 @@ data class Receta(
     val paso20:String,
     val idAutor:String,
     var num_ingredientes:Int,
-    var num_pasos:Int
+    var num_pasos:Int,
+    var dificultad:String
 )

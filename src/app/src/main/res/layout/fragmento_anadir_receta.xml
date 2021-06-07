@@ -128,9 +128,10 @@
                             />
 
                         <Spinner
+                            android:padding="3dp"
                             android:layout_width="300dp"
                             android:layout_height="45dp"
-                            android:background="@drawable/inputdecorado"
+                            android:background="@drawable/inputcuadrado"
                             android:id="@+id/spiner_categoria"
                             android:textColor="@color/white"
                             android:textSize="20dp"

@@ -51,7 +51,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "6",
-    "num_pasos": "8"
+    "num_pasos": "8",
+    "dificultad": "Media"
   },
   {
     "nombreReceta": "Solomillo de cerdo con salsa de naranja",
@@ -105,7 +106,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "6",
-    "num_pasos":"8"
+    "num_pasos":"8",
+    "dificultad": "Difícil"
   },
   {
     "nombreReceta": "Salmón a la plancha con limón y patatas alioli",
@@ -159,7 +161,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "6",
-    "num_pasos":"6"
+    "num_pasos":"6",
+    "dificultad": "Fácil"
   },
   {
     "nombreReceta": "Calamares rellenos de cebolla caramelizada",
@@ -213,7 +216,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "5",
-    "num_pasos":"10"
+    "num_pasos":"10",
+    "dificultad": "Media"
   },
   {
     "nombreReceta": "Pizza de higos y queso azul",
@@ -267,7 +271,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "11",
-    "num_pasos":"12"
+    "num_pasos":"12",
+    "dificultad": "Fácil"
   },
   {
     "nombreReceta": "Pizza barbacoa",
@@ -321,7 +326,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "8",
-    "num_pasos":"10"
+    "num_pasos":"10",
+    "dificultad": "Fácil"
   },
   {
     "nombreReceta": "Snacks de boniato",
@@ -375,7 +381,8 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "6",
-    "num_pasos":"7"
+    "num_pasos":"7",
+    "dificultad": "Fácil"
   },
   {
     "nombreReceta": "Croquetas de coliflor",
@@ -429,6 +436,7 @@
     "paso20": "",
     "idAutor": "admin",
     "num_ingredientes": "7",
-    "num_pasos":"6"
+    "num_pasos":"6",
+    "dificultad": "Fácil"
   }
 ]
