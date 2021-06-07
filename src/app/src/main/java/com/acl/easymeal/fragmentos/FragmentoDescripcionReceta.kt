@@ -3,12 +3,11 @@ package com.acl.easymeal.fragmentos
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -18,6 +17,7 @@ import com.acl.easymeal.adapters.SliderPasosAdapter
 import com.acl.easymeal.modelo.*
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
+
 
 class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var imagen_receta_desc:ImageView
@@ -40,6 +40,11 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var estrellas_4:LinearLayout
     private lateinit var estrellas_5:LinearLayout
     private lateinit var estrellas_vacias:LinearLayout
+    private lateinit var boton_mostrar_pasos: ImageButton
+    private lateinit var boton_mostrar_ingredientes:ImageButton
+    private lateinit var layout_ingredientes:LinearLayout
+    private lateinit var layout_pasos:LinearLayout
+    private lateinit var layoutTotal:LinearLayout
 
     private lateinit var reproductor:TextToSpeech
 
@@ -49,7 +54,11 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragmento_descripcion_receta, container, false)
 
@@ -65,7 +74,10 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
         en caso contrario devolverá un usuario vacío.
      */
     private fun obtenerUsuarioLogueado():MutableList<Usuario>{
-        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes", 0)
+        var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences(
+            "ajustes",
+            0
+        )
         var user = sharedPreferences.getString("usuario", String())
 
         var db = obtenerBaseDatos(requireContext())
@@ -85,25 +97,63 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
             if(!obtenerUsuarioLogueado().isEmpty()){ //Hay un usuario logueado
                 user = obtenerUsuarioLogueado()[0]
 
-                if(db.valoracionDao.obtenerPorNombreUsuario(user.username, argumentos.receta.toString()).isEmpty()){ //No hay valoraciones previas
+                if(db.valoracionDao.obtenerPorNombreUsuario(
+                        user.username,
+                        argumentos.receta.toString()
+                    ).isEmpty()){ //No hay valoraciones previas
                     estrella1.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 1, user.username))
+                        db.valoracionDao.insertaUna(
+                            Valoracion(
+                                0,
+                                argumentos.receta.toString(),
+                                1,
+                                user.username
+                            )
+                        )
                         muestraValoracion()
                     }
                     estrella2.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 2, user.username))
+                        db.valoracionDao.insertaUna(
+                            Valoracion(
+                                0,
+                                argumentos.receta.toString(),
+                                2,
+                                user.username
+                            )
+                        )
                         muestraValoracion()
                     }
                     estrella3.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 3, user.username))
+                        db.valoracionDao.insertaUna(
+                            Valoracion(
+                                0,
+                                argumentos.receta.toString(),
+                                3,
+                                user.username
+                            )
+                        )
                         muestraValoracion()
                     }
                     estrella4.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 4, user.username))
+                        db.valoracionDao.insertaUna(
+                            Valoracion(
+                                0,
+                                argumentos.receta.toString(),
+                                4,
+                                user.username
+                            )
+                        )
                         muestraValoracion()
                     }
                     estrella5.setOnClickListener {
-                        db.valoracionDao.insertaUna(Valoracion(0, argumentos.receta.toString(), 5, user.username))
+                        db.valoracionDao.insertaUna(
+                            Valoracion(
+                                0,
+                                argumentos.receta.toString(),
+                                5,
+                                user.username
+                            )
+                        )
                         muestraValoracion()
                     }
                 }
@@ -202,6 +252,39 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
         estableceIngredientes(receta, db)
 
         establecePasos(receta)
+
+        boton_mostrar_pasos.setOnClickListener {
+            if(layout_pasos.visibility == View.GONE){
+                layout_pasos.visibility = View.VISIBLE
+
+                val ly = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                ly.gravity = Gravity.TOP
+                layoutTotal.setLayoutParams(ly)
+            }
+            else{
+                val ly = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                ly.gravity = Gravity.CENTER
+                layoutTotal.setLayoutParams(ly)
+                layout_pasos.visibility = View.GONE
+            }
+        }
+
+        boton_mostrar_ingredientes.setOnClickListener {
+            if(layout_ingredientes.visibility == View.GONE){
+                layout_ingredientes.visibility = View.VISIBLE
+
+                val ly = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                ly.gravity = Gravity.TOP
+                layoutTotal.setLayoutParams(ly)
+
+            }
+            else{
+                val ly = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                ly.gravity = Gravity.CENTER
+                layoutTotal.setLayoutParams(ly)
+                layout_ingredientes.visibility = View.GONE
+            }
+        }
 
         defineComportamientoBotonesPuntuacion()
 
@@ -382,7 +465,11 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
             cantidades.add(receta.cantidad_ingrediente12)
         }
 
-        slider_ingredientes_desc.adapter = SliderIngredienteAdapter(ingredientes, cantidades, requireContext())
+        slider_ingredientes_desc.adapter = SliderIngredienteAdapter(
+            ingredientes,
+            cantidades,
+            requireContext()
+        )
         slider_ingredientes_desc.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider_ingredientes.setViewPager(slider_ingredientes_desc)
@@ -413,6 +500,12 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
         estrellas_3 = view.findViewById(R.id.estrellas_3)
         estrellas_4 = view.findViewById(R.id.estrellas_4)
         estrellas_5 = view.findViewById(R.id.estrellas_5)
+
+        boton_mostrar_pasos = view.findViewById(R.id.boton_mostrar_pasos)
+        boton_mostrar_ingredientes = view.findViewById(R.id.boton_mostrar_ingredientes)
+        layout_ingredientes = view.findViewById(R.id.layout_ingredientes)
+        layout_pasos = view.findViewById(R.id.layout_pasos)
+        layoutTotal = view.findViewById(R.id.layoutTotal)
     }
 
     override fun onInit(status: Int) {
