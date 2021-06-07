@@ -1,10 +1,15 @@
 package com.acl.easymeal.fragmentos
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentValues
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
@@ -12,8 +17,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.navigation.fragment.navArgs
 import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
@@ -21,6 +28,7 @@ import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
+import com.vansuita.pickimage.bundle.PickSetup
 import java.io.ByteArrayOutputStream
 import java.net.URI
 
@@ -117,7 +125,7 @@ class FragmentoAnadirReceta : Fragment() {
     private lateinit var check_thermomix:CheckBox
     private lateinit var spiner_dificultad:Spinner
 
-    private var imagen_seleccionada: Uri? = null
+    private var imagen_seleccionada: Bitmap? = null
     private var num_ingredientes = 1
     private var num_pasos = 1
 
@@ -156,9 +164,16 @@ class FragmentoAnadirReceta : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == 100 && resultCode == Activity.RESULT_OK){
-            imagen_seleccionada = data!!.data!!
-            imagen_principal.setImageURI(imagen_seleccionada)
+            var imagen_seleccionada2 = data!!.data!!
+            imagen_seleccionada =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_principal.setImageBitmap(imagen_seleccionada)
 
+        }
+        else{
+            if(requestCode == 111 && resultCode == Activity.RESULT_OK){
+                imagen_seleccionada = data!!.extras?.get("data") as Bitmap
+                imagen_principal.setImageBitmap(imagen_seleccionada)
+            }
         }
     }
 
@@ -419,7 +434,7 @@ class FragmentoAnadirReceta : Fragment() {
                 //Imagen
                 var imagen:Bitmap
                 if(imagen_seleccionada != null){
-                    imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
+                    imagen = imagen_seleccionada as Bitmap
                 }
                 else{
                     imagen = receta.imagen
@@ -480,11 +495,12 @@ class FragmentoAnadirReceta : Fragment() {
                     error_anadir_receta.text = "Debe rellenar todos los campos seleccionados"
                 }
                 else{
-                    var imagen = MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada)
+                    var imagen = imagen_seleccionada
 
                     var db = obtenerBaseDatos(requireContext())
 
-                    db.recetaDao.insertaUna(Receta(0, input_titulo_receta.text.toString(), input_descripcion.text.toString(), "",imagen, spiner_categoria.selectedItem.toString(),
+                    db.recetaDao.insertaUna(Receta(0, input_titulo_receta.text.toString(), input_descripcion.text.toString(), "",
+                        imagen!!, spiner_categoria.selectedItem.toString(),
                             ingrediente1.text.toString(), ingrediente2.text.toString(),
                             ingrediente3.text.toString(), ingrediente4.text.toString(),
                             ingrediente5.text.toString(), ingrediente6.text.toString(),
@@ -540,15 +556,57 @@ class FragmentoAnadirReceta : Fragment() {
 
         return user_db
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if(requestCode == 101){//permiso de la cámara
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                val lanzador_camara = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(lanzador_camara, 111)
+            }
+        }
+    }
+
     /*
         Este método se encarga de definir el intent que abrirá la galería así como el código utilizado
         para capturar la respuesta.
      */
     private fun anadirImagenPrincipal(){
         boton_seleccion_imagen.setOnClickListener {
-            var lanzador_seleccion = Intent(Intent.ACTION_PICK)
-            lanzador_seleccion.type = "image/*"
-            startActivityForResult(lanzador_seleccion, 100)
+
+            var builder:AlertDialog.Builder = AlertDialog.Builder(requireContext());
+            builder.setTitle("Elija desde donde obtener la imagen")
+
+
+            builder.setPositiveButton("Galería"){dialogo, _ ->
+                dialogo.dismiss()
+
+                var lanzador_seleccion = Intent(Intent.ACTION_PICK)
+                lanzador_seleccion.type = "image/*"
+                startActivityForResult(lanzador_seleccion, 100)
+            }
+            builder.setNegativeButton("Cámara"){dialogo, _ ->
+                dialogo.dismiss()
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
+                        || checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                        var permisos = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        requestPermissions(permisos, 101)
+                    }
+                    else{
+                        val lanzador_camara = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(lanzador_camara, 111)
+                    }
+                }
+                else{
+                    val lanzador_camara = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(lanzador_camara, 111)
+                }
+            }
+
+            var dialogo = builder.create()
+            dialogo.show()
         }
     }
 
