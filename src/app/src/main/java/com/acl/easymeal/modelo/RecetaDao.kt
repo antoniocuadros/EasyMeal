@@ -37,6 +37,9 @@ interface RecetaDao {
     @Query("SELECT * FROM Recetas WHERE (ingrediente1 IN(:buscar) or ingrediente2 IN(:buscar) or ingrediente3 IN(:buscar) or ingrediente4 IN(:buscar) or ingrediente5 IN(:buscar) or ingrediente6 IN(:buscar)) and (dificultad= :dif)")
     fun obtenerPorIngredienteDificultad(buscar:List<String>, dif:String):MutableList<Receta>
 
+    @Query("SELECT * FROM Recetas WHERE (ingrediente1 IN(:buscar) or ingrediente2 IN(:buscar) or ingrediente3 IN(:buscar) or ingrediente4 IN(:buscar) or ingrediente5 IN(:buscar) or ingrediente6 IN(:buscar)) and (categoria= :cat)")
+    fun obtenerPorCategoríaIngrediente(buscar:List<String>, cat:String):MutableList<Receta>
+
     @Query("SELECT * FROM Recetas WHERE (dificultad= :dif)")
     fun obtenerPorDificultad(dif:String):MutableList<Receta>
 

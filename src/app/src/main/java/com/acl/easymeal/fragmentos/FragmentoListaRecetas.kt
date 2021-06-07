@@ -62,42 +62,43 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         tiempo = spiner_tiempo.selectedItem.toString()
         var db = obtenerBaseDatos(requireContext())
         var ingredientes_array = ingredientes.split(' ')
+        var recetas_devolver = mutableListOf<Receta>()
 
         when(tiempo){
             "5-15 minutos"-> {
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 0, 15)
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 0, 15)
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorTiempo(0, 15)
+                    recetas_devolver = db.recetaDao.obtenerPorTiempo(0, 15)
                 }
             }
             "15-60 minutos"->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 16, 60)
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 16, 60)
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorTiempo(16, 60)
+                    recetas_devolver = db.recetaDao.obtenerPorTiempo(16, 60)
                 }
             }
             "+60 minutos"->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 61, 600)
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteTiempo(ingredientes_array, 61, 600)
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorTiempo(61, 600)
+                    recetas_devolver = db.recetaDao.obtenerPorTiempo(61, 600)
                 }
             }
             else->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngrediente(ingredientes.split(" "))
+                    recetas_devolver = db.recetaDao.obtenerPorIngrediente(ingredientes.split(" "))
                 }
                 else{
-                    recetas = db.recetaDao.obtenerTodas()
+                    recetas_devolver = db.recetaDao.obtenerTodas()
                 }
             }
         }
-        return recetas
+        return recetas_devolver
 
     }
 
@@ -108,43 +109,43 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         dificultad = spiner_dificultad.selectedItem.toString()
         var db = obtenerBaseDatos(requireContext())
         var ingredientes_array = ingredientes.split(' ')
-
+        var recetas_devolver = mutableListOf<Receta>()
 
         when(dificultad){
             "Fácil"-> {
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Fácil")
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Fácil")
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorDificultad("Fácil")
+                    recetas_devolver = db.recetaDao.obtenerPorDificultad("Fácil")
                 }
             }
             "Media"->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Media")
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Media")
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorDificultad("Media")
+                    recetas_devolver = db.recetaDao.obtenerPorDificultad("Media")
                 }
             }
             "Difícil"->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Difícil")
+                    recetas_devolver = db.recetaDao.obtenerPorIngredienteDificultad(ingredientes_array, "Difícil")
                 }
                 else{
-                    recetas = db.recetaDao.obtenerPorDificultad("Difícil")
+                    recetas_devolver = db.recetaDao.obtenerPorDificultad("Difícil")
                 }
             }
             else->{
                 if(ingredientes != ""){
-                    recetas = db.recetaDao.obtenerPorIngrediente(ingredientes.split(" "))
+                    recetas_devolver = db.recetaDao.obtenerPorIngrediente(ingredientes.split(" "))
                 }
                 else{
-                    recetas = db.recetaDao.obtenerTodas()
+                    recetas_devolver = db.recetaDao.obtenerTodas()
                 }
             }
         }
-        return recetas
+        return recetas_devolver
 
     }
 
@@ -158,11 +159,14 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         dificultad = spiner_dificultad.selectedItem.toString()
         categoria = spiner_categoria.selectedItem.toString()
 
-        if(ingredientes == ""){ //No hay ingredientes en la búsqueda
-            if(tiempo != "Todas" && dificultad != "Todas" && categoria != "Todas") { //búsqueda por tiempo, dificultad, categoría
-                var recetas1 = db.recetaDao.obtenerPorDificultad(dificultad)
 
-                var recetas2 = mutableListOf<Receta>()
+        if(tiempo != "Todas" && dificultad != "Todas" && categoria != "Todas") { //búsqueda por tiempo, dificultad, categoría
+            var recetas1:MutableList<Receta> = mutableListOf()
+            var recetas2 = mutableListOf<Receta>()
+            var recetas4 = mutableListOf<Receta>()
+
+            if(ingredientes == ""){
+                recetas1 = db.recetaDao.obtenerPorDificultad(dificultad)
 
                 when(tiempo){
                     "5-15 minutos"-> {
@@ -176,26 +180,31 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
                         recetas2 = db.recetaDao.obtenerPorTiempo(61, 600)
                     }
                 }
+                recetas4 = db.recetaDao.obtenerPorCategoría(categoria)
+            }
+            else{
+                recetas1 = busquedaDificultad()
+                recetas2 = busquedaTiempo()
+                recetas4 = db.recetaDao.obtenerPorCategoríaIngrediente(ingredientes.split(" "), categoria)
+            }
 
+            var recetas3 = mutableListOf<Receta>()
 
-                var recetas4 = db.recetaDao.obtenerPorCategoría(categoria)
-
-                var recetas3 = mutableListOf<Receta>()
-
-                for(i in recetas1){
-                    for(j in recetas2){
-                        for(k in recetas4) {
-                            if (i.id == j.id && j.id == k.id) {
-                                recetas3.add(i)
-                            }
+            for(i in recetas1){
+                for(j in recetas2){
+                    for(k in recetas4) {
+                        if (i.id == j.id && j.id == k.id) {
+                            recetas3.add(i)
                         }
                     }
                 }
-                recetas = recetas3
             }
-            else{ //busqueda por alguno de los campos como son tiempo, dificultad o categoría
-                //########################################################
-                if(tiempo != "Todas" && dificultad == "Todas" && categoria == "Todas"){ //busqueda tiempo
+            recetas = recetas3
+        }
+        else{ //busqueda por alguno de los campos como son tiempo, dificultad o categoría
+            //########################################################
+            if(tiempo != "Todas" && dificultad == "Todas" && categoria == "Todas"){ //busqueda tiempo
+                if(ingredientes == ""){
                     when(tiempo){
                         "5-15 minutos"-> {
                             recetas = db.recetaDao.obtenerPorTiempo(0, 15)
@@ -209,21 +218,40 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
                         }
                     }
                 }
-                //########################################################
-                if(tiempo == "Todas" && dificultad != "Todas" && categoria == "Todas"){ //busqueda dificultad
+                else{
+                    recetas = busquedaTiempo()
+                }
+
+            }
+            //########################################################
+            if(tiempo == "Todas" && dificultad != "Todas" && categoria == "Todas"){ //busqueda dificultad
+                if(ingredientes == ""){
                     recetas = db.recetaDao.obtenerPorDificultad(dificultad)
                 }
+                else{
+                    recetas = busquedaDificultad()
+                }
 
-                //########################################################
-                if(tiempo == "Todas" && dificultad =="Todas" && categoria != "Todas"){ //busqueda categoria
+            }
+
+            //########################################################
+            if(tiempo == "Todas" && dificultad =="Todas" && categoria != "Todas"){ //busqueda categoria
+                if(ingredientes == ""){
                     recetas = db.recetaDao.obtenerPorCategoría(categoria)
                 }
+                else{
+                    recetas = db.recetaDao.obtenerPorCategoríaIngrediente(ingredientes.split(" "), categoria)
+                }
+            }
 
-                //########################################################
-                if(tiempo != "Todas" && dificultad !="Todas" && categoria == "Todas"){ //busqueda tiempo y dificultad
-                    var recetas1 = db.recetaDao.obtenerPorDificultad(dificultad)
+            //########################################################
+            if(tiempo != "Todas" && dificultad !="Todas" && categoria == "Todas"){ //busqueda tiempo y dificultad
+                var recetas1:MutableList<Receta>
+                var recetas2:MutableList<Receta>
 
-                    var recetas2 = mutableListOf<Receta>()
+                if(ingredientes == ""){
+                    recetas1 = db.recetaDao.obtenerPorDificultad(dificultad)
+                    recetas2 = mutableListOf<Receta>()
 
                     when(tiempo){
                         "5-15 minutos"-> {
@@ -237,103 +265,97 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
                             recetas2 = db.recetaDao.obtenerPorTiempo(61, 600)
                         }
                     }
-
-                    recetas.clear()
-                    for(i in recetas1){
-                        for(j in recetas2){
-                            if(i.id == j.id){
-                                recetas.add(i)
-                            }
-                        }
-                    }
                 }
-
-                //########################################################
-                if(tiempo != "Todas" && dificultad =="Todas" && categoria != "Todas") { //busqueda tiempo y categoria
-                    var recetas1 = db.recetaDao.obtenerPorCategoría(categoria)
-
-                    var recetas2 = mutableListOf<Receta>()
-
-                    when(tiempo){
-                        "5-15 minutos"-> {
-                            recetas2 = db.recetaDao.obtenerPorTiempo(0, 15)
-
-                        }
-                        "15-60 minutos"->{
-                            recetas2 = db.recetaDao.obtenerPorTiempo(16, 60)
-                        }
-                        "+60 minutos"->{
-                            recetas2 = db.recetaDao.obtenerPorTiempo(61, 600)
-                        }
-                    }
-
-                    recetas.clear()
-                    for(i in recetas1){
-                        for(j in recetas2){
-                            if(i.id == j.id){
-                                recetas.add(i)
-                            }
-                        }
-                    }
+                else{
+                    recetas1 = busquedaDificultad()
+                    recetas2 = busquedaTiempo()
                 }
-
-                //########################################################
-                if(tiempo == "Todas" && dificultad !="Todas" && categoria != "Todas") { //busqueda categoria y dificultad
-                    var recetas1 = db.recetaDao.obtenerPorCategoría(categoria)
-
-                    var recetas2 = db.recetaDao.obtenerPorDificultad(dificultad)
-
-
-                    recetas.clear()
-                    for(i in recetas1){
-                        for(j in recetas2){
-                            if(i.id == j.id){
-                                recetas.add(i)
-                            }
-                        }
-                    }
-                }
-
-                if(tiempo == "Todas" && dificultad =="Todas" && categoria == "Todas") //todas
-                    recetas = db.recetaDao.obtenerTodas()
-                }
-        }
-        else{  //Hay ingredientes en la búsqueda
-            var ingredientes_array = ingredientes.split(' ')
-
-            if(tiempo != "Todas" && dificultad != "Todas"){ //búsqueda por ingrediente, tiempo y dificultad
-                var recetas1 = busquedaTiempo()
-                var recetas2 = busquedaDificultad()
-                var recetas3 = mutableListOf<Receta>()
-
+                recetas.clear()
                 for(i in recetas1){
                     for(j in recetas2){
                         if(i.id == j.id){
-                            recetas3.add(i)
+                            recetas.add(i)
                         }
                     }
                 }
-                recetas = recetas3
-
-
             }
-            else{
-                if(tiempo != "Todas" && dificultad == "Todas"){ //busqueda por ingrediente y tiempo
-                    recetas = busquedaTiempo()
+
+            //########################################################
+            if(tiempo != "Todas" && dificultad =="Todas" && categoria != "Todas") { //busqueda tiempo y categoria
+                var recetas1:MutableList<Receta>
+                var recetas2:MutableList<Receta>
+
+                if(ingredientes == ""){
+                    recetas1 = db.recetaDao.obtenerPorCategoría(categoria)
+                    recetas2 = mutableListOf<Receta>()
+
+                    when(tiempo){
+                        "5-15 minutos"-> {
+                            recetas2 = db.recetaDao.obtenerPorTiempo(0, 15)
+
+                        }
+                        "15-60 minutos"->{
+                            recetas2 = db.recetaDao.obtenerPorTiempo(16, 60)
+                        }
+                        "+60 minutos"->{
+                            recetas2 = db.recetaDao.obtenerPorTiempo(61, 600)
+                        }
+                    }
                 }
                 else{
-                    if(tiempo == "Todas" && dificultad != "Todas"){
-                        recetas = busquedaDificultad()
-                    }
-                    else{
-                        recetas = db.recetaDao.obtenerPorIngrediente(ingredientes_array!!)
-                    }
+                    recetas1 = busquedaTiempo()
+                    recetas2 = db.recetaDao.obtenerPorCategoríaIngrediente(ingredientes.split(" "), categoria)
+                }
 
+
+                recetas.clear()
+                for(i in recetas1){
+                    for(j in recetas2){
+                        if(i.id == j.id){
+                            recetas.add(i)
+                        }
+                    }
+                }
+            }
+
+            //########################################################
+            if(tiempo == "Todas" && dificultad !="Todas" && categoria != "Todas") { //busqueda categoria y dificultad
+                var recetas1:MutableList<Receta>
+                var recetas2:MutableList<Receta>
+                if(ingredientes == ""){
+                    recetas1 = db.recetaDao.obtenerPorCategoría(categoria)
+                    recetas2 = db.recetaDao.obtenerPorDificultad(dificultad)
+                }
+                else{
+                    recetas1 = db.recetaDao.obtenerPorCategoríaIngrediente(ingredientes.split(" "), categoria)
+                    recetas2 = busquedaDificultad()
+                }
+
+
+
+                recetas.clear()
+                for(i in recetas1){
+                    for(j in recetas2){
+                        if(i.id == j.id){
+                            recetas.add(i)
+                        }
+                    }
+                }
+            }
+
+            if(tiempo == "Todas" && dificultad =="Todas" && categoria == "Todas") { //todas
+                if(ingredientes == ""){
+                    recetas = db.recetaDao.obtenerTodas()
+                }
+                else{
+                    recetas = db.recetaDao.obtenerPorIngrediente(ingredientes.split(" "))
                 }
             }
 
 
         }
+
+
         return recetas
     }
 
@@ -414,16 +436,17 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
     private fun inicializaListaRecetas(){
         var db = obtenerBaseDatos(requireContext())
 
-        if(argumentos.Categoria != null){
-            recetas = db.recetaDao.obtenerPorCategoría(argumentos.Categoria.toString())
+        if(argumentos.Categoria != null) {
+            categoria = argumentos.Categoria.toString()
+            //Categoria
+            for (i in 0..(spiner_categoria.getAdapter().getCount() - 1)) {
+                if (spiner_categoria.getAdapter().getItem(i).toString().contains(categoria)) {
+                    spiner_categoria.setSelection(i);
+                }
+            }
         }
-        else{
-            recetas = db.recetaDao.obtenerTodas()
 
-        }
-
-
-        adapter = listaRecetasAdapter(recetas, requireContext())
+        adapter = listaRecetasAdapter(busqueda(), requireContext())
         cuadricula_recetas.adapter = adapter
     }
 
