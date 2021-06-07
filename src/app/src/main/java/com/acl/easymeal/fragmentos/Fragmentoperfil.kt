@@ -73,7 +73,7 @@ class Fragmentoperfil : Fragment() {
         }
 
         cuadricula_recetas_perfil
-        adapter = listaRecetasAdapter(mis_recetas, requireContext())
+        adapter = listaRecetasAdapter(mis_recetas, requireContext(), "perfil",requireActivity() as MainActivity)
         cuadricula_recetas_perfil.adapter = adapter
 
 

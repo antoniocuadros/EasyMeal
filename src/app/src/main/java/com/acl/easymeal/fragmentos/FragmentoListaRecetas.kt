@@ -385,7 +385,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
         spiner_tiempo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                adapter = listaRecetasAdapter(busqueda(), requireContext())
+                adapter = listaRecetasAdapter(busqueda(), requireContext(),"", requireActivity() as MainActivity)
                 cuadricula_recetas.adapter = adapter
             }
 
@@ -396,7 +396,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
         spiner_dificultad.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                adapter = listaRecetasAdapter(busqueda(), requireContext())
+                adapter = listaRecetasAdapter(busqueda(), requireContext(),"",requireActivity() as MainActivity)
                 cuadricula_recetas.adapter = adapter
             }
 
@@ -407,7 +407,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
         spiner_categoria.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                adapter = listaRecetasAdapter(busqueda(), requireContext())
+                adapter = listaRecetasAdapter(busqueda(), requireContext(),"",requireActivity() as MainActivity)
                 cuadricula_recetas.adapter = adapter
             }
 
@@ -445,7 +445,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
             }
         }
 
-        adapter = listaRecetasAdapter(busqueda(), requireContext())
+        adapter = listaRecetasAdapter(busqueda(), requireContext(),"",requireActivity() as MainActivity)
         cuadricula_recetas.adapter = adapter
     }
 
@@ -464,7 +464,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
 
         recetas = busqueda()
 
-        adapter = listaRecetasAdapter(recetas, requireContext())
+        adapter = listaRecetasAdapter(recetas, requireContext(),"",requireActivity() as MainActivity)
         cuadricula_recetas.adapter = adapter
         return false
     }

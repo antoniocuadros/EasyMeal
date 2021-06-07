@@ -8,10 +8,13 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.acl.easymeal.MainActivity
 import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
 
-class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Context): BaseAdapter(){
+class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Context, modo:String, activity: MainActivity): BaseAdapter(){
+    private var modo = modo
+    private var activity = activity
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -31,9 +34,21 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
         nombre_receta_item.text = receta.nombreReceta
 
         var icono_borrar = vista.findViewById<CardView>(R.id.icono_borrar)
-        icono_borrar.visibility = View.GONE
         var icono_editar = vista.findViewById<CardView>(R.id.icono_editar)
-        icono_editar.visibility = View.GONE
+
+        if(modo != "perfil"){
+            icono_borrar.visibility = View.GONE
+            icono_editar.visibility = View.GONE
+        }
+        else{
+            icono_borrar.setOnClickListener {
+            }
+
+            icono_editar.setOnClickListener {
+                activity.fromPerfilToEditar(this.listaRecetas[position].id.toString())
+            }
+        }
+
 
         //Paso 5)
         return vista
