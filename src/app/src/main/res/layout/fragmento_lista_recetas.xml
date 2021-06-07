@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -46,9 +46,10 @@
 
             <Spinner
                 android:layout_margin="5dp"
-                android:padding="3dp"
-                android:layout_width="150dp"
-                android:layout_height="45dp"
+                android:padding="5dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:minHeight="45dp"
                 android:background="@drawable/inputcuadrado"
                 android:id="@+id/spiner_tiempo"
                 android:textColor="@color/white"
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -79,7 +80,7 @@
             <Spinner
                 android:padding="3dp"
                 android:layout_margin="5dp"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:background="@drawable/inputcuadrado"
                 android:id="@+id/spiner_dificultad"
@@ -91,6 +92,37 @@
             </Spinner>
 
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Categoría"
+                android:gravity="center"
+                >
+            </TextView>
+
+            <Spinner
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:layout_width="100dp"
+                android:minHeight="45dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputcuadrado"
+                android:id="@+id/spiner_categoria"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Carnes"
+                android:gravity="center"
+                >
+            </Spinner>
         </LinearLayout>
     </LinearLayout>
 
