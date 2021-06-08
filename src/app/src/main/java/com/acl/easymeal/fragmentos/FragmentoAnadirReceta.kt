@@ -31,7 +31,36 @@ import com.google.android.material.button.MaterialButton
 import com.vansuita.pickimage.bundle.PickSetup
 import java.io.ByteArrayOutputStream
 import java.net.URI
-
+/*
+    La clase FragmentoAnadirReceta se encarga de dotar de funcionalidad al apartado de la aplicación
+    encargado de tanto añadir una receta como de editarlo.
+ */
+/*
+    Los atributos de esta clase son:
+        -> boton_seleccion_imagen: Botón que permite seleccionar la imagen principal, de tipo CardView.
+        -> imagen_principal: Imagen principal de la receta, de tipo ImageView.
+        -> input_titulo_receta: Casilla rellenable que permite escribir el título de la receta, de tipo EditText.
+        -> input_descripcion: Casilla rellenable que permite escribir la descripción de la receta, de tipo EditText.
+        -> spiner_categoria: Selector que nos permite elegir una categoría, de tipo Spinner.
+        -> layout_ingrediente_1...layout_ingrediente_12: Layouts de los ingredientes que nos permitirán ir ocultando y visualizando los mismos, de tipo LinearLayout.
+        -> ingrediente1...ingrediente12: Casilla rellenable que nos permite escribir el nombre del ingrediente, de tipo EditText.
+        -> cantidad_ingrediente1...cantidad_ingrediente12: Casilla rellenable que nos permite escribir la cantidad del ingrediente, de tipo EditText.
+        -> paso_1...paso_20: Casilla rellenable que nos permite escribir la descripción de un determinado paso, de tipo EditText.
+        -> layout_paso_1...layout_paso_20: Layouts de los pasos que nos permitirán ir ocultando y visualizando los mismos, de tipo LinearLayout.
+        -> duracion: Casilla rellenable que nos permite indicar la duración en minutos de la receta, de tipo EditText.
+        -> anadirpaso: Botón que nos permite añadir un nuevo paso, de tipo CardView.
+        -> anadiringrediente: Botón que nos permite añadir un nuevo ingrediente, de tipo CardView.
+        -> boton_anadir: Botón que nos permite añadir una nueva receta, de tipo MaterialButton.
+        -> error_anadir_receta: Texto que nos indica si hay algún error, de tipo TextView.
+        -> boton_editar: Botón que nos permite editar una receta, de tipo MaterialButton.
+        -> argumentos: Atributo de tipo FragmentoAnadirRecetaArgs que nos permitirá obtener la receta que se desee editar.
+        -> check_thermomix: Casilla marcable que permite indicar si la receta se hace o no con Thermomix, de tipo CheckBox.
+        -> spiner_dificultad: spinner que nos permite elegir la dificultad de la receta, de tipo Spinner.
+        -> imagen_paso_1...imagen_paso_20: ImageView que permitirá elegir y mostrar una imagen para un determinado paso.
+        -> imagen1...imagen20: Imágenes asociadas a cada uno de los pasos, de tipo BitMap.
+        -> num_ingredientes: número de ingredientes de la receta, de tipo Int.
+        -> num_pasos: número de pasos de la receta, de tipo Int.
+ */
 @Suppress("DEPRECATION")
 class FragmentoAnadirReceta : Fragment() {
     private lateinit var boton_seleccion_imagen:CardView
@@ -164,36 +193,53 @@ class FragmentoAnadirReceta : Fragment() {
     private var imagen19:Bitmap? = null
     private lateinit var imagen_paso_20:ImageView
     private var imagen20:Bitmap? = null
-
-
     private var imagen_seleccionada: Bitmap? = null
     private var num_ingredientes = 1
     private var num_pasos = 1
 
-
+/*
+    En el método onCreate de un fragmento es llamado durante la creación del mismo.
+ */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
-
+/*
+    En este método se realizan los siguientes pasos:
+        -> 1) Se obtiene la vista.
+        -> 2) Se llama al método vinculaVistasVariables que vincula cada atributo de tipo vista con su elemento del layout.
+        -> 3) Se llama al método inicializaCategorías, que inicializa el spinner de categorías.
+        -> 4) Se llama al método estableceComportamientoBotonAnadirIngrediente que define el comportamiento de los botones relacionados con los ingredientes.
+        -> 5) Se llama al método estableceComportamientoAnadirPaso que define el comportamiento de lo relacionado con los pasos.
+        -> 6) Se llama al método anadirImagenPrincipal que define el comportamiento para añadir imágenes principales.
+        -> 7) Se llama al método procesaFormulario que procesará los formularios de las recetas cuando se pulsen los botones de añadir o editar.
+        -> 8) Se devuelve la vista.
+ */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
+        // Paso 1
         val view =  inflater.inflate(R.layout.fragmento_anadir_receta, container, false)
 
+        //Paso 2
         vinculaVistasVariables(view)
 
+        //Paso 3
         inicializaCategorías()
 
+        //Paso 4
         estableceComportamientoBotonAnadirIngrediente()
 
-
+        //Paso 5
         estableceComportamientoAnadirPaso()
 
+        //Paso 6
         anadirImagenPrincipal()
 
+        //Paso 7
         procesaFormulario()
 
+        //Paso 8
         return view
     }
 
