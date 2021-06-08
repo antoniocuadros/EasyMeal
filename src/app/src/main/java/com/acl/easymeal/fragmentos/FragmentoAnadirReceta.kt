@@ -198,23 +198,325 @@ class FragmentoAnadirReceta : Fragment() {
     }
 
     /*
+        Este método define el diálogo para que un usuario pueda elegir una imagen desde la cámara
+        o desde la galería así como implementa el comportamiento para elegir una imagen de la galería
+        o de la cámara.
+     */
+    private fun seleccionaImagen(code:Int){
+        var builder:AlertDialog.Builder = AlertDialog.Builder(requireContext());
+        builder.setTitle("Elija desde donde obtener la imagen")
+
+
+        builder.setPositiveButton("Galería"){dialogo, _ ->
+            dialogo.dismiss()
+
+            var lanzador_seleccion = Intent(Intent.ACTION_PICK)
+            lanzador_seleccion.type = "image/*"
+            startActivityForResult(lanzador_seleccion, code)
+        }
+        builder.setNegativeButton("Cámara"){dialogo, _ ->
+            dialogo.dismiss()
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if(checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
+                        || checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                    var permisos = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    requestPermissions(permisos, 101)
+                }
+                else{
+                    val lanzador_camara = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(lanzador_camara, code+1)
+                }
+            }
+            else{
+                val lanzador_camara = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(lanzador_camara, code+1)
+            }
+        }
+
+        var dialogo = builder.create()
+        dialogo.show()
+    }
+
+    /*
+        Este método se encarga de definir el comportamiento de los botones para añadir imágenes
+        en cada paso de la receta.
+     */
+    private fun inicializaListenersImágenesPasos(){
+        imagen_paso_1.setOnClickListener {
+            seleccionaImagen(200)
+        }
+        imagen_paso_2.setOnClickListener {
+            seleccionaImagen(202)
+        }
+        imagen_paso_3.setOnClickListener {
+            seleccionaImagen(204)
+        }
+        imagen_paso_4.setOnClickListener {
+            seleccionaImagen(206)
+        }
+        imagen_paso_5.setOnClickListener {
+            seleccionaImagen(208)
+        }
+        imagen_paso_6.setOnClickListener {
+            seleccionaImagen(210)
+        }
+        imagen_paso_7.setOnClickListener {
+            seleccionaImagen(212)
+        }
+        imagen_paso_8.setOnClickListener {
+            seleccionaImagen(214)
+        }
+        imagen_paso_9.setOnClickListener {
+            seleccionaImagen(216)
+        }
+        imagen_paso_10.setOnClickListener {
+            seleccionaImagen(218)
+        }
+        imagen_paso_11.setOnClickListener {
+            seleccionaImagen(220)
+        }
+        imagen_paso_12.setOnClickListener {
+            seleccionaImagen(222)
+        }
+        imagen_paso_13.setOnClickListener {
+            seleccionaImagen(224)
+        }
+        imagen_paso_14.setOnClickListener {
+            seleccionaImagen(226)
+        }
+        imagen_paso_15.setOnClickListener {
+            seleccionaImagen(228)
+        }
+        imagen_paso_16.setOnClickListener {
+            seleccionaImagen(230)
+        }
+        imagen_paso_17.setOnClickListener {
+            seleccionaImagen(232)
+        }
+        imagen_paso_18.setOnClickListener {
+            seleccionaImagen(234)
+        }
+        imagen_paso_19.setOnClickListener {
+            seleccionaImagen(236)
+        }
+        imagen_paso_20.setOnClickListener {
+            seleccionaImagen(238)
+        }
+    }
+
+    /*
         En este método obtenemos la imagen seleccionada por el usuario y la almacenamos en un atributo
         de la clase.
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        //////////////////////
+        //
+        // GALERÍA
+        //
+        //////////////////////
         if(requestCode == 100 && resultCode == Activity.RESULT_OK){
             var imagen_seleccionada2 = data!!.data!!
             imagen_seleccionada =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
             imagen_principal.setImageBitmap(imagen_seleccionada)
 
         }
-        else{
-            if(requestCode == 111 && resultCode == Activity.RESULT_OK){
-                imagen_seleccionada = data!!.extras?.get("data") as Bitmap
-                imagen_principal.setImageBitmap(imagen_seleccionada)
-            }
+        if(requestCode == 200 && resultCode == Activity.RESULT_OK){
+            Toast.makeText(requireContext(), "asd", Toast.LENGTH_SHORT).show()
+            var imagen_seleccionada2 = data!!.data!!
+            imagen1 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_1.setImageBitmap(imagen1)
+
+        }
+        if(requestCode == 202 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen2 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_2.setImageBitmap(imagen2)
+        }
+        if(requestCode == 204 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen3 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_3.setImageBitmap(imagen3)
+        }
+        if(requestCode == 206 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen4 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_4.setImageBitmap(imagen4)
+        }
+        if(requestCode == 208 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen5 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_5.setImageBitmap(imagen5)
+        }
+        if(requestCode == 210 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen6 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_6.setImageBitmap(imagen6)
+        }
+        if(requestCode == 212 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen7 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_7.setImageBitmap(imagen7)
+        }
+        if(requestCode == 214 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen8 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_8.setImageBitmap(imagen8)
+        }
+        if(requestCode == 216 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen9 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_9.setImageBitmap(imagen9)
+        }
+        if(requestCode == 218 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen10 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_10.setImageBitmap(imagen10)
+        }
+
+        if(requestCode == 220 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen11 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_11.setImageBitmap(imagen11)
+        }
+        if(requestCode == 222 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen12 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_12.setImageBitmap(imagen12)
+        }
+        if(requestCode == 224 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen13 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_13.setImageBitmap(imagen13)
+        }
+        if(requestCode == 226 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen14 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_14.setImageBitmap(imagen14)
+
+
+        }
+        if(requestCode == 228 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen15 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_15.setImageBitmap(imagen15)
+        }
+        if(requestCode == 230 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen16 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_16.setImageBitmap(imagen16)
+        }
+        if(requestCode == 232 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen17 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_17.setImageBitmap(imagen17)
+        }
+        if(requestCode == 234 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen18 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_18.setImageBitmap(imagen18)
+        }
+        if(requestCode == 236 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen19 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_19.setImageBitmap(imagen19)
+        }
+        if(requestCode == 238 && resultCode == Activity.RESULT_OK){
+            var imagen_seleccionada2 = data!!.data!!
+            imagen20 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
+            imagen_paso_20.setImageBitmap(imagen20)
+        }
+
+        //////////////////////
+        //
+        // CÁMARA
+        //
+        //////////////////////
+
+        if(requestCode == 111 && resultCode == Activity.RESULT_OK){
+            imagen_seleccionada = data!!.extras?.get("data") as Bitmap
+            imagen_principal.setImageBitmap(imagen_seleccionada)
+        }
+        if(requestCode == 201 && resultCode == Activity.RESULT_OK){
+            imagen1 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_1.setImageBitmap(imagen1)
+        }
+        if(requestCode == 203 && resultCode == Activity.RESULT_OK){
+            imagen2 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_2.setImageBitmap(imagen2)
+        }
+        if(requestCode == 205 && resultCode == Activity.RESULT_OK){
+            imagen3 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_3.setImageBitmap(imagen3)
+        }
+        if(requestCode == 207 && resultCode == Activity.RESULT_OK){
+            imagen4 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_4.setImageBitmap(imagen4)
+        }
+        if(requestCode == 209 && resultCode == Activity.RESULT_OK){
+            imagen5 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_5.setImageBitmap(imagen5)
+        }
+        if(requestCode == 211 && resultCode == Activity.RESULT_OK){
+            imagen6 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_6.setImageBitmap(imagen6)
+        }
+        if(requestCode == 213 && resultCode == Activity.RESULT_OK){
+            imagen7 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_7.setImageBitmap(imagen7)
+        }
+        if(requestCode == 215 && resultCode == Activity.RESULT_OK){
+            imagen8 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_8.setImageBitmap(imagen8)
+        }
+        if(requestCode == 217 && resultCode == Activity.RESULT_OK){
+            imagen9 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_9.setImageBitmap(imagen9)
+        }
+        if(requestCode == 219 && resultCode == Activity.RESULT_OK){
+            imagen10 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_10.setImageBitmap(imagen10)
+        }
+        if(requestCode == 221 && resultCode == Activity.RESULT_OK){
+            imagen11 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_11.setImageBitmap(imagen11)
+        }
+        if(requestCode == 223 && resultCode == Activity.RESULT_OK){
+            imagen12 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_12.setImageBitmap(imagen12)
+        }
+        if(requestCode == 225 && resultCode == Activity.RESULT_OK){
+            imagen13 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_13.setImageBitmap(imagen13)
+        }
+        if(requestCode == 227 && resultCode == Activity.RESULT_OK){
+            imagen14 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_14.setImageBitmap(imagen14)
+        }
+        if(requestCode == 229 && resultCode == Activity.RESULT_OK){
+            imagen15 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_15.setImageBitmap(imagen15)
+        }
+        if(requestCode == 231 && resultCode == Activity.RESULT_OK){
+            imagen16 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_16.setImageBitmap(imagen16)
+        }
+        if(requestCode == 233 && resultCode == Activity.RESULT_OK){
+            imagen17 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_17.setImageBitmap(imagen17)
+        }
+        if(requestCode == 235 && resultCode == Activity.RESULT_OK){
+            imagen18 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_18.setImageBitmap(imagen18)
+        }
+        if(requestCode == 237 && resultCode == Activity.RESULT_OK){
+            imagen19 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_19.setImageBitmap(imagen19)
+        }
+        if(requestCode == 239 && resultCode == Activity.RESULT_OK){
+            imagen20 = data!!.extras?.get("data") as Bitmap
+            imagen_paso_20.setImageBitmap(imagen20)
         }
     }
 
@@ -838,6 +1140,7 @@ class FragmentoAnadirReceta : Fragment() {
                 }
             }
         }
+        inicializaListenersImágenesPasos()
     }
 
     /*
@@ -1121,6 +1424,28 @@ class FragmentoAnadirReceta : Fragment() {
         boton_editar = view.findViewById(R.id.boton_editar)
         check_thermomix = view.findViewById(R.id.check_thermomix)
         spiner_dificultad = view.findViewById(R.id.spiner_dificultad)
+
+        imagen_paso_1 = view.findViewById(R.id.imagen_paso_1)
+        imagen_paso_2 = view.findViewById(R.id.imagen_paso_2)
+        imagen_paso_3 = view.findViewById(R.id.imagen_paso_3)
+        imagen_paso_4 = view.findViewById(R.id.imagen_paso_4)
+        imagen_paso_5 = view.findViewById(R.id.imagen_paso_5)
+        imagen_paso_6 = view.findViewById(R.id.imagen_paso_6)
+        imagen_paso_7 = view.findViewById(R.id.imagen_paso_7)
+        imagen_paso_8 = view.findViewById(R.id.imagen_paso_8)
+        imagen_paso_9 = view.findViewById(R.id.imagen_paso_9)
+        imagen_paso_10 = view.findViewById(R.id.imagen_paso_10)
+        imagen_paso_11 = view.findViewById(R.id.imagen_paso_11)
+        imagen_paso_12 = view.findViewById(R.id.imagen_paso_12)
+        imagen_paso_13 = view.findViewById(R.id.imagen_paso_13)
+        imagen_paso_14= view.findViewById(R.id.imagen_paso_14)
+        imagen_paso_15 = view.findViewById(R.id.imagen_paso_15)
+        imagen_paso_16 = view.findViewById(R.id.imagen_paso_16)
+        imagen_paso_17 = view.findViewById(R.id.imagen_paso_17)
+        imagen_paso_18 = view.findViewById(R.id.imagen_paso_18)
+        imagen_paso_19 = view.findViewById(R.id.imagen_paso_19)
+        imagen_paso_20 = view.findViewById(R.id.imagen_paso_20)
+
     }
 
 }

@@ -1227,7 +1227,7 @@
                                 android:src="@drawable/anadir_foto_icono"
                                 android:backgroundTint="@color/black"
                                 android:scaleType="centerCrop"
-                                android:id="@+id/imagen_paso_81"
+                                android:id="@+id/imagen_paso_8"
                                 android:layout_margin="5dp"
                                 >
                             </ImageView>
