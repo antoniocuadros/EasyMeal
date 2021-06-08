@@ -1,6 +1,8 @@
 package com.acl.easymeal.adapters
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.media.Image
 import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +16,7 @@ import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Ingrediente
 import java.util.*
 
-class SliderPasosAdapter(var pasos:MutableList<String>, context: Context, reproductor:TextToSpeech): RecyclerView.Adapter<SliderPasosAdapter.Pager2ViewHolder>(){
+class SliderPasosAdapter(var pasos:MutableList<String>, var imgPasos:MutableList<Bitmap?>, context: Context, reproductor:TextToSpeech): RecyclerView.Adapter<SliderPasosAdapter.Pager2ViewHolder>(){
     var context = context
     var reproductor = reproductor
 
@@ -22,6 +24,7 @@ class SliderPasosAdapter(var pasos:MutableList<String>, context: Context, reprod
         val texto_num_paso = itemView.findViewById<TextView>(R.id.texto_num_paso)
         val descripcion_paso = itemView.findViewById<TextView>(R.id.descripcion_paso)
         val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
+        val imagen = itemView.findViewById<ImageView>(R.id.imagen_paso)
 
         init{
             boton_reproducir.setOnClickListener {
@@ -48,6 +51,11 @@ class SliderPasosAdapter(var pasos:MutableList<String>, context: Context, reprod
     override fun onBindViewHolder(holder: SliderPasosAdapter.Pager2ViewHolder, position: Int) {
         holder.descripcion_paso.text = pasos[position]
         holder.texto_num_paso.text = (position + 1).toString()
+
+        if(imgPasos[position] != null){
+            holder.imagen.setImageBitmap(imgPasos[position])
+        }
+
         holder.setIsRecyclable(false)
     }
 

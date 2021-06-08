@@ -1,6 +1,7 @@
 package com.acl.easymeal.fragmentos
 
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.Gravity
@@ -296,29 +297,90 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
      */
     private fun establecePasos(receta: Receta){
         var pasos = mutableListOf<String>()
+        var imgPasos = mutableListOf<Bitmap?>()
 
-        if(receta.paso1 != "") pasos.add(receta.paso1)
-        if(receta.paso2 != "") pasos.add(receta.paso2)
-        if(receta.paso3 != "") pasos.add(receta.paso3)
-        if(receta.paso4 != "") pasos.add(receta.paso4)
-        if(receta.paso5 != "") pasos.add(receta.paso5)
-        if(receta.paso6 != "") pasos.add(receta.paso6)
-        if(receta.paso7 != "") pasos.add(receta.paso7)
-        if(receta.paso8 != "") pasos.add(receta.paso8)
-        if(receta.paso9 != "") pasos.add(receta.paso9)
-        if(receta.paso10 != "") pasos.add(receta.paso10)
-        if(receta.paso11 != "") pasos.add(receta.paso11)
-        if(receta.paso12 != "") pasos.add(receta.paso12)
-        if(receta.paso13 != "") pasos.add(receta.paso13)
-        if(receta.paso14 != "") pasos.add(receta.paso14)
-        if(receta.paso15 != "") pasos.add(receta.paso15)
-        if(receta.paso16 != "") pasos.add(receta.paso16)
-        if(receta.paso17 != "") pasos.add(receta.paso17)
-        if(receta.paso18 != "") pasos.add(receta.paso18)
-        if(receta.paso19 != "") pasos.add(receta.paso19)
-        if(receta.paso20 != "") pasos.add(receta.paso20)
+        if(receta.paso1 != ""){
+            pasos.add(receta.paso1)
+            imgPasos.add(receta.imagen1)
+        }
+        if(receta.paso2 != ""){
+            pasos.add(receta.paso2)
+            imgPasos.add(receta.imagen2)
+        }
+        if(receta.paso3 != ""){
+            pasos.add(receta.paso3)
+            imgPasos.add(receta.imagen3)
+        }
+        if(receta.paso4 != ""){
+            pasos.add(receta.paso4)
+            imgPasos.add(receta.imagen4)
+        }
+        if(receta.paso5 != ""){
+            pasos.add(receta.paso5)
+            imgPasos.add(receta.imagen5)
+        }
+        if(receta.paso6 != ""){
+            pasos.add(receta.paso6)
+            imgPasos.add(receta.imagen6)
+        }
+        if(receta.paso7 != ""){
+            pasos.add(receta.paso7)
+            imgPasos.add(receta.imagen7)
+        }
+        if(receta.paso8 != ""){
+            pasos.add(receta.paso8)
+            imgPasos.add(receta.imagen8)
+        }
+        if(receta.paso9 != ""){
+            pasos.add(receta.paso9)
+            imgPasos.add(receta.imagen9)
+        }
+        if(receta.paso10 != ""){
+            pasos.add(receta.paso10)
+            imgPasos.add(receta.imagen10)
+        }
+        if(receta.paso11 != ""){
+            pasos.add(receta.paso11)
+            imgPasos.add(receta.imagen11)
+        }
+        if(receta.paso12 != ""){
+            pasos.add(receta.paso12)
+            imgPasos.add(receta.imagen12)
+        }
+        if(receta.paso13 != ""){
+            pasos.add(receta.paso13)
+            imgPasos.add(receta.imagen13)
+        }
+        if(receta.paso14 != ""){
+            pasos.add(receta.paso14)
+            imgPasos.add(receta.imagen14)
+        }
+        if(receta.paso15 != ""){
+            pasos.add(receta.paso15)
+            imgPasos.add(receta.imagen15)
+        }
+        if(receta.paso16 != ""){
+            pasos.add(receta.paso16)
+            imgPasos.add(receta.imagen16)
+        }
+        if(receta.paso17 != ""){
+            pasos.add(receta.paso17)
+            imgPasos.add(receta.imagen17)
+        }
+        if(receta.paso18 != ""){
+            pasos.add(receta.paso18)
+            imgPasos.add(receta.imagen18)
+        }
+        if(receta.paso19 != ""){
+            pasos.add(receta.paso19)
+            imgPasos.add(receta.imagen19)
+        }
+        if(receta.paso20 != ""){
+            pasos.add(receta.paso20)
+            imgPasos.add(receta.imagen20)
+        }
 
-        slider_pasos_desc.adapter = SliderPasosAdapter(pasos, requireContext(), reproductor)
+        slider_pasos_desc.adapter = SliderPasosAdapter(pasos, imgPasos, requireContext(), reproductor)
         slider_pasos_desc.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider_pasos.setViewPager(slider_pasos_desc)

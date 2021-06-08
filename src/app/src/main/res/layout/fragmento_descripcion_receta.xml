@@ -476,7 +476,7 @@
                         <androidx.viewpager2.widget.ViewPager2
                             android:id="@+id/slider_pasos_desc"
                             android:layout_width="match_parent"
-                            android:layout_height="380dp"
+                            android:layout_height="400dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"

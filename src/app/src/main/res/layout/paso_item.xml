@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="420dp"
             android:orientation="vertical"
             >
 
@@ -94,6 +94,17 @@
                 android:scaleType="centerCrop"
                 android:layout_margin="10dp"
                 />
+
+            <ImageView
+                android:id="@+id/imagen_paso"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                >
+
+            </ImageView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
