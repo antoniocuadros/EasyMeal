@@ -597,7 +597,32 @@ class FragmentoAnadirReceta : Fragment() {
             var db = obtenerBaseDatos(requireContext())
             var receta = db.recetaDao.obtenerPorID(id.toString())
 
+
             imagen_principal.setImageBitmap(receta.imagen)
+            if(receta.imagen1 != null) imagen_paso_1.setImageBitmap(receta.imagen1)
+            if(receta.imagen2 != null) imagen_paso_2.setImageBitmap(receta.imagen2)
+            if(receta.imagen3 != null) imagen_paso_3.setImageBitmap(receta.imagen3)
+            if(receta.imagen4 != null) imagen_paso_4.setImageBitmap(receta.imagen4)
+            if(receta.imagen5 != null) imagen_paso_5.setImageBitmap(receta.imagen5)
+            if(receta.imagen6 != null) imagen_paso_6.setImageBitmap(receta.imagen6)
+            if(receta.imagen7 != null) imagen_paso_7.setImageBitmap(receta.imagen7)
+            if(receta.imagen8 != null) imagen_paso_8.setImageBitmap(receta.imagen8)
+            if(receta.imagen9 != null) imagen_paso_9.setImageBitmap(receta.imagen9)
+            if(receta.imagen10 != null) imagen_paso_10.setImageBitmap(receta.imagen10)
+            if(receta.imagen11 != null) imagen_paso_11.setImageBitmap(receta.imagen11)
+            if(receta.imagen12 != null) imagen_paso_12.setImageBitmap(receta.imagen12)
+            if(receta.imagen13 != null) imagen_paso_13.setImageBitmap(receta.imagen13)
+            if(receta.imagen14 != null) imagen_paso_14.setImageBitmap(receta.imagen14)
+            if(receta.imagen15 != null) imagen_paso_15.setImageBitmap(receta.imagen15)
+            if(receta.imagen16 != null) imagen_paso_16.setImageBitmap(receta.imagen16)
+            if(receta.imagen17 != null) imagen_paso_17.setImageBitmap(receta.imagen17)
+            if(receta.imagen18 != null) imagen_paso_18.setImageBitmap(receta.imagen18)
+            if(receta.imagen19 != null) imagen_paso_19.setImageBitmap(receta.imagen19)
+            if(receta.imagen20 != null) imagen_paso_20.setImageBitmap(receta.imagen20)
+
+
+
+
             input_titulo_receta.setText(receta.nombreReceta.toString())
             input_descripcion.setText(receta.descripcion.toString())
 
@@ -783,6 +808,27 @@ class FragmentoAnadirReceta : Fragment() {
                     imagen = receta.imagen
                 }
 
+                if(imagen1 != null) receta.imagen1 = imagen1
+                if(imagen2 != null) receta.imagen2 = imagen2
+                if(imagen3 != null) receta.imagen3 = imagen3
+                if(imagen4 != null) receta.imagen4 = imagen4
+                if(imagen5 != null) receta.imagen5 = imagen5
+                if(imagen6 != null) receta.imagen6 = imagen6
+                if(imagen7 != null) receta.imagen7 = imagen7
+                if(imagen8 != null) receta.imagen8 = imagen8
+                if(imagen9 != null) receta.imagen9 = imagen9
+                if(imagen10 != null) receta.imagen10 = imagen10
+                if(imagen11 != null) receta.imagen11 = imagen11
+                if(imagen12 != null) receta.imagen12 = imagen12
+                if(imagen13 != null) receta.imagen13 = imagen13
+                if(imagen14 != null) receta.imagen14 = imagen14
+                if(imagen15 != null) receta.imagen15 = imagen15
+                if(imagen16 != null) receta.imagen16 = imagen16
+                if(imagen17 != null) receta.imagen17 = imagen17
+                if(imagen18 != null) receta.imagen18 = imagen18
+                if(imagen19 != null) receta.imagen19 = imagen19
+                if(imagen20 != null) receta.imagen20 = imagen20
+
                 var error_campo_vacio = compruebaCampos("editar")
                 if(error_campo_vacio){
                     error_anadir_receta.visibility = View.VISIBLE
@@ -810,45 +856,45 @@ class FragmentoAnadirReceta : Fragment() {
                             cantidad_ingrediente12.text.toString(),
                             duracion.text.toString().toInt(),
                             paso_1.text.toString(),
-                            imagen1,
+                            receta.imagen1,
                             paso_2.text.toString(),
-                            imagen2,
+                            receta.imagen2,
                             paso_3.text.toString(),
-                            imagen3,
+                            receta.imagen3,
                             paso_4.text.toString(),
-                            imagen4,
+                            receta.imagen4,
                             paso_5.text.toString(),
-                            imagen5,
+                            receta.imagen5,
                             paso_6.text.toString(),
-                            imagen6,
+                            receta.imagen6,
                             paso_7.text.toString(),
-                            imagen7,
+                            receta.imagen7,
                             paso_8.text.toString(),
-                            imagen8,
+                            receta.imagen8,
                             paso_9.text.toString(),
-                            imagen9,
+                            receta.imagen9,
                             paso_10.text.toString(),
-                            imagen10,
+                            receta.imagen10,
                             paso_11.text.toString(),
-                            imagen11,
+                            receta.imagen11,
                             paso_12.text.toString(),
-                            imagen12,
+                            receta.imagen12,
                             paso_13.text.toString(),
-                            imagen13,
+                            receta.imagen13,
                             paso_14.text.toString(),
-                            imagen14,
+                            receta.imagen14,
                             paso_15.text.toString(),
-                            imagen15,
+                            receta.imagen15,
                             paso_16.text.toString(),
-                            imagen16,
+                            receta.imagen16,
                             paso_17.text.toString(),
-                            imagen17,
+                            receta.imagen17,
                             paso_18.text.toString(),
-                            imagen18,
+                            receta.imagen18,
                             paso_19.text.toString(),
-                            imagen19,
+                            receta.imagen19,
                             paso_20.text.toString(),
-                            imagen20,
+                            receta.imagen20,
                             obtenerUsuarioLogueado()[0].username,
                             num_ingredientes,
                             num_pasos,
