@@ -26,7 +26,26 @@ import com.acl.easymeal.modelo.Usuario
 import com.acl.easymeal.modelo.obtenerBaseDatos
 import com.google.android.material.button.MaterialButton
 
-
+/*
+    La clase FragmentoRegister se encarga de dotar de funcionalidad al apartado de la aplicación
+    encargado de mostrar el formulario de registro.
+ */
+/*
+    Los atributos de esta clase son:
+        -> boton_redirect_login: Botón para redirigir al login, de tipo ImageButton
+        -> input_usuario_register: Casilla para rellenar con el usuario, de tipo EditText
+        -> input_contraseña_register: Casilla para rellenar con la contraseña, de tipo EditText
+        -> input_contraseña_register_repeat: Casilla para rellenar la confirmación de contraseña, te tipo EditText.
+        -> boton_register_register: Botón para registrar el usuario, de tipo MaterialButton.
+        -> error_register: Texto de error en registro, de tipo TextView.
+        -> boton_seleccion_imagen: Botón para seleccionar imagen, de tipo CardView.
+        -> imagen_seleccionada: Imagen de perfil seleccionada, de tipo Bitmap.
+        -> imagen_usuario_register: Vista de la imagen seleccionada para mostrarla, de tipo ImageView.
+        -> texto_bienvenida: Mensaje de bienvenida al crear un usuario, de tipo TextView.
+        -> layoutBienvenida: Layout que contiene el mensaje de bienvenida, de tipo LinearLayout.
+        -> layoutRegister: Layout que contiene el formulario de registro, de tipo RelativeLayout.
+        -> boton_redirect_login_bienvenida: Botón para ir del mensaje de bienvenida al login, de tipo MaterialButton.
+ */
 @Suppress("DEPRECATION")
 class FragmentoRegister : Fragment() {
     private lateinit var boton_redirect_login:ImageButton
@@ -44,21 +63,40 @@ class FragmentoRegister : Fragment() {
     private lateinit var layoutRegister:RelativeLayout
     private lateinit var boton_redirect_login_bienvenida:MaterialButton
 
-
+    /*
+        En el método onCreate de un fragmento es llamado durante la creación del mismo.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    /*
+    En este método se realizan los siguientes pasos:
+        -> 1) Se obtiene la vista.
+        -> 2) Se llama al método vinculaVistasVariables que vincula cada atributo de tipo vista con su correspondiente elemento del layout.
+        -> 3) Se llama al método estableceComportamientoBotonTengoCuenta que establece el comportamiento del boton para ir al login.
+        -> 4) Se llama al método estableceComportamientoBotonRegister que define el comportamiento del botón para registrar a un usuario.
+        -> 5) Se llama al método definirComportamientoBotonseleccionarImagen que define el comportamiento del botón para añadir imagen de perfil.
+        -> 6) Se devuelve la vista
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+        // Paso 1
         val view =  inflater.inflate(R.layout.fragmento_register, container, false)
 
+        // Paso 2
         vinculaVistasVariables(view)
+
+        // Paso 3
         estableceComportamientoBotonTengoCuenta()
+
+        // Paso 4
         estableceComportamientoBotonRegister()
+
+        // Paso 5
         definirComportamientoBotonseleccionarImagen()
 
+        // Paso 6
         return view
     }
 
@@ -85,6 +123,10 @@ class FragmentoRegister : Fragment() {
         }
     }
 
+    /*
+        Este método captura el código de los permisos solicitados y en caso de haber otorgado los permisos,
+        en este caso, permite abrir la cámara.
+     */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 

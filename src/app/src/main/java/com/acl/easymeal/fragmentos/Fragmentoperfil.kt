@@ -126,7 +126,7 @@ class Fragmentoperfil : Fragment() {
             var receta = cuadricula_recetas.getItemAtPosition(i) as Receta
             (activity as MainActivity).fromPerfilToMostrarReceta(receta.id.toString())
         }
-    
+
     }
 
     /*
