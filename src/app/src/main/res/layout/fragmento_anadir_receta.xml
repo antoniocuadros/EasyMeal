@@ -912,6 +912,17 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_1"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -946,6 +957,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_2"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -980,6 +1001,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_3"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1014,6 +1045,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_4"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1048,6 +1089,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_5"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1082,6 +1133,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_6"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1116,6 +1177,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_7"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1150,6 +1221,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_81"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1184,6 +1265,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_9"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1218,6 +1309,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_10"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1252,6 +1353,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_11"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1286,6 +1397,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_12"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -1320,6 +1441,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_13"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1353,6 +1484,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_14"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1386,6 +1527,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_15"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1419,6 +1570,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_16"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1452,6 +1613,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_17"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1485,6 +1656,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_18"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1518,6 +1699,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_19"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -1551,6 +1742,16 @@
                                 android:inputType="textMultiLine"
                                 android:padding="15dp"
                                 />
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/anadir_foto_icono"
+                                android:backgroundTint="@color/black"
+                                android:scaleType="centerCrop"
+                                android:id="@+id/imagen_paso_20"
+                                android:layout_margin="5dp"
+                                >
+                            </ImageView>
                         </LinearLayout>
 
                         <androidx.cardview.widget.CardView

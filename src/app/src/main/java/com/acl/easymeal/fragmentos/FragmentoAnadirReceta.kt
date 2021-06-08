@@ -124,6 +124,47 @@ class FragmentoAnadirReceta : Fragment() {
     private val argumentos: FragmentoAnadirRecetaArgs by navArgs()
     private lateinit var check_thermomix:CheckBox
     private lateinit var spiner_dificultad:Spinner
+    private lateinit var imagen_paso_1:ImageView
+    private var imagen1:Bitmap? = null
+    private lateinit var imagen_paso_2:ImageView
+    private var imagen2:Bitmap? = null
+    private lateinit var imagen_paso_3:ImageView
+    private var imagen3:Bitmap? = null
+    private lateinit var imagen_paso_4:ImageView
+    private var imagen4:Bitmap? = null
+    private lateinit var imagen_paso_5:ImageView
+    private var imagen5:Bitmap? = null
+    private lateinit var imagen_paso_6:ImageView
+    private var imagen6:Bitmap? = null
+    private lateinit var imagen_paso_7:ImageView
+    private var imagen7:Bitmap? = null
+    private lateinit var imagen_paso_8:ImageView
+    private var imagen8:Bitmap? = null
+    private lateinit var imagen_paso_9:ImageView
+    private var imagen9:Bitmap? = null
+    private lateinit var imagen_paso_10:ImageView
+    private var imagen10:Bitmap? = null
+    private lateinit var imagen_paso_11:ImageView
+    private var imagen11:Bitmap? = null
+    private lateinit var imagen_paso_12:ImageView
+    private var imagen12:Bitmap? = null
+    private lateinit var imagen_paso_13:ImageView
+    private var imagen13:Bitmap? = null
+    private lateinit var imagen_paso_14:ImageView
+    private var imagen14:Bitmap? = null
+    private lateinit var imagen_paso_15:ImageView
+    private var imagen15:Bitmap? = null
+    private lateinit var imagen_paso_16:ImageView
+    private var imagen16:Bitmap? = null
+    private lateinit var imagen_paso_17:ImageView
+    private var imagen17:Bitmap? = null
+    private lateinit var imagen_paso_18:ImageView
+    private var imagen18:Bitmap? = null
+    private lateinit var imagen_paso_19:ImageView
+    private var imagen19:Bitmap? = null
+    private lateinit var imagen_paso_20:ImageView
+    private var imagen20:Bitmap? = null
+
 
     private var imagen_seleccionada: Bitmap? = null
     private var num_ingredientes = 1
