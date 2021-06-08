@@ -19,6 +19,30 @@ import com.acl.easymeal.modelo.*
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 
+/*
+    La clase FragmentoDescripcionReceta se encarga de dotar de funcionalidad al apartado de la aplicación
+    encargado de mostrar los detalles de una receta seleccionada.
+ */
+/*
+    Los atributos de esta clase son:
+        -> imagen_receta_desc: Imagen principal de la receta, de tipo ImageView.
+        -> titulo_receta_desc: Nombre de la receta, de tipo TextView.
+        -> descripcionReceta: Descrición de la receta, de tipo TextView.
+        -> slider_ingredientes_desc: Slider de ingredientes, de tipo ViewPager2.
+        -> indicador_slider_ingredientes: Indicador de número de ingrediente actual, de tipo CircleIndicator3.
+        -> slider_pasos_desc: Slider de pasos, de tipo ViewPager2.
+        -> indicador_slider_pasos: Indicador de número de ingrediente actual, de tipo CircleIndicator3.
+        -> nombre_autor: Nombre del autor, de tipo TextView.
+        -> argumentos: A través de esta variable obtendremos la receta a mostrar, de tipo FragmentoDescripcionRecetaArgs.
+        -> estrella1...estrella5: Imágenes clickables de estrellas, de tipo ImageView.
+        -> estrellas_1...estrellas_5: Layouts de conjuntos de estrellas para mostrar más o menos puntuaciones, de tipo LinearLayout.
+        -> estrellas_vacias: Layout que muestra las estrellas vacías para poder puntuar, de tipo LinearLayout.
+        -> boton_mostrar_pasos: Botón que nos permite mostrar todos los pasos, de tipo ImageButton.
+        -> boton_mostrar_ingredientes: Botón que nos permite mostrar todos los ingredientes, de tipo ImageButton.
+        -> layout_pasos: Layout de los pasos para poder mostrarlos y ocultarlos, de tipo LinearLayout.
+        -> layout_ingredientes: Layout de los ingredientes para poder mostrarlos y ocultarlos, de tipo LinearLayout
+        -> reproductor: Reproductor que nos permite escuchar en audio los pasos, de tipo  TextToSpeech.
+ */
 
 class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var imagen_receta_desc:ImageView
@@ -46,27 +70,34 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var layout_ingredientes:LinearLayout
     private lateinit var layout_pasos:LinearLayout
     private lateinit var layoutTotal:LinearLayout
-
     private lateinit var reproductor:TextToSpeech
 
+    /*
+        En el método onCreate de un fragmento es llamado durante la creación del mismo.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         reproductor = TextToSpeech(requireContext(), this)
 
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+/*
+    En este método se realizan los siguientes pasos:
+        -> 1) Se obtiene la vista.
+        -> 2) Se llama al método vinculaVistas que vincula cada atributo de la clase de tipo vista con su elemento en el layout.
+        -> 3) Se llama al método inicializaContenidoReceta que dotará de contenido a la vista, mostrando la información de una receta.
+        -> 4) Se devuelve la vista.
+ */
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Paso 1
         var view = inflater.inflate(R.layout.fragmento_descripcion_receta, container, false)
 
+        // Paso 2
         vinculaVistas(view)
 
+        // Paso 3
         inicializaContenidoReceta()
 
+        // Paso 4
         return view
     }
 
@@ -171,6 +202,10 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
 
     }
 
+    /*
+        Este método se encarga de mostrar la valoración de la receta como media de todas las
+        valoraciones de los usuarios.
+     */
     private fun muestraValoracion(){
         var db = obtenerBaseDatos(requireContext())
         var valoraciones = db.valoracionDao.obtenerPorNombreReceta(argumentos.receta.toString())
@@ -570,6 +605,9 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
         layoutTotal = view.findViewById(R.id.layoutTotal)
     }
 
+    /*
+        Método que nos permite establecer el reproductor de texto en español.
+     */
     override fun onInit(status: Int) {
         if(status == TextToSpeech.SUCCESS){
             val spanish = Locale("es", "ES")
@@ -577,6 +615,9 @@ class FragmentoDescripcionReceta : Fragment(), TextToSpeech.OnInitListener {
         }
     }
 
+    /*
+        Se ha sobrecargado este método para al cambiar de fragmento parar el reproductor.
+     */
     override fun onDestroy() {
         super.onDestroy()
         reproductor.shutdown()
