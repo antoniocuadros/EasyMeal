@@ -14,7 +14,25 @@ import com.acl.easymeal.modelo.Categoria
 import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.obtenerBaseDatos
 
-
+/*
+    La clase FragmentoDescripcionReceta se encarga de dotar de funcionalidad al apartado de la aplicación
+    encargado de mostrar los detalles de una receta seleccionada.
+ */
+/*
+    Los atributos de esta clase son:
+        -> adapter: Variable que representa el adaptador que nos permitirá pasar de una lista de recetas a una GridView de recetas, de tipo listaRecetasAdapter.
+        -> recetas: Lista de recetas que van a ser mostradas, de tipo MutableList<Receta>.
+        -> cuadricula_recetas: Cuadrícula en la que se mostrarán todas las recetas, de tipo GridView.
+        -> argumentos: A través de esta variable obtendremos si tenemos que marcar alguna categoría ya que venimos de seleccionar una en el fragmento de categorías, de tipo FragmentoListaRecetasArgs.
+        -> barra_busqueda: Barra de búsqueda por ingrediente, de tipo SearchView.
+        -> spiner_tiempo: Spinner que nos permite seleccionar para la búsqueda recetas un rango de tiempo, de tipo Spinner.
+        -> spiner_dificultad: Spinner que nos permite seleccionar para la búsqueda recetas un rango de dificultad, de tipo Spinner.
+        -> spiner_categoria: Spinner que nos permite seleccionar para la búsqueda recetas una categoría, de tipo Spinner.
+        -> tiempo: Indica si se ha seleccionado o no para buscar por tiempo, de tipo String.
+        -> dificultad: Indica si se ha seleccionado o no para buscar por dificultad, de tipo String.
+        -> ingredientes: Indica si se ha seleccionado o no para buscar por ingredientes, de tipo String.
+        -> categoria: Indica si se ha seleccionado o no para buscar por categoria, de tipo String.
+ */
 class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.OnQueryTextListener {
     lateinit var adapter:listaRecetasAdapter
     lateinit var recetas:MutableList<Receta>
@@ -29,21 +47,37 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
     private var ingredientes:String = ""
     private var categoria:String = ""
 
+    /*
+        En el método onCreate de un fragmento es llamado durante la creación del mismo.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    /*
+        En este método se realizan los siguientes pasos:
+            -> 1) Se obtiene la vista.
+            -> 2) Se llama al método vinculaVistasAtributos que vincula cada atributo de tipo vista con su correspondiente elemento del layout.
+            -> 3) Se llama al método inicializaSpinnersBúsqueda que inicializa lo relacionado con la búsqueda.
+            -> 4) Se llama al método inicializaListaRecetas que inicializa el adapter pasándole la lista de recetas para mostrarlas.
+            -> 5) Se establece un listener para cuando se pulsa en una receta para ir a detalles.
+            -> 6) Se devuelve la vista
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+        // Paso 1
         val view = inflater.inflate(R.layout.fragmento_lista_recetas, container, false)
 
+        // Paso 2
         vinculaVistasAtributos(view)
+
+        // Paso 3
         inicializaSpinnersBúsqueda()
+
+        // Paso 4
         inicializaListaRecetas()
 
-
-
+        // Paso 5
         barra_busqueda.setOnQueryTextListener(this)
 
         cuadricula_recetas.setOnItemClickListener{cuadricula_recetas, _, i,_ ->
@@ -52,6 +86,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
             (activity as MainActivity).fromRecetaToDetalles(receta.id.toString())
         }
 
+        // Paso 6
         return view
     }
 
@@ -150,7 +185,8 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
     }
 
     /*
-        Este método se encarga de definir el comportamiento de la búsqueda
+        Este método se encarga de definir el comportamiento de la búsqueda general usándo los
+        métodos anteriores.
      */
     private fun busqueda():MutableList<Receta>{
         var db = obtenerBaseDatos(requireContext())
@@ -450,6 +486,7 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
     }
 
 
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         if(query == ""){
             ingredientes = ""
@@ -457,6 +494,11 @@ class FragmentoListaRecetas : Fragment(), androidx.appcompat.widget.SearchView.O
         return false
     }
 
+    /*
+        Este método se invoca cada vez que el usuario escribe o borra algo en la barra de
+        búsqueda, se realiza la búsqueda adecuada y se muestran las recetas que coinciden con
+        los criterios de la búsqueda.
+     */
     override fun onQueryTextChange(newText: String?): Boolean {
         var recetas:MutableList<Receta>
 
