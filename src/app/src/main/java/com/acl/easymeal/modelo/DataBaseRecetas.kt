@@ -15,6 +15,14 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStream
 
+/*
+    Esta clase abstracta inicializará la base de datos y contendrá las tablas:
+        -> Categorías.
+        -> Ingredientes.
+        -> Recetas.
+        -> Usuarios.
+        -> Valoraciones.
+ */
 @Database(entities = [Categoria::class, Ingrediente::class, Receta::class, Usuario::class, Valoracion::class], version = 1, exportSchema = false)
 @TypeConverters(ConversorImagen::class)
 abstract class DataBaseRecetas: RoomDatabase() {
@@ -27,6 +35,10 @@ abstract class DataBaseRecetas: RoomDatabase() {
 
 private lateinit var instancia_data_base:DataBaseRecetas
 
+/*
+    Método singleton que inicializa la base de datos si es la priemera vez que se ejecuta la aplicación.
+    Se devuelve el objeto base de datos.
+ */
 public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
     if(!::instancia_data_base.isInitialized){
         instancia_data_base = Room.databaseBuilder(context.applicationContext,
@@ -45,6 +57,9 @@ public fun obtenerBaseDatos(context: Context):DataBaseRecetas{
     return instancia_data_base
 }
 
+/*
+    Este método inicializa la tabla de usuarios con un administrador.
+ */
 private fun inicializaAdmin(context:Context){
     val drawable: Drawable? = context.getDrawable(R.drawable.user)
 
@@ -53,6 +68,9 @@ private fun inicializaAdmin(context:Context){
     instancia_data_base.usuarioDao.insertaUna(Usuario("admin", "admin", bitmap))
 }
 
+/*
+    Este método inicializa la tabla de recetas con algunas de ejemplo.
+ */
 private fun inicializaRecetas(context:Context){
     var recetas:MutableList<Receta>
     var inputStream: InputStream = context.assets!!.open("recetas.json")
@@ -76,6 +94,9 @@ private fun inicializaRecetas(context:Context){
     instancia_data_base.recetaDao.insertaLista(recetas)
 }
 
+/*
+    Este método inicializa la tabla de categorías.
+ */
 private fun inicializaCategorias(context:Context){
     var categorias:MutableList<Categoria>
     var inputStream: InputStream = context.assets!!.open("categorias.json")
@@ -99,6 +120,9 @@ private fun inicializaCategorias(context:Context){
     instancia_data_base.categoriaDao.insertaLista(categorias)
 }
 
+/*
+    Este método inicializa la tabla de ingredientes con algunos ejemplos.
+ */
 private fun inicializaIngredientes(context:Context){
     var ingredientes:MutableList<Ingrediente>
     var inputStream: InputStream = context.assets!!.open("ingredientes.json")

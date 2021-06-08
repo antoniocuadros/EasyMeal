@@ -4,7 +4,27 @@ import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
+/*
+    Esta clase representa una receta y define la tabla Recetas de la base de datos.
+ */
+/*
+    Los atributos de esta clase son:
+        -> nombreReceta: Nombre de la receta, de tipo String.
+        -> descripcion: Descripción de la receta, de tipo String.
+        -> imagen_text: Nombre de la imagen, de tipo String.
+        -> imagen: Imagen principal de la receta, de tipo Bitmap.
+        -> categoria: Categoría de la receta, de tipo String.
+        -> ingrediente1...ingrediente12: Ingredientes de la receta, de tipo String.
+        -> cantidad_ingrediente1...cantidad_ingrediente12: Cantidades de cada ingrediente, de tipo String.
+        -> duracion: Duración de la preparación de la receta, de tipo Int.
+        -> paso1...paso20: Pasos de la receta, de tipo String.
+        -> imagen1...imagen20: Imágenes de los pasos de la receta, de tipo Bitmap.
+        -> idAutor: ID del autor de la receta, de tipo String.
+        -> num_ingredientes: Número de ingredientes de la receta, de tipo Int.
+        -> num_pasos: Número de pasos de la receta, de tipo Int.
+        -> dificultad: Dificultad de la receta, de tipo String.
+        -> thermomix Indica si hace falta thermomix, de tipo Boolean.
+ */
 @Entity(tableName = "Recetas")
 data class Receta(
     @PrimaryKey(autoGenerate = true) val id:Int,
