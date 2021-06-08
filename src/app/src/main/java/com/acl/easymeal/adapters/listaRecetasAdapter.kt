@@ -13,10 +13,26 @@ import com.acl.easymeal.R
 import com.acl.easymeal.modelo.Receta
 import com.acl.easymeal.modelo.obtenerBaseDatos
 
+/*
+    La clase listaRecetasAdapter representa el adaptador que nos permite inicializar una lista de recetas en un
+    GridView. Para ello recibirá una lista de recetas y transformará cada elemento en un elemento
+    del GridView definido por el layout receta_item que mostrará el nombre de la receta y una imagen de la misma.
+ */
 class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Context, modo:String, activity: MainActivity): BaseAdapter(){
     private var modo = modo
     private var activity = activity
 
+    /*
+        En este método inflamos la vista del gridView, para ello se realizan los siguientes pasos:
+            -> 1) Se obtiene la vista.
+            -> 2) Se obtiene la receta de la posición actual.
+            -> 3) Se obtienen los elementos del layout que se van a rellenar, como son la imagen y el texto.
+            -> 4) Se asignan a los elementos anteriores los valores de la categoría actúal.
+                  Adicionalmente se obtienen los botones de edicion y borrado. Si venimos de la pestaña perfil
+                  se muestran los iconos para editar y borrar recetas ya que solo se mostrarán las nuestras, en
+                  caso contrario no se muestran.
+            -> 5) Se devuelve la vista.
+    */
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
@@ -60,16 +76,24 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
         return vista
     }
 
-
+    /*
+        Este método devuelve un elemento de la lista de recetas.
+     */
     override fun getItem(position: Int): Any {
         return listaRecetas[position]
     }
 
-
+    /*
+        Este método devuelve el id de un elemento de la lista. Este id será la posición en la
+        que se encuentra en la lista.
+     */
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
+    /*
+        Este método devuelve el número total de elementos que se van a añadir a la vista.
+     */
     override fun getCount(): Int {
         return listaRecetas.size
     }
