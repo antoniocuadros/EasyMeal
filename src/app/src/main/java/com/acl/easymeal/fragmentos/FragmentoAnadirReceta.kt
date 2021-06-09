@@ -368,7 +368,6 @@ class FragmentoAnadirReceta : Fragment() {
 
         }
         if(requestCode == 200 && resultCode == Activity.RESULT_OK){
-            Toast.makeText(requireContext(), "asd", Toast.LENGTH_SHORT).show()
             var imagen_seleccionada2 = data!!.data!!
             imagen1 =  MediaStore.Images.Media.getBitmap(context?.contentResolver, imagen_seleccionada2)
             imagen_paso_1.setImageBitmap(imagen1)

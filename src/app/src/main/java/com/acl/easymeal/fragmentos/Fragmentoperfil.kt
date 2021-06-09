@@ -111,11 +111,7 @@ class Fragmentoperfil : Fragment() {
         var db = obtenerBaseDatos(requireContext())
         mis_recetas = db.recetaDao.obtenerPorAutor(obtenerUsuarioLogueado()[0].username)
 
-        //Si no hay imágenes no dejamos el hueco vacío, lo eliminamos
-        if(mis_recetas.size == 0){
-            cuadricula_recetas_perfil.visibility = View.GONE
-            mis_recetas_text.visibility = View.GONE
-        }
+
 
         cuadricula_recetas_perfil
         adapter = listaRecetasAdapter(mis_recetas, requireContext(), "perfil",requireActivity() as MainActivity)
