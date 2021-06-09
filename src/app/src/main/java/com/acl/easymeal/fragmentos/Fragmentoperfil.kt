@@ -187,7 +187,6 @@ class Fragmentoperfil : Fragment() {
     */
     private fun defineComportamientoCerrarSesión(){
         boton_cerrar_sesion.setOnClickListener {
-            Toast.makeText(requireContext(), "asdasdsa", Toast.LENGTH_SHORT).show()
             var sharedPreferences: SharedPreferences = requireContext().applicationContext.getSharedPreferences("ajustes",0)
             val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
             sharedPreferencesEditor.clear()
