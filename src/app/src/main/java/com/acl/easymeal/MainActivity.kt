@@ -1,12 +1,14 @@
 package com.acl.easymeal
 
-import androidx.appcompat.app.AppCompatActivity
+import android.database.CursorWindow
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.acl.easymeal.fragmentos.*
-import com.acl.easymeal.modelo.Receta
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.lang.reflect.Field
+
 
 /*
     Esta clase representa la actividad principal, su unica funcionalidad es definir la navegación entre
@@ -20,6 +22,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        try {
+            val field: Field = CursorWindow::class.java.getDeclaredField("sCursorWindowSize")
+            field.setAccessible(true)
+            field.set(null, 100 * 1024 * 1024) //the 100MB is the new size
+        } catch (e: Exception) {
+        }
 
         inicializaControlNavegacion()
     }
@@ -64,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     /*
         Este método será utilizado para navegar del fragmento de Categorías al de Recetas.
      */
-    public fun fromCategoriasToRecetas(categoria:String){
+    public fun fromCategoriasToRecetas(categoria: String){
         findNavController(R.id.fragment2).navigate(FragmentoCategoriasDirections.actionCategoriasMenuItemToRecetasMenuItem(categoria))
     }
 

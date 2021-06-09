@@ -223,6 +223,7 @@ class Fragmentoperfil : Fragment() {
         un usuario está ya logueado y muestra el perfil de un determinado usuario
     */
     private fun muestraPerfiloLogin(){
+        error_login.visibility = View.GONE
         var usuario_logueado = obtenerUsuarioLogueado()
         if(!usuario_logueado.isEmpty()){    //Si hay un usuario logueado
             login.visibility = View.GONE
