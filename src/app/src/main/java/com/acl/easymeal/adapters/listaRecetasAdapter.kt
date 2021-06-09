@@ -52,12 +52,19 @@ class listaRecetasAdapter(var listaRecetas:MutableList<Receta>, var context: Con
 
         var icono_borrar = vista.findViewById<CardView>(R.id.icono_borrar)
         var icono_editar = vista.findViewById<CardView>(R.id.icono_editar)
+        var icono_thermomix = vista.findViewById<CardView>(R.id.icono_thermomix)
 
         if(modo != "perfil"){
             icono_borrar.visibility = View.GONE
             icono_editar.visibility = View.GONE
+            if(this.listaRecetas[position].thermomix){
+                icono_thermomix.visibility = View.VISIBLE
+            }
+
         }
         else{
+
+
             icono_borrar.setOnClickListener {
                 var db = obtenerBaseDatos(context)
                 db.recetaDao.elimina(this.listaRecetas[position])

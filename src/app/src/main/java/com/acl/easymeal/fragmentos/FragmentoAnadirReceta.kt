@@ -215,8 +215,7 @@ class FragmentoAnadirReceta : Fragment() {
         -> 7) Se llama al método procesaFormulario que procesará los formularios de las recetas cuando se pulsen los botones de añadir o editar.
         -> 8) Se devuelve la vista.
  */
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         // Paso 1
         val view =  inflater.inflate(R.layout.fragmento_anadir_receta, container, false)
